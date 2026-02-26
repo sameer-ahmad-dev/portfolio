@@ -362,6 +362,78 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ========================================
+    // TESTIMONIALS SLIDER
+    // ========================================
+    const track = document.getElementById('testimonialsTrack');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dotsContainer = document.getElementById('testimonialsDots');
+    const cards = track.querySelectorAll('.testimonial-card');
+    let currentSlide = 0;
+
+    function getCardsPerView() {
+        if (window.innerWidth <= 768) return 1;
+        if (window.innerWidth <= 1024) return 2;
+        return 3;
+    }
+
+    function getTotalSlides() {
+        return Math.ceil(cards.length / getCardsPerView());
+    }
+
+    function buildDots() {
+        dotsContainer.innerHTML = '';
+        const total = getTotalSlides();
+        for (let i = 0; i < total; i++) {
+            const dot = document.createElement('span');
+            dot.classList.add('testimonial-dot');
+            if (i === currentSlide) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        }
+    }
+
+    function goToSlide(index) {
+        const total = getTotalSlides();
+        currentSlide = Math.max(0, Math.min(index, total - 1));
+
+        const cardWidth = cards[0].offsetWidth + 24; // card + gap
+        const offset = currentSlide * getCardsPerView() * cardWidth;
+        track.style.transform = `translateX(-${offset}px)`;
+
+        document.querySelectorAll('.testimonial-dot').forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentSlide);
+        });
+    }
+
+    prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+    nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+
+    buildDots();
+
+    // Auto-slide every 5 seconds
+    let autoSlide = setInterval(() => {
+        const total = getTotalSlides();
+        goToSlide(currentSlide + 1 > total - 1 ? 0 : currentSlide + 1);
+    }, 5000);
+
+    // Pause auto-slide on hover
+    track.addEventListener('mouseenter', () => clearInterval(autoSlide));
+    track.addEventListener('mouseleave', () => {
+        autoSlide = setInterval(() => {
+            const total = getTotalSlides();
+            goToSlide(currentSlide + 1 > total - 1 ? 0 : currentSlide + 1);
+        }, 5000);
+    });
+
+    // Rebuild on resize
+    window.addEventListener('resize', () => {
+        currentSlide = 0;
+        buildDots();
+        goToSlide(0);
+    });
+
+    // ========================================
     // WHATSAPP DRAGGABLE FLOATING BUTTON
     // ========================================
     const waBtn = document.getElementById('whatsappFloat');
