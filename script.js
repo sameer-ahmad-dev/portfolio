@@ -368,69 +368,104 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     const dotsContainer = document.getElementById('testimonialsDots');
-    const cards = track.querySelectorAll('.testimonial-card');
+    const tCards = track.querySelectorAll('.testimonial-card');
     let currentSlide = 0;
 
-    function getCardsPerView() {
+    function getPerView() {
         if (window.innerWidth <= 768) return 1;
         if (window.innerWidth <= 1024) return 2;
         return 3;
     }
 
-    function getTotalSlides() {
-        return Math.ceil(cards.length / getCardsPerView());
+    function getMaxSlide() {
+        return Math.max(0, tCards.length - getPerView());
+    }
+
+    function getCardFullWidth() {
+        // card width + left margin + right margin
+        const card = tCards[0];
+        const style = getComputedStyle(card);
+        return card.offsetWidth + parseFloat(style.marginLeft) + parseFloat(style.marginRight);
     }
 
     function buildDots() {
         dotsContainer.innerHTML = '';
-        const total = getTotalSlides();
-        for (let i = 0; i < total; i++) {
+        const maxSlide = getMaxSlide();
+        const perView = getPerView();
+        const totalDots = Math.ceil(tCards.length / perView);
+        for (let i = 0; i < totalDots; i++) {
             const dot = document.createElement('span');
             dot.classList.add('testimonial-dot');
-            if (i === currentSlide) dot.classList.add('active');
-            dot.addEventListener('click', () => goToSlide(i));
+            if (i === Math.floor(currentSlide / perView)) dot.classList.add('active');
+            dot.addEventListener('click', () => {
+                goToSlide(i * perView);
+            });
             dotsContainer.appendChild(dot);
         }
     }
 
-    function goToSlide(index) {
-        const total = getTotalSlides();
-        currentSlide = Math.max(0, Math.min(index, total - 1));
-
-        const cardWidth = cards[0].offsetWidth + 24; // card + gap
-        const offset = currentSlide * getCardsPerView() * cardWidth;
-        track.style.transform = `translateX(-${offset}px)`;
-
+    function updateDots() {
+        const perView = getPerView();
+        const activeDot = Math.floor(currentSlide / perView);
         document.querySelectorAll('.testimonial-dot').forEach((dot, i) => {
-            dot.classList.toggle('active', i === currentSlide);
+            dot.classList.toggle('active', i === activeDot);
         });
     }
 
-    prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
-    nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+    function goToSlide(index) {
+        const maxSlide = getMaxSlide();
+        currentSlide = Math.max(0, Math.min(index, maxSlide));
+        const offset = currentSlide * getCardFullWidth();
+        track.style.transform = `translateX(-${offset}px)`;
+        updateDots();
+    }
+
+    prevBtn.addEventListener('click', () => {
+        const perView = getPerView();
+        goToSlide(currentSlide - perView);
+    });
+
+    nextBtn.addEventListener('click', () => {
+        const perView = getPerView();
+        const maxSlide = getMaxSlide();
+        if (currentSlide + perView > maxSlide) {
+            goToSlide(0); // loop back
+        } else {
+            goToSlide(currentSlide + perView);
+        }
+    });
 
     buildDots();
+    goToSlide(0);
 
     // Auto-slide every 5 seconds
-    let autoSlide = setInterval(() => {
-        const total = getTotalSlides();
-        goToSlide(currentSlide + 1 > total - 1 ? 0 : currentSlide + 1);
-    }, 5000);
+    function startAutoSlide() {
+        return setInterval(() => {
+            const perView = getPerView();
+            const maxSlide = getMaxSlide();
+            if (currentSlide + perView > maxSlide) {
+                goToSlide(0);
+            } else {
+                goToSlide(currentSlide + perView);
+            }
+        }, 5000);
+    }
+
+    let autoSlide = startAutoSlide();
 
     // Pause auto-slide on hover
     track.addEventListener('mouseenter', () => clearInterval(autoSlide));
-    track.addEventListener('mouseleave', () => {
-        autoSlide = setInterval(() => {
-            const total = getTotalSlides();
-            goToSlide(currentSlide + 1 > total - 1 ? 0 : currentSlide + 1);
-        }, 5000);
-    });
+    track.addEventListener('mouseleave', () => { autoSlide = startAutoSlide(); });
 
     // Rebuild on resize
+    let resizeTimer;
     window.addEventListener('resize', () => {
-        currentSlide = 0;
-        buildDots();
-        goToSlide(0);
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            currentSlide = 0;
+            buildDots();
+            goToSlide(0);
+        }, 200);
     });
 
     // ========================================

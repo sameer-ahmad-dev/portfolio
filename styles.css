@@ -1318,25 +1318,27 @@ ul { list-style: none; }
 }
 
 .testimonials-slider {
+    position: relative;
     overflow: hidden;
-    margin: 0 -12px;
+    width: 100%;
 }
 
 .testimonials-track {
     display: flex;
-    gap: 24px;
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 10px 12px;
 }
 
 .testimonial-card {
-    min-width: calc(33.333% - 16px);
+    box-sizing: border-box;
+    width: calc(100% / 3);
+    flex-shrink: 0;
     padding: 32px;
+    margin: 10px 12px;
+    width: calc(100% / 3 - 24px);
     background: var(--gradient-card);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    transition: var(--transition);
-    flex-shrink: 0;
+    transition: border-color 0.3s, box-shadow 0.3s;
     display: flex;
     flex-direction: column;
 }
@@ -1344,7 +1346,6 @@ ul { list-style: none; }
 .testimonial-card:hover {
     border-color: var(--border-hover);
     box-shadow: var(--shadow-glow);
-    transform: translateY(-4px);
 }
 
 .testimonial-stars {
@@ -1469,13 +1470,13 @@ ul { list-style: none; }
 
 @media (max-width: 1024px) {
     .testimonial-card {
-        min-width: calc(50% - 12px);
+        width: calc(100% / 2 - 24px);
     }
 }
 
 @media (max-width: 768px) {
     .testimonial-card {
-        min-width: calc(100% - 24px);
+        width: calc(100% - 24px);
     }
 }
 
