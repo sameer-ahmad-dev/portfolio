@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sameer Ahmad | Odoo Developer & AI Engineer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Cursor Glow -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Particles Background -->
+    <canvas id="particles"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <span class="logo-icon">S</span>
+                <span class="logo-text">ameer<span class="logo-highlight">.</span></span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#hero" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <a href="#contact" class="nav-cta">Hire Me</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge" data-aos="fade-down">
+                    <span class="badge-dot"></span>
+                    Available for Freelance Projects
+                </div>
+                <h1 class="hero-title" data-aos="fade-up">
+                    Hi, I'm <span class="gradient-text">Sameer Ahmad</span>
+                </h1>
+                <div class="hero-typewriter">
+                    <span class="typewriter-prefix">I build </span>
+                    <span class="typewriter-text" id="typewriter"></span>
+                    <span class="typewriter-cursor">|</span>
+                </div>
+                <p class="hero-description" data-aos="fade-up">
+                    Odoo Developer & AI Engineer crafting intelligent business solutions.
+                    I transform complex challenges into streamlined, automated systems that
+                    drive growth and efficiency.
+                </p>
+                <div class="hero-actions" data-aos="fade-up">
+                    <a href="#contact" class="btn btn-primary">
+                        <span>Start a Project</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="Sameer Ahmad.pdf" download class="btn btn-outline">
+                        <i class="fas fa-download"></i>
+                        <span>Download CV</span>
+                    </a>
+                </div>
+                <div class="hero-stats" data-aos="fade-up">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="3">0</span><span class="stat-plus">+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="50">0</span><span class="stat-plus">+</span>
+                        <span class="stat-label">Projects Delivered</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="30">0</span><span class="stat-plus">+</span>
+                        <span class="stat-label">Happy Clients</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image" data-aos="fade-left">
+                <div class="hero-image-wrapper">
+                    <div class="hero-image-ring"></div>
+                    <div class="hero-image-ring ring-2"></div>
+                    <img src="profile.jpeg" alt="Sameer Ahmad" class="hero-photo">
+                    <div class="hero-image-dots"></div>
+                </div>
+                <!-- Floating Tech Badges -->
+                <div class="floating-badge badge-1">
+                    <i class="fab fa-python"></i>
+                </div>
+                <div class="floating-badge badge-2">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="floating-badge badge-3">
+                    <i class="fas fa-database"></i>
+                </div>
+                <div class="floating-badge badge-4">
+                    <i class="fab fa-js-square"></i>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <a href="#about" class="scroll-indicator">
+                <span>Scroll Down</span>
+                <div class="scroll-mouse">
+                    <div class="scroll-wheel"></div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about section" id="about">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag"><i class="fas fa-user"></i> Get To Know Me</span>
+                <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-content" data-aos="fade-right">
+                    <h3 class="about-subtitle">Turning Ideas Into Powerful Digital Solutions</h3>
+                    <p class="about-text">
+                        I'm a passionate <strong>Odoo Developer & AI Engineer</strong> with extensive experience
+                        in customizing, configuring, and developing Odoo modules to enhance business processes.
+                        I specialize in building custom Odoo apps, integrating third-party applications, and
+                        managing seamless migrations.
+                    </p>
+                    <p class="about-text">
+                        Additionally, I'm proficient in <strong>AI development</strong>, leveraging machine learning
+                        and natural language processing techniques to design innovative solutions for complex
+                        business challenges. My goal is to help businesses automate, optimize, and scale with
+                        cutting-edge technology.
+                    </p>
+                    <div class="about-info-grid">
+                        <div class="about-info-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div>
+                                <span class="info-label">Degree</span>
+                                <span class="info-value">BS Computer Science</span>
+                            </div>
+                        </div>
+                        <div class="about-info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <span class="info-label">Location</span>
+                                <span class="info-value">Multan, Pakistan</span>
+                            </div>
+                        </div>
+                        <div class="about-info-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <span class="info-label">Email</span>
+                                <span class="info-value">sameerahmad.92824@gmail.com</span>
+                            </div>
+                        </div>
+                        <div class="about-info-item">
+                            <i class="fas fa-globe"></i>
+                            <div>
+                                <span class="info-label">Website</span>
+                                <span class="info-value">Developerspro</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-socials">
+                        <a href="https://www.linkedin.com/in/sameer-ahmad-python-developer" target="_blank" class="social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/sameer-hsxtech" target="_blank" class="social-link" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://x.com/ahm4970" target="_blank" class="social-link" aria-label="X / Twitter">
+                            <i class="fab fa-x-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="about-cards" data-aos="fade-left">
+                    <div class="about-card">
+                        <div class="about-card-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h4>Odoo ERP Solutions</h4>
+                        <p>Custom module development, configuration, and enterprise migrations (v10 to v19).</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="about-card-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h4>AI & ML Development</h4>
+                        <p>Machine learning models, NLP solutions, and OpenAI API integrations.</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="about-card-icon">
+                            <i class="fas fa-plug"></i>
+                        </div>
+                        <h4>API Integrations</h4>
+                        <p>Third-party integrations with platforms like Pipedrive, PRA, FBR, SRB & more.</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="about-card-icon">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <h4>System Migrations</h4>
+                        <p>Smooth legacy system migrations with minimal downtime and full data integrity.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services section" id="services">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag"><i class="fas fa-concierge-bell"></i> What I Offer</span>
+                <h2 class="section-title">My <span class="gradient-text">Services</span></h2>
+                <p class="section-subtitle">Comprehensive solutions tailored to your business needs</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-number">01</div>
+                    <div class="service-icon">
+                        <i class="fas fa-cubes"></i>
+                    </div>
+                    <h3>Odoo Custom Development</h3>
+                    <p>Build tailored Odoo modules and apps using Python, XML, and JavaScript to meet your specific business requirements with clean, maintainable code.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Custom Module Development</li>
+                        <li><i class="fas fa-check"></i> Workflow Automation</li>
+                        <li><i class="fas fa-check"></i> Report Customization</li>
+                    </ul>
+                </div>
+                <div class="service-card featured" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-badge">Most Popular</div>
+                    <div class="service-number">02</div>
+                    <div class="service-icon">
+                        <i class="fas fa-arrow-up-right-dots"></i>
+                    </div>
+                    <h3>Odoo ERP Implementation</h3>
+                    <p>End-to-end Odoo implementation including configuration of Accounting, Sales, Purchase, Inventory, POS, and complete business process optimization.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Full ERP Setup & Config</li>
+                        <li><i class="fas fa-check"></i> Data Migration</li>
+                        <li><i class="fas fa-check"></i> User Training & Support</li>
+                    </ul>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-number">03</div>
+                    <div class="service-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h3>API & Third-Party Integration</h3>
+                    <p>Seamlessly connect Odoo with external platforms like Pipedrive, PRA, FBR, SRB, Flooss and other services to automate data exchange.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> REST API Development</li>
+                        <li><i class="fas fa-check"></i> Payment Gateway Integration</li>
+                        <li><i class="fas fa-check"></i> CRM & ERP Connectors</li>
+                    </ul>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-number">04</div>
+                    <div class="service-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h3>Odoo Version Migration</h3>
+                    <p>Expert migration services from older Odoo versions to the latest releases, ensuring compatibility, performance, and zero data loss.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> v10 to v18/v19 Upgrades</li>
+                        <li><i class="fas fa-check"></i> Module Compatibility Fixes</li>
+                        <li><i class="fas fa-check"></i> Performance Optimization</li>
+                    </ul>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-number">05</div>
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI & Machine Learning</h3>
+                    <p>Design and implement ML models and NLP solutions to solve complex business problems, improving efficiency and enabling data-driven decisions.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Predictive Analytics</li>
+                        <li><i class="fas fa-check"></i> NLP & Text Processing</li>
+                        <li><i class="fas fa-check"></i> OpenAI API Integration</li>
+                    </ul>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="service-number">06</div>
+                    <div class="service-icon">
+                        <i class="fas fa-cash-register"></i>
+                    </div>
+                    <h3>POS Customization</h3>
+                    <p>Tailor Odoo Point of Sale for diverse retail environments with enhanced UI/UX, custom features, and extended functionality.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Custom POS UI/UX</li>
+                        <li><i class="fas fa-check"></i> Receipt Customization</li>
+                        <li><i class="fas fa-check"></i> Multi-Store Setup</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience section" id="experience">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag"><i class="fas fa-briefcase"></i> My Journey</span>
+                <h2 class="section-title">Work <span class="gradient-text">Experience</span></h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-marker">
+                        <div class="timeline-marker-inner"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-badge current">Current Role</div>
+                        <h3 class="timeline-title">Odoo Technical Developer</h3>
+                        <h4 class="timeline-company">
+                            <i class="fas fa-building"></i> HSX Tech &mdash; Odoo Silver Partner
+                        </h4>
+                        <span class="timeline-date"><i class="fas fa-calendar-alt"></i> March 2025 &mdash; Present</span>
+                        <ul class="timeline-details">
+                            <li>Spearheaded end-to-end customization and configuration of core Odoo modules including Accounting, Sales, Purchase, Inventory, and POS</li>
+                            <li>Led complex API integrations with third-party platforms such as PRA, FBR, SRB and Flooss</li>
+                            <li>Developed and deployed custom Odoo apps using Python, XML, and JavaScript</li>
+                            <li>Managed data migration from legacy systems with minimal downtime</li>
+                            <li>Successfully executed Odoo Enterprise migrations: v10 → v18, v17 → v18, v17 → v19</li>
+                        </ul>
+                        <div class="timeline-tags">
+                            <span>Python</span><span>Odoo</span><span>JavaScript</span><span>API</span><span>PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-marker">
+                        <div class="timeline-marker-inner"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Odoo Technical Developer</h3>
+                        <h4 class="timeline-company">
+                            <i class="fas fa-building"></i> Byte Legions
+                        </h4>
+                        <span class="timeline-date"><i class="fas fa-calendar-alt"></i> Jan 2024 &mdash; March 2025</span>
+                        <ul class="timeline-details">
+                            <li>Customized and configured Odoo modules to meet diverse business requirements</li>
+                            <li>Developed custom Odoo apps ensuring high-quality, tailored solutions</li>
+                            <li>Managed legacy system migrations smoothly with minimal downtime</li>
+                            <li>Integrated Odoo with third-party applications like Pipedrive, Legend Life and Redicale services</li>
+                            <li>Conducted comprehensive training sessions for end-users, improving adoption rates</li>
+                        </ul>
+                        <div class="timeline-tags">
+                            <span>Python</span><span>Odoo</span><span>XML</span><span>Pipedrive</span><span>Migration</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-marker">
+                        <div class="timeline-marker-inner"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">AI Developer</h3>
+                        <h4 class="timeline-company">
+                            <i class="fas fa-building"></i> Webvies Technologies &mdash; OpenAI API Integration
+                        </h4>
+                        <span class="timeline-date"><i class="fas fa-calendar-alt"></i> Aug 2023 &mdash; Nov 2023</span>
+                        <ul class="timeline-details">
+                            <li>Designed and implemented machine learning models to solve complex business problems</li>
+                            <li>Conducted data preprocessing, feature engineering, and ML algorithm optimization</li>
+                            <li>Leveraged NLP techniques to enhance data processing and analysis</li>
+                        </ul>
+                        <div class="timeline-tags">
+                            <span>Python</span><span>OpenAI</span><span>NLP</span><span>TensorFlow</span><span>ML</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="section-header" data-aos="fade-up" style="margin-top: 5rem;">
+                <span class="section-tag"><i class="fas fa-graduation-cap"></i> Education</span>
+                <h2 class="section-title">My <span class="gradient-text">Education</span></h2>
+            </div>
+            <div class="education-card" data-aos="fade-up">
+                <div class="education-icon">
+                    <i class="fas fa-university"></i>
+                </div>
+                <div class="education-content">
+                    <h3>Bachelors of Computer Science (BSCS)</h3>
+                    <h4>Institute of Southern Punjab, Multan</h4>
+                    <span class="timeline-date"><i class="fas fa-calendar-alt"></i> Aug 2019 &mdash; Oct 2023</span>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <div class="section-header" data-aos="fade-up" style="margin-top: 4rem;">
+                <span class="section-tag"><i class="fas fa-certificate"></i> Certifications</span>
+            </div>
+            <div class="certifications-grid" data-aos="fade-up">
+                <div class="cert-card">
+                    <i class="fas fa-award"></i>
+                    <span>Python Demonstrations (Udemy)</span>
+                </div>
+                <div class="cert-card">
+                    <i class="fas fa-award"></i>
+                    <span>Python Programming (Mind Luster)</span>
+                </div>
+                <div class="cert-card">
+                    <i class="fas fa-award"></i>
+                    <span>Mastering Odoo Development 12</span>
+                </div>
+                <div class="cert-card">
+                    <i class="fas fa-award"></i>
+                    <span>Auto ML Bootcamp (No Code ML)</span>
+                </div>
+                <div class="cert-card">
+                    <i class="fas fa-award"></i>
+                    <span>Fundamentals of Machine Learning</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills section" id="skills">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag"><i class="fas fa-code"></i> My Expertise</span>
+                <h2 class="section-title">Technical <span class="gradient-text">Skills</span></h2>
+            </div>
+            <div class="skills-categories">
+                <!-- Programming Languages -->
+                <div class="skill-category" data-aos="fade-up">
+                    <h3 class="skill-category-title">
+                        <i class="fas fa-laptop-code"></i> Programming Languages
+                    </h3>
+                    <div class="skill-bars">
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span><i class="fab fa-python"></i> Python</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="95"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span><i class="fab fa-js-square"></i> JavaScript</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span><i class="fab fa-html5"></i> HTML & CSS</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span><i class="fas fa-code"></i> XML</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="90"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Odoo & ERP -->
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="skill-category-title">
+                        <i class="fas fa-cogs"></i> Odoo & ERP
+                    </h3>
+                    <div class="skill-bars">
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span><i class="fas fa-cubes"></i> Odoo Development</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="95"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span><i class="fas fa-exchange-alt"></i> Odoo Migration</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span><i class="fas fa-plug"></i> API Integration</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span><i class="fas fa-cash-register"></i> POS Customization</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="85"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- AI & ML -->
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="skill-category-title">
+                        <i class="fas fa-brain"></i> AI & Machine Learning
+                    </h3>
+                    <div class="skill-bars">
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span><i class="fas fa-project-diagram"></i> TensorFlow / PyTorch</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span><i class="fas fa-language"></i> NLP (NLTK, SpaCy)</span>
+                                <span>82%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="82"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span><i class="fas fa-chart-line"></i> Scikit-Learn</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span><i class="fas fa-table"></i> Pandas / NumPy</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="90"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Database & Tools -->
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="skill-category-title">
+                        <i class="fas fa-database"></i> Database & Tools
+                    </h3>
+                    <div class="skill-bars">
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span><i class="fas fa-database"></i> PostgreSQL</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span><i class="fas fa-database"></i> MySQL / SQLite</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span><i class="fab fa-git-alt"></i> Git & GitHub</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="88"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact section" id="contact">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag"><i class="fas fa-paper-plane"></i> Get In Touch</span>
+                <h2 class="section-title">Let's Work <span class="gradient-text">Together</span></h2>
+                <p class="section-subtitle">Have a project in mind? Let's discuss how I can help your business grow.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info" data-aos="fade-right">
+                    <div class="contact-info-card">
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4>Email Me</h4>
+                                <a href="mailto:sameerahmad.92824@gmail.com">sameerahmad.92824@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h4>Call Me</h4>
+                                <a href="tel:+92176709372">+92 176 709 372</a>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Multan, Pakistan</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-socials">
+                        <h4>Connect With Me</h4>
+                        <div class="social-links-row">
+                            <a href="https://www.linkedin.com/in/sameer-ahmad-python-developer" target="_blank" class="social-circle" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://github.com/sameer-hsxtech" target="_blank" class="social-circle" aria-label="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://x.com/ahm4970" target="_blank" class="social-circle" aria-label="X / Twitter">
+                                <i class="fab fa-x-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" data-aos="fade-left" id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="Project Discussion" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="budget">Budget Range</label>
+                        <select id="budget" name="budget">
+                            <option value="" disabled selected>Select your budget</option>
+                            <option value="500-1000">$500 - $1,000</option>
+                            <option value="1000-5000">$1,000 - $5,000</option>
+                            <option value="5000-10000">$5,000 - $10,000</option>
+                            <option value="10000+">$10,000+</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#hero" class="nav-logo">
+                        <span class="logo-bracket">&lt;</span>SA<span class="logo-bracket">/&gt;</span>
+                    </a>
+                    <p>Building intelligent business solutions with Odoo & AI.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-socials">
+                    <a href="https://www.linkedin.com/in/sameer-ahmad-python-developer" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/sameer-hsxtech" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://x.com/ahm4970" target="_blank" aria-label="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Sameer Ahmad. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
