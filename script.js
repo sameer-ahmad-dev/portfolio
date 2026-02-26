@@ -361,4 +361,87 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // ========================================
+    // WHATSAPP DRAGGABLE FLOATING BUTTON
+    // ========================================
+    const waBtn = document.getElementById('whatsappFloat');
+    const waLink = waBtn.querySelector('.whatsapp-link');
+    let isDragging = false;
+    let wasDragged = false;
+    let startX, startY, initialX, initialY;
+
+    function onDragStart(e) {
+        const touch = e.touches ? e.touches[0] : e;
+        isDragging = true;
+        wasDragged = false;
+        startX = touch.clientX;
+        startY = touch.clientY;
+
+        const rect = waBtn.getBoundingClientRect();
+        initialX = rect.left;
+        initialY = rect.top;
+
+        waBtn.classList.add('dragging');
+    }
+
+    function onDragMove(e) {
+        if (!isDragging) return;
+        e.preventDefault();
+
+        const touch = e.touches ? e.touches[0] : e;
+        const dx = touch.clientX - startX;
+        const dy = touch.clientY - startY;
+
+        if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
+            wasDragged = true;
+        }
+
+        let newX = initialX + dx;
+        let newY = initialY + dy;
+
+        const maxX = window.innerWidth - waBtn.offsetWidth;
+        const maxY = window.innerHeight - waBtn.offsetHeight;
+        newX = Math.max(0, Math.min(newX, maxX));
+        newY = Math.max(0, Math.min(newY, maxY));
+
+        waBtn.style.left = newX + 'px';
+        waBtn.style.top = newY + 'px';
+        waBtn.style.right = 'auto';
+        waBtn.style.bottom = 'auto';
+    }
+
+    function onDragEnd() {
+        if (!isDragging) return;
+        isDragging = false;
+        waBtn.classList.remove('dragging');
+
+        // Snap to nearest edge (left or right)
+        const rect = waBtn.getBoundingClientRect();
+        const midScreen = window.innerWidth / 2;
+
+        if (rect.left + rect.width / 2 < midScreen) {
+            waBtn.style.left = '20px';
+        } else {
+            waBtn.style.left = (window.innerWidth - waBtn.offsetWidth - 20) + 'px';
+        }
+    }
+
+    // Prevent link click if dragged
+    waLink.addEventListener('click', (e) => {
+        if (wasDragged) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+    });
+
+    // Mouse events
+    waBtn.addEventListener('mousedown', onDragStart);
+    document.addEventListener('mousemove', onDragMove);
+    document.addEventListener('mouseup', onDragEnd);
+
+    // Touch events (mobile)
+    waBtn.addEventListener('touchstart', onDragStart, { passive: false });
+    document.addEventListener('touchmove', onDragMove, { passive: false });
+    document.addEventListener('touchend', onDragEnd);
+
 });
