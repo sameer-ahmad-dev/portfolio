@@ -1310,6 +1310,316 @@ ul { list-style: none; }
 }
 
 /* ========================================
+   PROJECT GALLERY SECTION
+   ======================================== */
+.projects {
+    background: var(--bg-primary);
+}
+
+.project-filters {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 10px 24px;
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: var(--font-main);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.filter-btn:hover {
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+}
+
+.filter-btn.active {
+    background: var(--gradient-accent);
+    border-color: transparent;
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.project-card {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--gradient-card);
+    border: 1px solid var(--border);
+    position: relative;
+    transition: var(--transition);
+}
+
+.project-card.hidden {
+    display: none;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--border-hover);
+    box-shadow: var(--shadow-glow);
+}
+
+.project-thumb {
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-thumb i {
+    font-size: 3.5rem;
+    color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+}
+
+.project-thumb::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.4) 100%);
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 220px;
+    background: rgba(10, 14, 26, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition);
+    z-index: 2;
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-view-btn {
+    padding: 12px 28px;
+    background: var(--gradient-accent);
+    border: none;
+    border-radius: 50px;
+    color: #fff;
+    font-family: var(--font-main);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transform: translateY(20px);
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.project-card:hover .project-view-btn {
+    transform: translateY(0);
+}
+
+.project-view-btn:hover {
+    box-shadow: 0 8px 30px rgba(0, 212, 255, 0.4);
+}
+
+.project-info {
+    padding: 20px 24px 24px;
+}
+
+.project-category-tag {
+    display: inline-block;
+    padding: 4px 14px;
+    background: rgba(0, 212, 255, 0.1);
+    color: var(--accent-cyan);
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+.project-info h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--text-primary);
+}
+
+.project-info p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Project Modal / Lightbox */
+.project-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 14, 26, 0.92);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    padding: 20px;
+    backdrop-filter: blur(8px);
+}
+
+.project-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    max-width: 600px;
+    width: 100%;
+    overflow: hidden;
+    transform: scale(0.85) translateY(30px);
+    transition: var(--transition-slow);
+    box-shadow: var(--shadow-lg);
+}
+
+.project-modal.active .modal-content {
+    transform: scale(1) translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+}
+
+.modal-thumb {
+    height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.modal-thumb i {
+    font-size: 4.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.3));
+}
+
+.modal-body {
+    padding: 28px 32px 32px;
+}
+
+.modal-body h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: var(--text-primary);
+}
+
+.modal-body > p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 24px;
+}
+
+.modal-tech h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.modal-tech h4 i {
+    color: var(--accent-cyan);
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tech-tag {
+    padding: 6px 16px;
+    background: rgba(0, 212, 255, 0.08);
+    border: 1px solid rgba(0, 212, 255, 0.15);
+    border-radius: 50px;
+    font-size: 0.82rem;
+    color: var(--accent-cyan);
+    font-weight: 500;
+}
+
+@media (max-width: 1024px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-filters {
+        gap: 8px;
+    }
+
+    .filter-btn {
+        padding: 8px 18px;
+        font-size: 0.82rem;
+    }
+
+    .modal-body {
+        padding: 20px 24px 24px;
+    }
+}
+
+/* ========================================
    TESTIMONIALS SECTION
    ======================================== */
 .testimonials {

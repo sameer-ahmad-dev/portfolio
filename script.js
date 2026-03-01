@@ -362,6 +362,79 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ========================================
+    // PROJECT GALLERY FILTER & LIGHTBOX
+    // ========================================
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    const projectModal = document.getElementById('projectModal');
+    const modalClose = document.getElementById('modalClose');
+
+    // Filter functionality
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filter = btn.getAttribute('data-filter');
+
+            projectCards.forEach(card => {
+                if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        });
+    });
+
+    // Lightbox modal
+    document.querySelectorAll('.project-view-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const title = btn.getAttribute('data-title');
+            const desc = btn.getAttribute('data-desc');
+            const tech = btn.getAttribute('data-tech');
+            const gradient = btn.getAttribute('data-gradient');
+            const icon = btn.getAttribute('data-icon');
+
+            document.getElementById('modalThumb').style.background = gradient;
+            document.getElementById('modalIcon').className = icon;
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalDesc').textContent = desc;
+
+            // Build category tag
+            const card = btn.closest('.project-card');
+            const categoryTag = card.querySelector('.project-category-tag').textContent;
+            document.getElementById('modalCategory').textContent = categoryTag;
+
+            // Build tech tags
+            const techContainer = document.getElementById('modalTech');
+            techContainer.innerHTML = '';
+            tech.split(',').forEach(t => {
+                const tag = document.createElement('span');
+                tag.classList.add('tech-tag');
+                tag.textContent = t.trim();
+                techContainer.appendChild(tag);
+            });
+
+            projectModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    function closeModal() {
+        projectModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    projectModal.addEventListener('click', (e) => {
+        if (e.target === projectModal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && projectModal.classList.contains('active')) closeModal();
+    });
+
+    // ========================================
     // TESTIMONIALS SLIDER
     // ========================================
     const track = document.getElementById('testimonialsTrack');
