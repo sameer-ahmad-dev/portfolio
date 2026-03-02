@@ -624,4 +624,22 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('touchmove', onDragMove, { passive: false });
     document.addEventListener('touchend', onDragEnd);
 
+    // ============================
+    // Green Theme Toggle
+    // ============================
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+        // Restore saved theme
+        if (localStorage.getItem('greenTheme') === 'true') {
+            document.body.classList.add('green-theme');
+            themeToggle.classList.add('active');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('green-theme');
+            themeToggle.classList.toggle('active');
+            localStorage.setItem('greenTheme', document.body.classList.contains('green-theme'));
+        });
+    }
+
 });

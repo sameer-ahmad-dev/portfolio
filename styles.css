@@ -2388,3 +2388,179 @@ ul { list-style: none; }
         font-size: 1rem;
     }
 }
+
+/* ========================================
+   GREEN THEME TOGGLE BUTTON
+   ======================================== */
+.theme-toggle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: #10b981;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    transition: var(--transition);
+    margin-left: 12px;
+}
+
+.theme-toggle:hover {
+    background: rgba(16, 185, 129, 0.25);
+    border-color: #10b981;
+    transform: scale(1.1);
+}
+
+.theme-toggle.active {
+    background: #10b981;
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+}
+
+/* ========================================
+   GREEN THEME OVERRIDES
+   ======================================== */
+body.green-theme {
+    --accent-cyan: #10b981;
+    --accent-blue: #34d399;
+    --accent-purple: #059669;
+    --gradient-primary: linear-gradient(135deg, #10b981 0%, #34d399 50%, #059669 100%);
+    --gradient-accent: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+    --border: rgba(16, 185, 129, 0.12);
+    --border-hover: rgba(16, 185, 129, 0.3);
+    --shadow-glow: 0 0 40px rgba(16, 185, 129, 0.15);
+}
+
+body.green-theme .gradient-text {
+    background: linear-gradient(135deg, #10b981, #34d399, #059669);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+body.green-theme .logo-icon {
+    background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35);
+}
+
+body.green-theme .nav-link:hover,
+body.green-theme .nav-link.active {
+    background: rgba(16, 185, 129, 0.08);
+}
+
+body.green-theme .nav-link.active::after {
+    background: #10b981;
+}
+
+body.green-theme .nav-cta {
+    background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+body.green-theme .nav-cta:hover {
+    box-shadow: 0 6px 25px rgba(16, 185, 129, 0.4);
+}
+
+body.green-theme .btn-primary {
+    background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+body.green-theme .btn-primary:hover {
+    box-shadow: 0 6px 25px rgba(16, 185, 129, 0.45);
+}
+
+body.green-theme .btn-outline {
+    border-color: #10b981;
+    color: #10b981;
+}
+
+body.green-theme .btn-outline:hover {
+    background: rgba(16, 185, 129, 0.1);
+}
+
+body.green-theme .hero-badge {
+    border-color: rgba(16, 185, 129, 0.2);
+}
+
+body.green-theme .badge-dot {
+    background: #10b981;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15);
+}
+
+body.green-theme .section-tag {
+    background: rgba(16, 185, 129, 0.08);
+    border-color: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+}
+
+body.green-theme .filter-btn.active {
+    background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+}
+
+body.green-theme .project-view-btn {
+    background: #10b981;
+}
+
+body.green-theme .project-category-tag {
+    background: rgba(16, 185, 129, 0.1);
+    border-color: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+}
+
+body.green-theme .tech-tag {
+    background: rgba(16, 185, 129, 0.08);
+    border-color: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+}
+
+body.green-theme .project-card:hover {
+    box-shadow: 0 0 40px rgba(16, 185, 129, 0.15);
+}
+
+body.green-theme .skill-per {
+    background: linear-gradient(90deg, #10b981, #34d399) !important;
+}
+
+body.green-theme .skill-per::after {
+    background: #10b981 !important;
+}
+
+body.green-theme .contact-icon {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+}
+
+body.green-theme .submit-btn {
+    background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+}
+
+body.green-theme .back-to-top {
+    background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+body.green-theme .whatsapp-float .whatsapp-link {
+    background: #10b981;
+}
+
+body.green-theme .service-icon {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+}
+
+body.green-theme .timeline-dot {
+    background: #10b981;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+}
+
+body.green-theme .timeline-line {
+    background: linear-gradient(180deg, #10b981, transparent);
+}
+
+body.green-theme .logo-highlight {
+    color: #10b981;
+}
