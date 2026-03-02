@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6a11cb"/>
+      <stop offset="100%" style="stop-color:#2575fc"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg)"/>
+  <circle cx="510" cy="80" r="110" fill="rgba(255,255,255,0.06)"/>
+  <circle cx="80" cy="350" r="80" fill="rgba(255,255,255,0.04)"/>
+  <!-- Payment / Credit card -->
+  <g transform="translate(175,35)">
+    <!-- Card -->
+    <rect x="20" y="20" width="160" height="100" rx="12" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.8)" stroke-width="2.5"/>
+    <!-- Chip -->
+    <rect x="40" y="45" width="28" height="22" rx="4" fill="rgba(255,255,255,0.3)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+    <line x1="40" y1="56" x2="68" y2="56" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <line x1="54" y1="45" x2="54" y2="67" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <!-- Card number dots -->
+    <g transform="translate(40,82)">
+      <circle cx="0" cy="0" r="2.5" fill="rgba(255,255,255,0.6)"/><circle cx="8" cy="0" r="2.5" fill="rgba(255,255,255,0.6)"/><circle cx="16" cy="0" r="2.5" fill="rgba(255,255,255,0.6)"/><circle cx="24" cy="0" r="2.5" fill="rgba(255,255,255,0.6)"/>
+      <circle cx="40" cy="0" r="2.5" fill="rgba(255,255,255,0.6)"/><circle cx="48" cy="0" r="2.5" fill="rgba(255,255,255,0.6)"/><circle cx="56" cy="0" r="2.5" fill="rgba(255,255,255,0.6)"/><circle cx="64" cy="0" r="2.5" fill="rgba(255,255,255,0.6)"/>
+      <text x="85" y="4" font-family="Arial,sans-serif" font-size="12" fill="rgba(255,255,255,0.7)">4242</text>
+    </g>
+    <!-- Contactless waves -->
+    <g transform="translate(145,40)">
+      <path d="M0,12 Q6,6 0,0" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+      <path d="M5,15 Q14,6 5,-3" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+      <path d="M10,18 Q22,6 10,-6" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+    </g>
+    <!-- Mobile phone -->
+    <g transform="translate(195,30)">
+      <rect x="0" y="0" width="50" height="90" rx="8" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.7)" stroke-width="2"/>
+      <rect x="6" y="12" width="38" height="55" rx="2" fill="rgba(255,255,255,0.1)"/>
+      <!-- Checkmark on phone -->
+      <circle cx="25" cy="38" r="14" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+      <polyline points="18,38 23,43 33,33" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2.5" stroke-linecap="round"/>
+      <text x="25" y="58" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="rgba(255,255,255,0.5)">PAID</text>
+      <circle cx="25" cy="80" r="4" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    </g>
+    <!-- Arrow between card and phone -->
+    <line x1="180" y1="75" x2="192" y2="75" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-dasharray="3,2"/>
+  </g>
+  <text x="300" y="255" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="26" fill="white">Flosse Payment Integration</text>
+  <text x="300" y="285" text-anchor="middle" font-family="Arial,sans-serif" font-weight="400" font-size="14" fill="rgba(255,255,255,0.7)">Website Payment • Mobile App Endpoints</text>
+  <g transform="translate(110,305)">
+    <rect x="0" y="0" width="90" height="28" rx="14" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <text x="45" y="18" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="rgba(255,255,255,0.9)">Flosse API</text>
+    <rect x="100" y="0" width="80" height="28" rx="14" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <text x="140" y="18" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="rgba(255,255,255,0.9)">REST API</text>
+    <rect x="190" y="0" width="90" height="28" rx="14" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <text x="235" y="18" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="rgba(255,255,255,0.9)">Webhooks</text>
+    <rect x="290" y="0" width="70" height="28" rx="14" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <text x="325" y="18" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="rgba(255,255,255,0.9)">Python</text>
+  </g>
+</svg>

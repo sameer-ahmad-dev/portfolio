@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#11998e"/>
+      <stop offset="100%" style="stop-color:#38ef7d"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg)"/>
+  <circle cx="520" cy="70" r="110" fill="rgba(255,255,255,0.06)"/>
+  <circle cx="70" cy="350" r="80" fill="rgba(255,255,255,0.04)"/>
+  <!-- Tax / Government building -->
+  <g transform="translate(210,35)">
+    <!-- Building -->
+    <polygon points="85,15 170,55 0,55" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2.5"/>
+    <rect x="10" y="55" width="150" height="85" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2.5"/>
+    <!-- Pillars -->
+    <rect x="25" y="60" width="12" height="75" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+    <rect x="55" y="60" width="12" height="75" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+    <rect x="100" y="60" width="12" height="75" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+    <rect x="130" y="60" width="12" height="75" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+    <!-- SRB Badge -->
+    <rect x="55" y="75" width="60" height="30" rx="6" fill="rgba(255,255,255,0.25)" stroke="rgba(255,255,255,0.7)" stroke-width="2"/>
+    <text x="85" y="95" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="16" fill="rgba(255,255,255,0.95)">SRB</text>
+    <!-- Document with checkmark -->
+    <g transform="translate(160,40)">
+      <rect x="0" y="0" width="40" height="50" rx="4" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+      <line x1="8" y1="12" x2="32" y2="12" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+      <line x1="8" y1="22" x2="28" y2="22" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+      <line x1="8" y1="32" x2="25" y2="32" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+      <circle cx="20" cy="42" r="6" fill="rgba(255,255,255,0.2)"/>
+      <polyline points="16,42 19,45 25,39" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+    <!-- Sindh text -->
+    <text x="85" y="155" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Sindh Revenue Board</text>
+  </g>
+  <text x="300" y="260" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="26" fill="white">SRB Tax Integration</text>
+  <text x="300" y="290" text-anchor="middle" font-family="Arial,sans-serif" font-weight="400" font-size="14" fill="rgba(255,255,255,0.7)">Sindh Revenue Board • E-Invoicing & Compliance</text>
+  <g transform="translate(125,310)">
+    <rect x="0" y="0" width="80" height="28" rx="14" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <text x="40" y="18" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="rgba(255,255,255,0.9)">SRB API</text>
+    <rect x="90" y="0" width="80" height="28" rx="14" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <text x="130" y="18" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="rgba(255,255,255,0.9)">Odoo 17</text>
+    <rect x="180" y="0" width="80" height="28" rx="14" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <text x="220" y="18" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="rgba(255,255,255,0.9)">Python</text>
+  </g>
+</svg>
