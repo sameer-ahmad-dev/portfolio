@@ -661,6 +661,430 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('touchend', onDragEnd);
 
     // ============================
+    // GitHub Analytics Dashboard
+    // ============================
+    const GH_USERNAME = 'sameer-ahmad-dev';
+    const ghCalendarBody = document.getElementById('ghCalendarBody');
+    const ghYearTabs = document.getElementById('ghYearTabs');
+    const contribCache = {};
+    const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+    if (ghCalendarBody && ghYearTabs) {
+        const currentYear = new Date().getFullYear();
+        const startYear = 2022;
+        const years = [];
+        for (let y = currentYear; y >= startYear; y--) years.push(y);
+
+        years.forEach((y, idx) => {
+            const btn = document.createElement('button');
+            btn.className = 'gh-year-tab' + (idx === 0 ? ' active' : '');
+            btn.textContent = y;
+            btn.dataset.year = y;
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.gh-year-tab').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                loadContributions(y);
+            });
+            ghYearTabs.appendChild(btn);
+        });
+
+        // ===== Tooltip =====
+        let ghTooltip = null;
+        const showTooltip = (target, html) => {
+            if (!ghTooltip) {
+                ghTooltip = document.createElement('div');
+                ghTooltip.className = 'gh-tooltip';
+                document.body.appendChild(ghTooltip);
+            }
+            ghTooltip.innerHTML = html;
+            ghTooltip.style.display = 'block';
+            const rect = target.getBoundingClientRect();
+            const tipRect = ghTooltip.getBoundingClientRect();
+            let left = rect.left + rect.width / 2 - tipRect.width / 2;
+            left = Math.max(8, Math.min(left, window.innerWidth - tipRect.width - 8));
+            ghTooltip.style.left = left + 'px';
+            ghTooltip.style.top = (rect.top - tipRect.height - 10) + 'px';
+        };
+        const hideTooltip = () => { if (ghTooltip) ghTooltip.style.display = 'none'; };
+
+        // ===== Heatmap render with month labels =====
+        const renderHeatmap = (contributions, year) => {
+            ghCalendarBody.innerHTML = '';
+            const monthLabelEl = document.getElementById('ghMonthLabels');
+            if (monthLabelEl) monthLabelEl.innerHTML = '';
+
+            const heatmap = document.createElement('div');
+            heatmap.className = 'gh-heatmap';
+
+            let weekIdx = 0;
+            const weekMonth = {}; // weekIdx -> month seen first
+
+            contributions.forEach((c, i) => {
+                const d = new Date(c.date);
+                const dayOfWeek = d.getDay();
+                if (i === 0 && dayOfWeek > 0) {
+                    for (let p = 0; p < dayOfWeek; p++) {
+                        const blank = document.createElement('span');
+                        blank.className = 'gh-cell';
+                        blank.style.visibility = 'hidden';
+                        blank.style.gridColumn = 1;
+                        blank.style.gridRow = (p + 1);
+                        heatmap.appendChild(blank);
+                    }
+                }
+                const cell = document.createElement('span');
+                cell.className = 'gh-cell';
+                cell.dataset.level = c.level || 0;
+                cell.dataset.count = c.count;
+                cell.dataset.date = c.date;
+                cell.style.gridColumn = (weekIdx + 1);
+                cell.style.gridRow = (dayOfWeek + 1);
+                cell.addEventListener('mouseenter', () => {
+                    const dateObj = new Date(c.date);
+                    const dateStr = dateObj.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+                    const noun = c.count === 1 ? 'contribution' : 'contributions';
+                    showTooltip(cell, `<div><span class="gh-tooltip-count">${c.count}</span> ${noun}</div><div class="gh-tooltip-date">${dateStr}</div>`);
+                });
+                cell.addEventListener('mouseleave', hideTooltip);
+                heatmap.appendChild(cell);
+
+                // Track first appearance of each month per week column (using day index 0 / Sunday)
+                if (weekMonth[weekIdx] === undefined) weekMonth[weekIdx] = d.getMonth();
+
+                if (dayOfWeek === 6) weekIdx++;
+            });
+
+            ghCalendarBody.appendChild(heatmap);
+
+            // Render month labels — show each month label at its first week column
+            if (monthLabelEl) {
+                const monthShown = new Set();
+                Object.keys(weekMonth).forEach(weekKey => {
+                    const wIdx = parseInt(weekKey);
+                    const m = weekMonth[wIdx];
+                    if (!monthShown.has(m)) {
+                        monthShown.add(m);
+                        const span = document.createElement('span');
+                        span.textContent = MONTHS[m];
+                        span.style.gridColumn = (wIdx + 1) + ' / span 4';
+                        monthLabelEl.appendChild(span);
+                    }
+                });
+            }
+
+            // Update yearly stat + sparkline + monthly + weekday + insights
+            const total = contributions.reduce((sum, d) => sum + (d.count || 0), 0);
+            const totalEl = document.getElementById('ghTotalContrib');
+            const yearLabelEl = document.getElementById('ghContribYear');
+            const monthlyYearEl = document.getElementById('ghMonthlyYear');
+            if (totalEl) totalEl.textContent = total.toLocaleString();
+            if (yearLabelEl) yearLabelEl.textContent = `in ${year}`;
+            if (monthlyYearEl) monthlyYearEl.textContent = year;
+
+            renderSparkline(contributions);
+            renderMonthlyChart(contributions, year);
+            renderWeekdayChart(contributions);
+            renderInsights(contributions, year);
+        };
+
+        // ===== Sparkline (in stat card) — 12-week rolling sum =====
+        const renderSparkline = (contributions) => {
+            const svg = document.getElementById('ghSparkContrib');
+            if (!svg) return;
+            // Group last 12 weeks
+            const weeks = 12;
+            const days = contributions.slice(-weeks * 7);
+            const buckets = [];
+            for (let w = 0; w < weeks; w++) {
+                const slice = days.slice(w * 7, (w + 1) * 7);
+                buckets.push(slice.reduce((s, d) => s + (d?.count || 0), 0));
+            }
+            const max = Math.max(...buckets, 1);
+            const W = 120, H = 30;
+            const pts = buckets.map((v, i) => {
+                const x = (i / (buckets.length - 1)) * W;
+                const y = H - (v / max) * (H - 4) - 2;
+                return [x, y];
+            });
+            const linePath = pts.map((p, i) => (i === 0 ? 'M' : 'L') + p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' ');
+            const areaPath = linePath + ` L${W},${H} L0,${H} Z`;
+            svg.innerHTML = `
+                <defs>
+                    <linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="var(--accent-cyan)" stop-opacity="0.5"/>
+                        <stop offset="100%" stop-color="var(--accent-cyan)" stop-opacity="0"/>
+                    </linearGradient>
+                </defs>
+                <path d="${areaPath}" fill="url(#sparkGrad)"/>
+                <path d="${linePath}" fill="none" stroke="var(--accent-cyan)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            `;
+        };
+
+        // ===== Monthly bar chart =====
+        const renderMonthlyChart = (contributions, year) => {
+            const svg = document.getElementById('ghMonthlyChart');
+            if (!svg) return;
+            const monthly = new Array(12).fill(0);
+            contributions.forEach(c => {
+                const m = new Date(c.date).getMonth();
+                monthly[m] += c.count;
+            });
+            const W = 600, H = 240;
+            const padL = 36, padR = 12, padT = 16, padB = 32;
+            const chartW = W - padL - padR;
+            const chartH = H - padT - padB;
+            const max = Math.max(...monthly, 5);
+            const barW = chartW / 12 * 0.62;
+            const gap = chartW / 12;
+
+            // Y-axis grid lines (4 levels)
+            let gridLines = '';
+            for (let i = 0; i <= 4; i++) {
+                const y = padT + (chartH / 4) * i;
+                const val = Math.round(max - (max / 4) * i);
+                gridLines += `<line class="gh-grid-line" x1="${padL}" y1="${y}" x2="${W - padR}" y2="${y}"/>`;
+                gridLines += `<text class="gh-axis-label" x="${padL - 6}" y="${y + 3}" text-anchor="end">${val}</text>`;
+            }
+
+            // Bars
+            let bars = '';
+            monthly.forEach((v, i) => {
+                const h = max > 0 ? (v / max) * chartH : 0;
+                const x = padL + gap * i + (gap - barW) / 2;
+                const y = padT + chartH - h;
+                bars += `
+                    <g>
+                        <rect class="gh-bar" x="${x}" y="${y}" width="${barW}" height="${h}" rx="3" ry="3"
+                              fill="url(#barGrad)" data-month="${MONTHS[i]}" data-count="${v}"/>
+                        <text class="gh-bar-value" x="${x + barW / 2}" y="${y - 5}" text-anchor="middle">${v}</text>
+                        <text class="gh-bar-label" x="${x + barW / 2}" y="${padT + chartH + 18}" text-anchor="middle">${MONTHS[i]}</text>
+                    </g>
+                `;
+            });
+
+            svg.innerHTML = `
+                <defs>
+                    <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="var(--accent-cyan)"/>
+                        <stop offset="100%" stop-color="var(--accent-blue)" stop-opacity="0.6"/>
+                    </linearGradient>
+                </defs>
+                ${gridLines}
+                ${bars}
+            `;
+
+            // Tooltips on bars
+            svg.querySelectorAll('.gh-bar').forEach(bar => {
+                bar.addEventListener('mouseenter', () => {
+                    const m = bar.dataset.month, c = bar.dataset.count;
+                    showTooltip(bar, `<div><span class="gh-tooltip-count">${c}</span> contributions</div><div class="gh-tooltip-date">${m} ${year}</div>`);
+                });
+                bar.addEventListener('mouseleave', hideTooltip);
+            });
+        };
+
+        // ===== Weekday distribution radial chart =====
+        const renderWeekdayChart = (contributions) => {
+            const svg = document.getElementById('ghWeekdayChart');
+            if (!svg) return;
+            const byDay = new Array(7).fill(0);
+            contributions.forEach(c => {
+                const d = new Date(c.date).getDay();
+                byDay[d] += c.count;
+            });
+            const cx = 160, cy = 130;
+            const innerR = 38;
+            const ringGap = 4;
+            const ringMax = 92;
+            const max = Math.max(...byDay, 1);
+            const colors = ['#f59e0b', '#3b82f6', '#8b5cf6', '#00d4ff', '#10b981', '#ef4444', '#ec4899'];
+
+            let bars = '';
+            byDay.forEach((v, i) => {
+                const r0 = innerR + i * ((ringMax - innerR) / 7 + ringGap / 2);
+                const startAngle = -Math.PI / 2 + 0.15;
+                const endAngle = startAngle + (v / max) * (Math.PI * 1.7);
+                const trackEnd = startAngle + Math.PI * 1.7;
+                bars += arcPath(cx, cy, r0, startAngle, trackEnd, true) + // track
+                        arcPath(cx, cy, r0, startAngle, endAngle, false, colors[i], v, WEEKDAYS[i]);
+            });
+
+            // Center label
+            const total = byDay.reduce((s, x) => s + x, 0);
+            const peakIdx = byDay.indexOf(Math.max(...byDay));
+
+            svg.innerHTML = `
+                ${bars}
+                <text x="${cx}" y="${cy - 8}" text-anchor="middle" fill="var(--text-muted)" font-size="10" font-family="JetBrains Mono">PEAK DAY</text>
+                <text x="${cx}" y="${cy + 12}" text-anchor="middle" fill="var(--text-primary)" font-size="18" font-weight="700" font-family="Inter">${WEEKDAYS[peakIdx]}</text>
+                <text x="${cx}" y="${cy + 28}" text-anchor="middle" fill="var(--accent-cyan)" font-size="11" font-weight="600" font-family="JetBrains Mono">${byDay[peakIdx]} commits</text>
+                <g transform="translate(${cx + 105}, 30)">
+                    ${WEEKDAYS.map((w, i) => `
+                        <g transform="translate(0, ${i * 18})">
+                            <rect width="10" height="10" rx="2" fill="${colors[i]}" opacity="0.85"/>
+                            <text x="16" y="9" font-size="10" fill="var(--text-secondary)" font-family="Inter">${w}</text>
+                            <text x="50" y="9" font-size="10" fill="var(--text-muted)" font-family="JetBrains Mono">${byDay[i]}</text>
+                        </g>
+                    `).join('')}
+                </g>
+            `;
+
+            // Hover tooltips on arcs
+            svg.querySelectorAll('.gh-radial-bar').forEach(arc => {
+                arc.addEventListener('mouseenter', () => {
+                    const d = arc.dataset.day, c = arc.dataset.count;
+                    showTooltip(arc, `<div><span class="gh-tooltip-count">${c}</span> commits on</div><div class="gh-tooltip-date">${d}s</div>`);
+                });
+                arc.addEventListener('mouseleave', hideTooltip);
+            });
+        };
+
+        // SVG arc path helper
+        const arcPath = (cx, cy, r, a0, a1, isTrack, color, count, day) => {
+            const x0 = cx + r * Math.cos(a0);
+            const y0 = cy + r * Math.sin(a0);
+            const x1 = cx + r * Math.cos(a1);
+            const y1 = cy + r * Math.sin(a1);
+            const large = (a1 - a0) > Math.PI ? 1 : 0;
+            const cls = isTrack ? 'gh-radial-track-line' : 'gh-radial-bar';
+            const stroke = isTrack ? 'rgba(255,255,255,0.05)' : color;
+            const dataAttrs = isTrack ? '' : `data-day="${day}" data-count="${count}"`;
+            // Skip rendering if arc has zero length (avoids invisible NaN paths)
+            if (Math.abs(a1 - a0) < 0.001) {
+                return `<circle cx="${x0}" cy="${y0}" r="3" fill="${stroke}" opacity="0.3" ${dataAttrs}/>`;
+            }
+            return `<path class="${cls}" d="M ${x0} ${y0} A ${r} ${r} 0 ${large} 1 ${x1} ${y1}" fill="none" stroke="${stroke}" stroke-width="7" stroke-linecap="round" ${dataAttrs}/>`;
+        };
+
+        // ===== Insights (streaks, best day, average) =====
+        const renderInsights = (contributions, year) => {
+            // Best day
+            let best = { count: 0, date: '' };
+            contributions.forEach(c => {
+                if (c.count > best.count) best = { count: c.count, date: c.date };
+            });
+
+            // Streaks
+            let currentStreak = 0;
+            let longestStreak = 0;
+            let runningStreak = 0;
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            contributions.forEach(c => {
+                if (c.count > 0) {
+                    runningStreak++;
+                    if (runningStreak > longestStreak) longestStreak = runningStreak;
+                } else {
+                    runningStreak = 0;
+                }
+            });
+
+            // Current streak: count back from today (or last day in data)
+            for (let i = contributions.length - 1; i >= 0; i--) {
+                const cDate = new Date(contributions[i].date);
+                cDate.setHours(0, 0, 0, 0);
+                if (cDate > today) continue; // skip future dates
+                if (contributions[i].count > 0) {
+                    currentStreak++;
+                } else {
+                    break;
+                }
+            }
+
+            // Daily average — only days that have already passed in this year
+            const passedDays = contributions.filter(c => new Date(c.date) <= today).length;
+            const total = contributions.reduce((s, c) => s + c.count, 0);
+            const avg = passedDays > 0 ? (total / passedDays).toFixed(1) : '0';
+
+            const elStreak = document.getElementById('ghCurrentStreak');
+            const elLong = document.getElementById('ghLongestStreak');
+            const elBest = document.getElementById('ghBestDay');
+            const elAvg = document.getElementById('ghDailyAvg');
+
+            if (elStreak) elStreak.textContent = `${currentStreak} day${currentStreak === 1 ? '' : 's'}`;
+            if (elLong) elLong.textContent = `${longestStreak} day${longestStreak === 1 ? '' : 's'}`;
+            if (elBest) {
+                if (best.date) {
+                    const d = new Date(best.date);
+                    elBest.textContent = `${best.count} on ${d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`;
+                } else {
+                    elBest.textContent = '—';
+                }
+            }
+            if (elAvg) elAvg.textContent = `${avg}/day`;
+        };
+
+        // ===== Fetch contributions =====
+        const loadContributions = async (year) => {
+            if (contribCache[year]) {
+                renderHeatmap(contribCache[year], year);
+                return;
+            }
+            ghCalendarBody.innerHTML = '<div class="gh-loading"><i class="fas fa-spinner fa-spin"></i> Loading ' + year + ' activity...</div>';
+            try {
+                const res = await fetch(`https://github-contributions-api.jogruber.de/v4/${GH_USERNAME}?y=${year}`);
+                if (!res.ok) throw new Error('API ' + res.status);
+                const data = await res.json();
+                contribCache[year] = data.contributions;
+                renderHeatmap(data.contributions, year);
+            } catch (err) {
+                ghCalendarBody.innerHTML = `
+                    <div class="gh-error">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <div>Could not load contributions right now.</div>
+                        <a href="https://github.com/${GH_USERNAME}" target="_blank" rel="noopener" style="color:var(--accent-cyan);margin-top:8px;">View profile on GitHub →</a>
+                    </div>`;
+            }
+        };
+
+        // ===== User stats =====
+        const loadUserStats = async () => {
+            try {
+                const res = await fetch(`https://api.github.com/users/${GH_USERNAME}`);
+                if (!res.ok) throw new Error('API ' + res.status);
+                const user = await res.json();
+                const repos = document.getElementById('ghRepos');
+                const followers = document.getElementById('ghFollowers');
+                const yearsEl = document.getElementById('ghYears');
+                const reposMeta = document.getElementById('ghReposMeta');
+                const followingMeta = document.getElementById('ghFollowingMeta');
+                const joined = document.getElementById('ghJoined');
+
+                if (repos) repos.textContent = user.public_repos ?? '—';
+                if (followers) followers.textContent = user.followers ?? '—';
+                if (followingMeta && user.following != null) followingMeta.textContent = `Following ${user.following}`;
+                if (reposMeta && user.public_gists != null) reposMeta.textContent = `${user.public_gists} public gists`;
+
+                if (yearsEl && user.created_at) {
+                    const created = new Date(user.created_at);
+                    const diff = (Date.now() - created.getTime()) / (1000 * 60 * 60 * 24 * 365);
+                    yearsEl.textContent = Math.max(1, Math.floor(diff)) + '+';
+                    if (joined) {
+                        joined.textContent = `Member since ${created.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}`;
+                    }
+                }
+            } catch (err) { /* silent */ }
+        };
+
+        // ===== Lazy-load when section enters viewport =====
+        const ghSection = document.getElementById('activity');
+        let ghLoaded = false;
+        const ghObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting && !ghLoaded) {
+                    ghLoaded = true;
+                    loadUserStats();
+                    loadContributions(currentYear);
+                    ghObserver.disconnect();
+                }
+            });
+        }, { rootMargin: '200px' });
+        if (ghSection) ghObserver.observe(ghSection);
+    }
+
+    // ============================
     // Green Theme Toggle
     // ============================
     const themeToggle = document.getElementById('themeToggle');

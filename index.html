@@ -29,6 +29,7 @@
                 <li><a href="#experience" class="nav-link">Experience</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#activity" class="nav-link">Activity</a></li>
                 <li><a href="#testimonials" class="nav-link">Reviews</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
@@ -1062,6 +1063,170 @@
         </div>
     </div>
 
+    <!-- GitHub Activity Section -->
+    <section class="github-activity section" id="activity">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag"><i class="fab fa-github"></i> Live Code Activity</span>
+                <h2 class="section-title">GitHub <span class="gradient-text">Analytics</span></h2>
+                <p class="section-subtitle">Real-time, year-by-year breakdown of my open-source activity — pulled live from GitHub.</p>
+            </div>
+
+            <!-- Top Stats Banner -->
+            <div class="gh-stats-grid" data-aos="fade-up">
+                <div class="gh-stat-card">
+                    <div class="gh-stat-top">
+                        <div class="gh-stat-icon gh-icon-fire"><i class="fas fa-fire-flame-curved"></i></div>
+                        <div class="gh-stat-trend" id="ghContribTrend"></div>
+                    </div>
+                    <div class="gh-stat-value" id="ghTotalContrib">—</div>
+                    <div class="gh-stat-label">Contributions <span id="ghContribYear">this year</span></div>
+                    <svg class="gh-spark" id="ghSparkContrib" viewBox="0 0 120 30" preserveAspectRatio="none"></svg>
+                </div>
+                <div class="gh-stat-card">
+                    <div class="gh-stat-top">
+                        <div class="gh-stat-icon gh-icon-repo"><i class="fas fa-code-branch"></i></div>
+                        <div class="gh-stat-badge"><i class="fas fa-circle"></i> Public</div>
+                    </div>
+                    <div class="gh-stat-value" id="ghRepos">—</div>
+                    <div class="gh-stat-label">Public Repositories</div>
+                    <div class="gh-stat-meta" id="ghReposMeta">Open source projects</div>
+                </div>
+                <div class="gh-stat-card">
+                    <div class="gh-stat-top">
+                        <div class="gh-stat-icon gh-icon-users"><i class="fas fa-user-group"></i></div>
+                        <div class="gh-stat-badge"><i class="fas fa-circle"></i> Network</div>
+                    </div>
+                    <div class="gh-stat-value" id="ghFollowers">—</div>
+                    <div class="gh-stat-label">Followers</div>
+                    <div class="gh-stat-meta" id="ghFollowingMeta">Following others</div>
+                </div>
+                <div class="gh-stat-card">
+                    <div class="gh-stat-top">
+                        <div class="gh-stat-icon gh-icon-calendar"><i class="fas fa-calendar-check"></i></div>
+                        <div class="gh-stat-badge"><i class="fas fa-circle"></i> Active</div>
+                    </div>
+                    <div class="gh-stat-value" id="ghYears">—</div>
+                    <div class="gh-stat-label">Years on GitHub</div>
+                    <div class="gh-stat-meta" id="ghJoined">Member since —</div>
+                </div>
+            </div>
+
+            <!-- Main Contribution Graph Card -->
+            <div class="gh-panel gh-panel-main" data-aos="fade-up">
+                <div class="gh-panel-header">
+                    <div class="gh-panel-title">
+                        <div class="gh-panel-title-icon"><i class="fas fa-chart-area"></i></div>
+                        <div class="gh-panel-title-text">
+                            <h3>Contribution Heatmap</h3>
+                            <p>Daily commit activity for <a href="https://github.com/sameer-ahmad-dev" target="_blank" rel="noopener" class="gh-username">@sameer-ahmad-dev</a></p>
+                        </div>
+                    </div>
+                    <div class="gh-year-tabs" id="ghYearTabs"></div>
+                </div>
+
+                <div class="gh-heatmap-wrap">
+                    <div class="gh-heatmap-day-labels">
+                        <span></span>
+                        <span>Mon</span>
+                        <span></span>
+                        <span>Wed</span>
+                        <span></span>
+                        <span>Fri</span>
+                        <span></span>
+                    </div>
+                    <div class="gh-heatmap-scroll">
+                        <div class="gh-month-labels" id="ghMonthLabels"></div>
+                        <div class="gh-heatmap-body" id="ghCalendarBody">
+                            <div class="gh-loading"><i class="fas fa-spinner fa-spin"></i> Loading activity from GitHub...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gh-panel-footer">
+                    <div class="gh-legend">
+                        <span class="gh-legend-text">Less</span>
+                        <span class="gh-cell" data-level="0"></span>
+                        <span class="gh-cell" data-level="1"></span>
+                        <span class="gh-cell" data-level="2"></span>
+                        <span class="gh-cell" data-level="3"></span>
+                        <span class="gh-cell" data-level="4"></span>
+                        <span class="gh-legend-text">More</span>
+                    </div>
+                    <a href="https://github.com/sameer-ahmad-dev" target="_blank" rel="noopener" class="gh-profile-cta">
+                        <i class="fab fa-github"></i> View Full Profile
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Two-column charts row -->
+            <div class="gh-charts-row" data-aos="fade-up">
+                <div class="gh-panel">
+                    <div class="gh-panel-header">
+                        <div class="gh-panel-title">
+                            <div class="gh-panel-title-icon"><i class="fas fa-chart-column"></i></div>
+                            <div class="gh-panel-title-text">
+                                <h3>Monthly Activity</h3>
+                                <p>Contributions per month <span id="ghMonthlyYear">2026</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gh-chart-area">
+                        <svg class="gh-bar-chart" id="ghMonthlyChart" viewBox="0 0 600 240" preserveAspectRatio="none"></svg>
+                    </div>
+                </div>
+
+                <div class="gh-panel">
+                    <div class="gh-panel-header">
+                        <div class="gh-panel-title">
+                            <div class="gh-panel-title-icon"><i class="fas fa-clock-rotate-left"></i></div>
+                            <div class="gh-panel-title-text">
+                                <h3>Weekday Distribution</h3>
+                                <p>When I commit the most</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gh-chart-area">
+                        <svg class="gh-radial-chart" id="ghWeekdayChart" viewBox="0 0 320 260"></svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Insight Cards Row -->
+            <div class="gh-insights-grid" data-aos="fade-up">
+                <div class="gh-insight-card">
+                    <div class="gh-insight-icon"><i class="fas fa-bolt"></i></div>
+                    <div class="gh-insight-body">
+                        <div class="gh-insight-label">Current Streak</div>
+                        <div class="gh-insight-value" id="ghCurrentStreak">— days</div>
+                    </div>
+                </div>
+                <div class="gh-insight-card">
+                    <div class="gh-insight-icon"><i class="fas fa-trophy"></i></div>
+                    <div class="gh-insight-body">
+                        <div class="gh-insight-label">Longest Streak</div>
+                        <div class="gh-insight-value" id="ghLongestStreak">— days</div>
+                    </div>
+                </div>
+                <div class="gh-insight-card">
+                    <div class="gh-insight-icon"><i class="fas fa-star"></i></div>
+                    <div class="gh-insight-body">
+                        <div class="gh-insight-label">Best Day</div>
+                        <div class="gh-insight-value" id="ghBestDay">—</div>
+                    </div>
+                </div>
+                <div class="gh-insight-card">
+                    <div class="gh-insight-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="gh-insight-body">
+                        <div class="gh-insight-label">Daily Average</div>
+                        <div class="gh-insight-value" id="ghDailyAvg">—</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Testimonials Section -->
     <section class="testimonials section" id="testimonials">
         <div class="container">
@@ -1339,7 +1504,7 @@
                 </div>
                 <div class="footer-socials">
                     <a href="https://www.linkedin.com/in/sameer-ahmad-python-developer" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://github.com/sameer-hsxtech" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://github.com/sameer-ahmad-dev" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
                     <a href="https://x.com/ahm4970" target="_blank" aria-label="X / Twitter"><i class="fab fa-x-twitter"></i></a>
                 </div>
             </div>
