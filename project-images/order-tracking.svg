@@ -1,56 +1,95 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#ff6a00"/>
-      <stop offset="100%" style="stop-color:#ee0979"/>
+      <stop offset="0%" style="stop-color:#ff6a00"/><stop offset="100%" style="stop-color:#ee0979"/>
     </linearGradient>
+    <pattern id="dotsOT" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="11" cy="11" r="1" fill="rgba(255,255,255,0.12)"/></pattern>
+    <filter id="shOT" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8"/><feOffset dy="6"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.3"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
   </defs>
   <rect width="600" height="400" fill="url(#bg)"/>
-  <circle cx="520" cy="70" r="110" fill="rgba(255,255,255,0.06)"/>
-  <circle cx="70" cy="350" r="80" fill="rgba(255,255,255,0.04)"/>
-  <!-- Mobile app with order tracking -->
-  <g transform="translate(210,20)">
-    <!-- Phone frame -->
-    <rect x="30" y="5" width="120" height="195" rx="16" fill="rgba(0,0,0,0.2)" stroke="rgba(255,255,255,0.8)" stroke-width="2.5"/>
-    <!-- Screen -->
-    <rect x="38" y="25" width="104" height="155" rx="4" fill="rgba(255,255,255,0.1)"/>
-    <!-- Status bar -->
-    <text x="90" y="18" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="rgba(255,255,255,0.5)">9:41</text>
+  <rect width="600" height="400" fill="url(#dotsOT)"/>
+  <!-- Mobile phone -->
+  <g transform="translate(220,20)" filter="url(#shOT)">
+    <rect x="0" y="0" width="160" height="270" rx="22" fill="#1a1f35"/>
+    <rect x="6" y="6" width="148" height="258" rx="16" fill="#fff"/>
     <!-- App header -->
-    <rect x="38" y="25" width="104" height="24" fill="rgba(255,255,255,0.15)"/>
-    <text x="90" y="41" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="10" fill="rgba(255,255,255,0.9)">My Orders</text>
-    <!-- Search bar -->
-    <rect x="46" y="55" width="88" height="18" rx="9" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-    <text x="68" y="67" font-family="Arial,sans-serif" font-size="8" fill="rgba(255,255,255,0.4)">Search order...</text>
-    <!-- Order card 1 -->
-    <rect x="46" y="80" width="88" height="38" rx="6" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-    <text x="54" y="93" font-family="Arial,sans-serif" font-weight="600" font-size="8" fill="rgba(255,255,255,0.8)">#ORD-2847</text>
-    <rect x="100" y="85" width="28" height="12" rx="4" fill="rgba(100,255,100,0.25)"/>
-    <text x="114" y="94" text-anchor="middle" font-family="Arial,sans-serif" font-size="6" fill="rgba(100,255,100,0.9)">Shipped</text>
-    <rect x="54" y="100" width="40" height="4" rx="2" fill="rgba(255,255,255,0.2)"/>
-    <rect x="54" y="108" width="30" height="4" rx="2" fill="rgba(255,255,255,0.15)"/>
-    <!-- Order card 2 -->
-    <rect x="46" y="124" width="88" height="38" rx="6" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
-    <text x="54" y="137" font-family="Arial,sans-serif" font-weight="600" font-size="8" fill="rgba(255,255,255,0.7)">#ORD-2846</text>
-    <rect x="95" y="129" width="33" height="12" rx="4" fill="rgba(255,200,50,0.25)"/>
-    <text x="112" y="138" text-anchor="middle" font-family="Arial,sans-serif" font-size="6" fill="rgba(255,200,50,0.9)">Processing</text>
-    <rect x="54" y="144" width="40" height="4" rx="2" fill="rgba(255,255,255,0.15)"/>
-    <rect x="54" y="152" width="30" height="4" rx="2" fill="rgba(255,255,255,0.1)"/>
-    <!-- Bottom nav -->
-    <rect x="38" y="168" width="104" height="12" fill="rgba(255,255,255,0.08)"/>
-    <!-- Home button -->
-    <rect x="82" y="188" width="16" height="4" rx="2" fill="rgba(255,255,255,0.4)"/>
+    <rect x="6" y="6" width="148" height="46" rx="16" fill="#ff6a00"/>
+    <rect x="6" y="40" width="148" height="12" fill="#ff6a00"/>
+    <text x="80" y="22" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="7" fill="rgba(255,255,255,0.85)">10:42 AM ●●●●</text>
+    <text x="80" y="38" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="12" fill="#fff">TRACK ORDER</text>
+    <!-- Order header -->
+    <text x="20" y="72" font-family="Arial,sans-serif" font-weight="900" font-size="12" fill="#1a202c">Order #4521</text>
+    <text x="140" y="72" text-anchor="end" font-family="Arial,sans-serif" font-weight="700" font-size="9" fill="#27c93f">● Out for delivery</text>
+    <!-- Progress steps -->
+    <g transform="translate(20,86)">
+      <line x1="6" y1="8" x2="6" y2="120" stroke="#e0e6ed" stroke-width="2" stroke-linecap="round"/>
+      <line x1="6" y1="8" x2="6" y2="92" stroke="#27c93f" stroke-width="2" stroke-linecap="round"/>
+      <!-- Step 1 -->
+      <circle cx="6" cy="8" r="6" fill="#27c93f"/>
+      <text x="3" y="11" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="6" fill="#fff">✓</text>
+      <text x="20" y="6" font-family="Arial,sans-serif" font-weight="800" font-size="9" fill="#1a202c">Order placed</text>
+      <text x="20" y="16" font-family="Arial,sans-serif" font-size="7" fill="#999">Mar 10, 2:14 PM</text>
+      <!-- Step 2 -->
+      <circle cx="6" cy="38" r="6" fill="#27c93f"/>
+      <text x="3" y="41" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="6" fill="#fff">✓</text>
+      <text x="20" y="36" font-family="Arial,sans-serif" font-weight="800" font-size="9" fill="#1a202c">Confirmed</text>
+      <text x="20" y="46" font-family="Arial,sans-serif" font-size="7" fill="#999">Mar 10, 2:48 PM</text>
+      <!-- Step 3 -->
+      <circle cx="6" cy="68" r="6" fill="#27c93f"/>
+      <text x="3" y="71" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="6" fill="#fff">✓</text>
+      <text x="20" y="66" font-family="Arial,sans-serif" font-weight="800" font-size="9" fill="#1a202c">Shipped</text>
+      <text x="20" y="76" font-family="Arial,sans-serif" font-size="7" fill="#999">Mar 11, 9:20 AM</text>
+      <!-- Step 4 -->
+      <circle cx="6" cy="92" r="7" fill="#ff6a00" stroke="#fff" stroke-width="2"/>
+      <circle cx="6" cy="92" r="11" fill="#ff6a00" opacity="0.3"/>
+      <text x="20" y="90" font-family="Arial,sans-serif" font-weight="900" font-size="9" fill="#ff6a00">Out for delivery</text>
+      <text x="20" y="100" font-family="Arial,sans-serif" font-size="7" fill="#999">Today, 10:30 AM</text>
+      <!-- Step 5 -->
+      <circle cx="6" cy="120" r="6" fill="#fff" stroke="#e0e6ed" stroke-width="2"/>
+      <text x="20" y="118" font-family="Arial,sans-serif" font-weight="700" font-size="9" fill="#999">Delivered</text>
+      <text x="20" y="128" font-family="Arial,sans-serif" font-size="7" fill="#999">Est. by 3:00 PM</text>
+    </g>
+    <!-- Action button -->
+    <rect x="20" y="232" width="120" height="22" rx="11" fill="#ff6a00"/>
+    <text x="80" y="246" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="9" fill="#fff">VIEW INVOICE PDF</text>
   </g>
-  <text x="300" y="260" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="24" fill="white">Customer Order Tracking</text>
-  <text x="300" y="290" text-anchor="middle" font-family="Arial,sans-serif" font-weight="400" font-size="14" fill="rgba(255,255,255,0.7)">Mobile App API • Search Orders & Track Delivery</text>
-  <g transform="translate(110,310)">
-    <rect x="0" y="0" width="80" height="28" rx="14" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-    <text x="40" y="18" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="rgba(255,255,255,0.9)">REST API</text>
-    <rect x="90" y="0" width="70" height="28" rx="14" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-    <text x="125" y="18" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="rgba(255,255,255,0.9)">Python</text>
-    <rect x="170" y="0" width="60" height="28" rx="14" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-    <text x="200" y="18" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="rgba(255,255,255,0.9)">JSON</text>
-    <rect x="240" y="0" width="80" height="28" rx="14" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-    <text x="280" y="18" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="rgba(255,255,255,0.9)">Mobile</text>
+  <!-- API badge (left) -->
+  <g transform="translate(60,130)">
+    <rect x="0" y="0" width="120" height="60" rx="10" fill="rgba(255,255,255,0.95)"/>
+    <text x="60" y="20" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="11" fill="#ff6a00">REST API</text>
+    <text x="60" y="36" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="8" fill="#666">Search • Track</text>
+    <text x="60" y="48" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="8" fill="#666">Notify • Invoice</text>
+  </g>
+  <!-- Push notification (right) -->
+  <g transform="translate(420,90)">
+    <rect x="0" y="0" width="140" height="50" rx="10" fill="rgba(255,255,255,0.95)"/>
+    <circle cx="18" cy="25" r="10" fill="#ee0979"/>
+    <text x="18" y="29" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="11" fill="#fff">!</text>
+    <text x="34" y="20" font-family="Arial,sans-serif" font-weight="800" font-size="9" fill="#1a202c">Push Update</text>
+    <text x="34" y="32" font-family="Arial,sans-serif" font-size="8" fill="#666">Order out for delivery</text>
+    <text x="34" y="42" font-family="Arial,sans-serif" font-size="7" fill="#999">just now</text>
+  </g>
+  <g transform="translate(0,295)">
+    <rect x="0" y="0" width="600" height="105" fill="rgba(255,255,255,0.97)"/>
+    <rect x="0" y="0" width="600" height="2" fill="#ee0979"/>
+    <text x="30" y="34" font-family="Arial,sans-serif" font-weight="800" font-size="22" fill="#1a202c">Customer Order Tracking</text>
+    <text x="30" y="56" font-family="Arial,sans-serif" font-size="12" fill="#5b6470">Mobile app REST API for order search, tracking &amp; invoices</text>
+    <g transform="translate(30,68)">
+      <rect x="0" y="0" width="118" height="22" rx="11" fill="#1a202c"/>
+      <text x="59" y="15" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="10" fill="#fbbf24">★ CLIENT PROJECT</text>
+    </g>
+    <g transform="translate(156,68)">
+      <rect x="0" y="0" width="116" height="22" rx="11" fill="rgba(238,9,121,0.15)" stroke="#ee0979" stroke-width="1"/>
+      <text x="58" y="15" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="10" fill="#ee0979">REST + JSON</text>
+    </g>
+    <g transform="translate(495,55)">
+      <rect x="0" y="0" width="80" height="36" rx="6" fill="#ee0979"/>
+      <text x="40" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="8" fill="rgba(255,255,255,0.85)">PLATFORM</text>
+      <text x="40" y="30" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="13" fill="#fff">MOBILE</text>
+    </g>
   </g>
 </svg>

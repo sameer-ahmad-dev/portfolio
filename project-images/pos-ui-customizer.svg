@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF8008"/>
+      <stop offset="100%" style="stop-color:#FFC837"/>
+    </linearGradient>
+    <pattern id="dotsCust" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="11" cy="11" r="1" fill="rgba(255,255,255,0.1)"/>
+    </pattern>
+    <filter id="softShadow5" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8"/>
+      <feOffset dy="6"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.3"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg)"/>
+  <rect width="600" height="400" fill="url(#dotsCust)"/>
+  <!-- POS Interface mockup -->
+  <g transform="translate(70,40)" filter="url(#softShadow5)">
+    <rect x="0" y="0" width="460" height="240" rx="12" fill="#ffffff"/>
+    <!-- Navbar -->
+    <rect x="0" y="0" width="460" height="36" rx="12" fill="#FF8008"/>
+    <rect x="0" y="26" width="460" height="10" fill="#FF8008"/>
+    <circle cx="22" cy="18" r="10" fill="#fff"/>
+    <text x="22" y="22" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="11" fill="#FF8008">P</text>
+    <text x="42" y="22" font-family="Arial,sans-serif" font-weight="800" font-size="12" fill="#fff">POS Demo</text>
+    <text x="440" y="22" text-anchor="end" font-family="Arial,sans-serif" font-size="10" fill="#fff">Cashier ▾</text>
+    <!-- Left: Products grid -->
+    <g transform="translate(15,52)">
+      <rect x="0" y="0" width="280" height="170" rx="8" fill="#fafbfc"/>
+      <rect x="8" y="8" width="264" height="22" rx="11" fill="#fff" stroke="#e0e6ed" stroke-width="1"/>
+      <circle cx="20" cy="19" r="4" fill="none" stroke="#999" stroke-width="1.5"/>
+      <text x="36" y="22" font-family="Arial,sans-serif" font-size="9" fill="#999">Search products...</text>
+      <rect x="8" y="38" width="50" height="16" rx="8" fill="#FF8008"/>
+      <text x="33" y="49" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="8" fill="#fff">All</text>
+      <rect x="64" y="38" width="60" height="16" rx="8" fill="#fff" stroke="#FF8008" stroke-width="1"/>
+      <text x="94" y="49" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="8" fill="#FF8008">Drinks</text>
+      <rect x="130" y="38" width="50" height="16" rx="8" fill="#fff" stroke="#FF8008" stroke-width="1"/>
+      <text x="155" y="49" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="8" fill="#FF8008">Food</text>
+      <rect x="186" y="38" width="50" height="16" rx="8" fill="#fff" stroke="#FF8008" stroke-width="1"/>
+      <text x="211" y="49" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="8" fill="#FF8008">Snacks</text>
+      <!-- Products -->
+      <g>
+        <rect x="8" y="62" width="64" height="48" rx="6" fill="#fff" stroke="#e0e6ed" stroke-width="1"/>
+        <circle cx="40" cy="80" r="10" fill="#FFC837"/>
+        <rect x="14" y="96" width="52" height="4" rx="2" fill="#1a202c"/>
+        <rect x="14" y="103" width="32" height="3" rx="1" fill="#FF8008"/>
+        <rect x="78" y="62" width="64" height="48" rx="6" fill="#fff" stroke="#e0e6ed" stroke-width="1"/>
+        <circle cx="110" cy="80" r="10" fill="#FF8008"/>
+        <rect x="84" y="96" width="52" height="4" rx="2" fill="#1a202c"/>
+        <rect x="84" y="103" width="32" height="3" rx="1" fill="#FF8008"/>
+        <rect x="148" y="62" width="64" height="48" rx="6" fill="#fff" stroke="#e0e6ed" stroke-width="1"/>
+        <circle cx="180" cy="80" r="10" fill="#7B2FF7"/>
+        <rect x="154" y="96" width="52" height="4" rx="2" fill="#1a202c"/>
+        <rect x="154" y="103" width="32" height="3" rx="1" fill="#FF8008"/>
+        <rect x="218" y="62" width="64" height="48" rx="6" fill="#fff" stroke="#e0e6ed" stroke-width="1"/>
+        <circle cx="250" cy="80" r="10" fill="#27c93f"/>
+        <rect x="224" y="96" width="52" height="4" rx="2" fill="#1a202c"/>
+        <rect x="224" y="103" width="32" height="3" rx="1" fill="#FF8008"/>
+        <rect x="8" y="116" width="64" height="48" rx="6" fill="#fff" stroke="#e0e6ed" stroke-width="1"/>
+        <circle cx="40" cy="134" r="10" fill="#f38ba8"/>
+        <rect x="78" y="116" width="64" height="48" rx="6" fill="#fff" stroke="#e0e6ed" stroke-width="1"/>
+        <circle cx="110" cy="134" r="10" fill="#74c7ec"/>
+        <rect x="148" y="116" width="64" height="48" rx="6" fill="#fff" stroke="#e0e6ed" stroke-width="1"/>
+        <circle cx="180" cy="134" r="10" fill="#FFC837"/>
+        <rect x="218" y="116" width="64" height="48" rx="6" fill="#fff" stroke="#e0e6ed" stroke-width="1"/>
+        <circle cx="250" cy="134" r="10" fill="#FF8008"/>
+      </g>
+    </g>
+    <!-- Right: Customizer panel -->
+    <g transform="translate(305,52)">
+      <rect x="0" y="0" width="140" height="170" rx="8" fill="#fafbfc"/>
+      <text x="10" y="20" font-family="Arial,sans-serif" font-weight="800" font-size="10" fill="#1a202c">CUSTOMIZE</text>
+      <text x="10" y="38" font-family="Arial,sans-serif" font-weight="700" font-size="8" fill="#666">Theme Color</text>
+      <circle cx="18" cy="50" r="7" fill="#FF8008" stroke="#1a202c" stroke-width="1.5"/>
+      <circle cx="36" cy="50" r="7" fill="#7B2FF7"/>
+      <circle cx="54" cy="50" r="7" fill="#27c93f"/>
+      <circle cx="72" cy="50" r="7" fill="#f38ba8"/>
+      <circle cx="90" cy="50" r="7" fill="#74c7ec"/>
+      <circle cx="108" cy="50" r="7" fill="#FFEB3B"/>
+      <text x="10" y="74" font-family="Arial,sans-serif" font-weight="700" font-size="8" fill="#666">Grid Columns: 4</text>
+      <line x1="10" y1="84" x2="128" y2="84" stroke="#e0e6ed" stroke-width="3" stroke-linecap="round"/>
+      <line x1="10" y1="84" x2="74" y2="84" stroke="#FF8008" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="74" cy="84" r="6" fill="#FF8008" stroke="#fff" stroke-width="2"/>
+      <text x="10" y="106" font-family="Arial,sans-serif" font-weight="700" font-size="8" fill="#666">Show Images</text>
+      <rect x="100" y="100" width="28" height="13" rx="6" fill="#FF8008"/>
+      <circle cx="121" cy="106" r="5" fill="#fff"/>
+      <text x="10" y="124" font-family="Arial,sans-serif" font-weight="700" font-size="8" fill="#666">Show Prices</text>
+      <rect x="100" y="118" width="28" height="13" rx="6" fill="#FF8008"/>
+      <circle cx="121" cy="124" r="5" fill="#fff"/>
+      <text x="10" y="144" font-family="Arial,sans-serif" font-weight="700" font-size="8" fill="#666">Font Size</text>
+      <rect x="10" y="148" width="38" height="14" rx="3" fill="#fff" stroke="#e0e6ed"/>
+      <text x="29" y="158" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="7" fill="#666">SM</text>
+      <rect x="50" y="148" width="38" height="14" rx="3" fill="#FF8008"/>
+      <text x="69" y="158" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="7" fill="#fff">MD</text>
+      <rect x="90" y="148" width="38" height="14" rx="3" fill="#fff" stroke="#e0e6ed"/>
+      <text x="109" y="158" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="7" fill="#666">LG</text>
+    </g>
+  </g>
+  <!-- Bottom info bar -->
+  <g transform="translate(0,295)">
+    <rect x="0" y="0" width="600" height="105" fill="rgba(255,255,255,0.97)"/>
+    <rect x="0" y="0" width="600" height="2" fill="#FF8008"/>
+    <text x="30" y="34" font-family="Arial,sans-serif" font-weight="800" font-size="22" fill="#1a202c">POS UI Customizer</text>
+    <text x="30" y="56" font-family="Arial,sans-serif" font-size="12" fill="#5b6470">Total control over POS theme, layout, buttons &amp; screen-saver</text>
+    <g transform="translate(30,68)">
+      <rect x="0" y="0" width="148" height="22" rx="11" fill="#714B67"/>
+      <text x="74" y="15" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="10" fill="#fff">✓ Compatible with Odoo 19</text>
+    </g>
+    <g transform="translate(186,68)">
+      <rect x="0" y="0" width="68" height="22" rx="11" fill="rgba(255,128,8,0.15)" stroke="#FF8008" stroke-width="1"/>
+      <text x="34" y="15" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="10" fill="#FF8008">POS</text>
+    </g>
+    <g transform="translate(495,55)">
+      <rect x="0" y="0" width="80" height="36" rx="6" fill="#FF8008"/>
+      <text x="40" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="8" fill="rgba(255,255,255,0.85)">FROM</text>
+      <text x="40" y="30" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="14" fill="#fff">$15.00</text>
+    </g>
+  </g>
+</svg>

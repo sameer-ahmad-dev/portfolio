@@ -1,55 +1,71 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#43e97b"/>
-      <stop offset="100%" style="stop-color:#38f9d7"/>
+      <stop offset="0%" style="stop-color:#43e97b"/><stop offset="100%" style="stop-color:#38f9d7"/>
     </linearGradient>
+    <pattern id="dotsPR" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="11" cy="11" r="1" fill="rgba(255,255,255,0.1)"/></pattern>
+    <filter id="shPR" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8"/><feOffset dy="6"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.3"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
   </defs>
   <rect width="600" height="400" fill="url(#bg)"/>
-  <circle cx="510" cy="90" r="100" fill="rgba(255,255,255,0.06)"/>
-  <circle cx="90" cy="330" r="70" fill="rgba(255,255,255,0.04)"/>
+  <rect width="600" height="400" fill="url(#dotsPR)"/>
   <!-- POS Terminal -->
-  <g transform="translate(210,35)">
-    <!-- Screen -->
-    <rect x="20" y="10" width="130" height="90" rx="8" fill="rgba(0,0,0,0.2)" stroke="rgba(255,255,255,0.8)" stroke-width="2.5"/>
-    <!-- Screen content -->
-    <rect x="30" y="20" width="70" height="12" rx="3" fill="rgba(255,255,255,0.3)"/>
-    <rect x="30" y="38" width="50" height="8" rx="2" fill="rgba(255,255,255,0.2)"/>
-    <rect x="30" y="52" width="60" height="8" rx="2" fill="rgba(255,255,255,0.2)"/>
-    <rect x="30" y="66" width="40" height="8" rx="2" fill="rgba(255,255,255,0.2)"/>
-    <text x="120" y="78" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="16" fill="rgba(255,255,255,0.9)">$247</text>
+  <g transform="translate(180,30)" filter="url(#shPR)">
+    <rect x="0" y="0" width="240" height="200" rx="10" fill="#1a1f35"/>
+    <rect x="10" y="10" width="220" height="140" rx="6" fill="#0a0e1a"/>
+    <text x="22" y="32" font-family="Arial,sans-serif" font-weight="700" font-size="9" fill="#43e97b">CHECKOUT #4821</text>
+    <text x="218" y="32" text-anchor="end" font-family="Arial,sans-serif" font-weight="700" font-size="9" fill="#a6e3a1">STORE 02</text>
+    <line x1="22" y1="40" x2="218" y2="40" stroke="rgba(67,233,123,0.3)" stroke-width="0.5"/>
+    <text x="22" y="56" font-family="Arial,sans-serif" font-size="10" fill="#fff">Coffee Latte</text>
+    <text x="218" y="56" text-anchor="end" font-family="Arial,sans-serif" font-weight="700" font-size="10" fill="#fff">$4.50</text>
+    <text x="22" y="72" font-family="Arial,sans-serif" font-size="10" fill="#fff">Sandwich Combo</text>
+    <text x="218" y="72" text-anchor="end" font-family="Arial,sans-serif" font-weight="700" font-size="10" fill="#fff">$8.95</text>
+    <text x="22" y="88" font-family="Arial,sans-serif" font-size="10" fill="#fff">Cookies (3x)</text>
+    <text x="218" y="88" text-anchor="end" font-family="Arial,sans-serif" font-weight="700" font-size="10" fill="#fff">$6.00</text>
+    <line x1="22" y1="96" x2="218" y2="96" stroke="rgba(67,233,123,0.3)" stroke-width="0.5"/>
+    <text x="22" y="118" font-family="Arial,sans-serif" font-weight="900" font-size="14" fill="#43e97b">TOTAL</text>
+    <text x="218" y="118" text-anchor="end" font-family="Arial,sans-serif" font-weight="900" font-size="22" fill="#43e97b">$19.45</text>
+    <!-- Buttons -->
+    <rect x="10" y="160" width="100" height="32" rx="6" fill="#27c93f"/>
+    <text x="60" y="180" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="11" fill="#fff">PAY CARD</text>
+    <rect x="120" y="160" width="100" height="32" rx="6" fill="rgba(255,255,255,0.1)" stroke="#43e97b" stroke-width="1"/>
+    <text x="170" y="180" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="11" fill="#43e97b">CASH</text>
     <!-- Stand -->
-    <rect x="70" y="100" width="30" height="20" fill="rgba(255,255,255,0.3)"/>
-    <rect x="50" y="118" width="70" height="8" rx="3" fill="rgba(255,255,255,0.4)"/>
-    <!-- Card reader -->
-    <rect x="150" y="60" width="35" height="65" rx="5" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.7)" stroke-width="2"/>
-    <rect x="156" y="68" width="23" height="16" rx="2" fill="rgba(255,255,255,0.3)"/>
-    <!-- Keypad dots -->
-    <circle cx="161" cy="95" r="2.5" fill="rgba(255,255,255,0.5)"/>
-    <circle cx="171" cy="95" r="2.5" fill="rgba(255,255,255,0.5)"/>
-    <circle cx="181" cy="95" r="2.5" fill="rgba(255,255,255,0.5)"/>
-    <circle cx="161" cy="107" r="2.5" fill="rgba(255,255,255,0.5)"/>
-    <circle cx="171" cy="107" r="2.5" fill="rgba(255,255,255,0.5)"/>
-    <circle cx="181" cy="107" r="2.5" fill="rgba(255,255,255,0.5)"/>
-    <!-- Barcode -->
-    <g transform="translate(5,55)">
-      <rect x="0" y="0" width="3" height="30" fill="rgba(255,255,255,0.6)"/>
-      <rect x="5" y="0" width="1.5" height="30" fill="rgba(255,255,255,0.6)"/>
-      <rect x="9" y="0" width="3" height="30" fill="rgba(255,255,255,0.6)"/>
-      <rect x="14" y="0" width="1" height="30" fill="rgba(255,255,255,0.6)"/>
-      <rect x="17" y="0" width="2.5" height="30" fill="rgba(255,255,255,0.6)"/>
-    </g>
+    <rect x="100" y="200" width="40" height="20" fill="#0891B2"/>
+    <rect x="80" y="218" width="80" height="8" rx="2" fill="#0891B2"/>
   </g>
-  <text x="300" y="260" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="26" fill="white">POS Retail System</text>
-  <text x="300" y="290" text-anchor="middle" font-family="Arial,sans-serif" font-weight="400" font-size="14" fill="rgba(255,255,255,0.7)">Point of Sale • Multi-Store Checkout</text>
-  <g transform="translate(120,310)">
-    <rect x="0" y="0" width="90" height="28" rx="14" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-    <text x="45" y="18" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="rgba(255,255,255,0.9)">JavaScript</text>
-    <rect x="100" y="0" width="60" height="28" rx="14" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-    <text x="130" y="18" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="rgba(255,255,255,0.9)">OWL</text>
-    <rect x="170" y="0" width="80" height="28" rx="14" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-    <text x="210" y="18" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="rgba(255,255,255,0.9)">Odoo 17</text>
-    <rect x="260" y="0" width="70" height="28" rx="14" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-    <text x="295" y="18" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="rgba(255,255,255,0.9)">Python</text>
+  <!-- Multi-store badges (left) -->
+  <g transform="translate(60,80)">
+    <rect x="0" y="0" width="80" height="32" rx="6" fill="rgba(255,255,255,0.95)"/>
+    <text x="40" y="14" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="9" fill="#1a202c">STORE 01</text>
+    <text x="40" y="26" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#27c93f">● Online</text>
+    <rect x="0" y="42" width="80" height="32" rx="6" fill="rgba(255,255,255,0.95)" stroke="#27c93f" stroke-width="2"/>
+    <text x="40" y="56" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="9" fill="#1a202c">STORE 02</text>
+    <text x="40" y="68" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#27c93f">● Active</text>
+    <rect x="0" y="84" width="80" height="32" rx="6" fill="rgba(255,255,255,0.95)"/>
+    <text x="40" y="98" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="9" fill="#1a202c">STORE 03</text>
+    <text x="40" y="110" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#27c93f">● Online</text>
+  </g>
+  <g transform="translate(0,295)">
+    <rect x="0" y="0" width="600" height="105" fill="rgba(255,255,255,0.97)"/>
+    <rect x="0" y="0" width="600" height="2" fill="#27c93f"/>
+    <text x="30" y="34" font-family="Arial,sans-serif" font-weight="800" font-size="22" fill="#1a202c">POS Retail System</text>
+    <text x="30" y="56" font-family="Arial,sans-serif" font-size="12" fill="#5b6470">Multi-store checkout redesign with loyalty &amp; analytics</text>
+    <g transform="translate(30,68)">
+      <rect x="0" y="0" width="118" height="22" rx="11" fill="#1a202c"/>
+      <text x="59" y="15" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="10" fill="#fbbf24">★ CLIENT PROJECT</text>
+    </g>
+    <g transform="translate(156,68)">
+      <rect x="0" y="0" width="116" height="22" rx="11" fill="rgba(39,201,63,0.15)" stroke="#27c93f" stroke-width="1"/>
+      <text x="58" y="15" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="10" fill="#1a202c">ODOO 17 + OWL</text>
+    </g>
+    <g transform="translate(495,55)">
+      <rect x="0" y="0" width="80" height="36" rx="6" fill="#0AA64D"/>
+      <text x="40" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="8" fill="rgba(255,255,255,0.85)">STORES</text>
+      <text x="40" y="30" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="13" fill="#fff">3</text>
+    </g>
   </g>
 </svg>

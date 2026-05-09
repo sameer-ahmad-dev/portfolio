@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0AA64D"/>
+      <stop offset="100%" style="stop-color:#04713A"/>
+    </linearGradient>
+    <pattern id="grid2" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="11" cy="11" r="1" fill="rgba(255,255,255,0.1)"/>
+    </pattern>
+    <filter id="softShadow3" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8"/>
+      <feOffset dy="6"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.3"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg)"/>
+  <rect width="600" height="400" fill="url(#grid2)"/>
+  <!-- Browser preview -->
+  <g transform="translate(100,30)" filter="url(#softShadow3)">
+    <rect x="0" y="0" width="400" height="240" rx="10" fill="#ffffff"/>
+    <rect x="0" y="0" width="400" height="36" rx="10" fill="#f5f7fa"/>
+    <rect x="0" y="26" width="400" height="10" fill="#f5f7fa"/>
+    <circle cx="16" cy="18" r="5" fill="#ff5f56"/>
+    <circle cx="32" cy="18" r="5" fill="#ffbd2e"/>
+    <circle cx="48" cy="18" r="5" fill="#27c93f"/>
+    <rect x="80" y="10" width="240" height="16" rx="8" fill="#fff" stroke="#e0e6ed" stroke-width="1"/>
+    <text x="200" y="21" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#999">localhost:8069/odoo</text>
+    <!-- Sidebar -->
+    <rect x="0" y="36" width="68" height="204" fill="#0AA64D"/>
+    <text x="34" y="58" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="13" fill="#fff">odoo</text>
+    <rect x="10" y="74" width="48" height="6" rx="3" fill="rgba(255,255,255,0.95)"/>
+    <rect x="10" y="86" width="40" height="4" rx="2" fill="rgba(255,255,255,0.6)"/>
+    <rect x="10" y="98" width="44" height="4" rx="2" fill="rgba(255,255,255,0.6)"/>
+    <rect x="10" y="118" width="48" height="22" rx="6" fill="rgba(255,255,255,0.25)"/>
+    <rect x="14" y="125" width="40" height="4" rx="2" fill="#fff"/>
+    <rect x="14" y="132" width="32" height="3" rx="1" fill="rgba(255,255,255,0.7)"/>
+    <rect x="10" y="148" width="44" height="4" rx="2" fill="rgba(255,255,255,0.6)"/>
+    <rect x="10" y="160" width="40" height="4" rx="2" fill="rgba(255,255,255,0.6)"/>
+    <rect x="10" y="172" width="46" height="4" rx="2" fill="rgba(255,255,255,0.6)"/>
+    <!-- Top nav -->
+    <rect x="68" y="36" width="332" height="40" fill="#fafbfc"/>
+    <rect x="84" y="50" width="80" height="12" rx="2" fill="#1a202c"/>
+    <rect x="296" y="48" width="84" height="18" rx="9" fill="#0AA64D"/>
+    <text x="338" y="60" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="9" fill="#fff">+ NEW</text>
+    <!-- Status bar -->
+    <g transform="translate(84,84)">
+      <rect x="0" y="0" width="60" height="18" rx="9" fill="rgba(10,166,77,0.15)"/>
+      <text x="30" y="12" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="8" fill="#0AA64D">DRAFT</text>
+      <rect x="68" y="0" width="80" height="18" rx="9" fill="#0AA64D"/>
+      <text x="108" y="12" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="8" fill="#fff">CONFIRMED</text>
+      <rect x="156" y="0" width="60" height="18" rx="9" fill="rgba(10,166,77,0.15)"/>
+      <text x="186" y="12" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="8" fill="#04713A">DONE</text>
+    </g>
+    <!-- KPI cards -->
+    <g transform="translate(84,114)">
+      <rect x="0" y="0" width="92" height="60" rx="6" fill="#fafbfc" stroke="#e0e6ed" stroke-width="1"/>
+      <rect x="8" y="10" width="44" height="6" rx="2" fill="#0AA64D"/>
+      <text x="8" y="38" font-family="Arial,sans-serif" font-weight="900" font-size="18" fill="#1a202c">$24K</text>
+      <rect x="8" y="46" width="40" height="3" rx="1" fill="#0AA64D" opacity="0.4"/>
+      <rect x="100" y="0" width="92" height="60" rx="6" fill="#fafbfc" stroke="#e0e6ed" stroke-width="1"/>
+      <rect x="108" y="10" width="44" height="6" rx="2" fill="#0AA64D"/>
+      <text x="108" y="38" font-family="Arial,sans-serif" font-weight="900" font-size="18" fill="#1a202c">347</text>
+      <rect x="108" y="46" width="60" height="3" rx="1" fill="#0AA64D" opacity="0.4"/>
+      <rect x="200" y="0" width="92" height="60" rx="6" fill="#fafbfc" stroke="#e0e6ed" stroke-width="1"/>
+      <rect x="208" y="10" width="44" height="6" rx="2" fill="#0AA64D"/>
+      <text x="208" y="38" font-family="Arial,sans-serif" font-weight="900" font-size="18" fill="#1a202c">98%</text>
+      <rect x="208" y="46" width="40" height="3" rx="1" fill="#0AA64D" opacity="0.4"/>
+    </g>
+    <!-- Buttons -->
+    <g transform="translate(84,188)">
+      <rect x="0" y="0" width="84" height="26" rx="5" fill="#0AA64D"/>
+      <text x="42" y="17" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="10" fill="#fff">SAVE</text>
+      <rect x="92" y="0" width="84" height="26" rx="5" fill="#fff" stroke="#0AA64D" stroke-width="1.5"/>
+      <text x="134" y="17" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="10" fill="#0AA64D">DISCARD</text>
+      <rect x="184" y="6" width="60" height="14" rx="7" fill="#0AA64D" opacity="0.18"/>
+      <text x="214" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="8" fill="#0AA64D">PRIORITY</text>
+    </g>
+  </g>
+  <!-- Color palette accent -->
+  <g transform="translate(50,90)">
+    <circle cx="0" cy="0" r="14" fill="#0AA64D" stroke="#fff" stroke-width="2"/>
+    <circle cx="0" cy="35" r="11" fill="#04713A" stroke="#fff" stroke-width="2"/>
+    <circle cx="0" cy="65" r="9" fill="#5DD68F" stroke="#fff" stroke-width="2"/>
+    <circle cx="0" cy="90" r="7" fill="#A8EBC2" stroke="#fff" stroke-width="2"/>
+  </g>
+  <!-- Bottom info bar -->
+  <g transform="translate(0,295)">
+    <rect x="0" y="0" width="600" height="105" fill="rgba(255,255,255,0.97)"/>
+    <rect x="0" y="0" width="600" height="2" fill="#0AA64D"/>
+    <text x="30" y="34" font-family="Arial,sans-serif" font-weight="800" font-size="22" fill="#1a202c">Green Theme for Odoo</text>
+    <text x="30" y="56" font-family="Arial,sans-serif" font-size="12" fill="#5b6470">Modern green color scheme for the entire Odoo backend</text>
+    <g transform="translate(30,68)">
+      <rect x="0" y="0" width="148" height="22" rx="11" fill="#714B67"/>
+      <text x="74" y="15" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="10" fill="#fff">✓ Compatible with Odoo 19</text>
+    </g>
+    <g transform="translate(186,68)">
+      <rect x="0" y="0" width="84" height="22" rx="11" fill="rgba(10,166,77,0.15)" stroke="#0AA64D" stroke-width="1"/>
+      <text x="42" y="15" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="10" fill="#0AA64D">BACKEND THEME</text>
+    </g>
+    <g transform="translate(495,55)">
+      <rect x="0" y="0" width="80" height="36" rx="6" fill="#0AA64D"/>
+      <text x="40" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="8" fill="rgba(255,255,255,0.85)">PRICE</text>
+      <text x="40" y="30" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="14" fill="#fff">FREE</text>
+    </g>
+  </g>
+</svg>

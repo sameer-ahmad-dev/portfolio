@@ -1,46 +1,82 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#11998e"/>
-      <stop offset="100%" style="stop-color:#38ef7d"/>
+      <stop offset="0%" style="stop-color:#11998e"/><stop offset="100%" style="stop-color:#38ef7d"/>
     </linearGradient>
+    <pattern id="dotsSRB" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="11" cy="11" r="1" fill="rgba(255,255,255,0.12)"/></pattern>
+    <filter id="shSRB" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8"/><feOffset dy="6"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.3"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
   </defs>
   <rect width="600" height="400" fill="url(#bg)"/>
-  <circle cx="520" cy="70" r="110" fill="rgba(255,255,255,0.06)"/>
-  <circle cx="70" cy="350" r="80" fill="rgba(255,255,255,0.04)"/>
-  <!-- Tax / Government building -->
-  <g transform="translate(210,35)">
-    <!-- Building -->
-    <polygon points="85,15 170,55 0,55" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2.5"/>
-    <rect x="10" y="55" width="150" height="85" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2.5"/>
-    <!-- Pillars -->
-    <rect x="25" y="60" width="12" height="75" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
-    <rect x="55" y="60" width="12" height="75" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
-    <rect x="100" y="60" width="12" height="75" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
-    <rect x="130" y="60" width="12" height="75" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
-    <!-- SRB Badge -->
-    <rect x="55" y="75" width="60" height="30" rx="6" fill="rgba(255,255,255,0.25)" stroke="rgba(255,255,255,0.7)" stroke-width="2"/>
-    <text x="85" y="95" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="16" fill="rgba(255,255,255,0.95)">SRB</text>
-    <!-- Document with checkmark -->
-    <g transform="translate(160,40)">
-      <rect x="0" y="0" width="40" height="50" rx="4" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
-      <line x1="8" y1="12" x2="32" y2="12" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
-      <line x1="8" y1="22" x2="28" y2="22" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
-      <line x1="8" y1="32" x2="25" y2="32" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
-      <circle cx="20" cy="42" r="6" fill="rgba(255,255,255,0.2)"/>
-      <polyline points="16,42 19,45 25,39" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.5" stroke-linecap="round"/>
-    </g>
-    <!-- Sindh text -->
-    <text x="85" y="155" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Sindh Revenue Board</text>
+  <rect width="600" height="400" fill="url(#dotsSRB)"/>
+  <!-- e-Invoice -->
+  <g transform="translate(70,30)" filter="url(#shSRB)">
+    <rect x="0" y="0" width="240" height="250" rx="10" fill="#fff"/>
+    <rect x="0" y="0" width="240" height="40" rx="10" fill="#11998e"/>
+    <rect x="0" y="26" width="240" height="14" fill="#11998e"/>
+    <text x="120" y="26" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="13" fill="#fff">SRB e-INVOICE</text>
+    <text x="16" y="62" font-family="Arial,sans-serif" font-weight="700" font-size="9" fill="#666">INVOICE NO</text>
+    <text x="224" y="62" text-anchor="end" font-family="monospace" font-weight="800" font-size="10" fill="#1a202c">SRB-2024-1247</text>
+    <line x1="16" y1="70" x2="224" y2="70" stroke="#e0e6ed" stroke-width="0.5"/>
+    <text x="16" y="84" font-family="Arial,sans-serif" font-weight="700" font-size="9" fill="#666">DATE</text>
+    <text x="224" y="84" text-anchor="end" font-family="Arial,sans-serif" font-weight="700" font-size="10" fill="#1a202c">15-Mar-2024</text>
+    <line x1="16" y1="92" x2="224" y2="92" stroke="#e0e6ed" stroke-width="0.5"/>
+    <text x="16" y="106" font-family="Arial,sans-serif" font-weight="700" font-size="9" fill="#666">AMOUNT</text>
+    <text x="224" y="106" text-anchor="end" font-family="monospace" font-weight="800" font-size="11" fill="#11998e">PKR 1,80,000</text>
+    <line x1="16" y1="114" x2="224" y2="114" stroke="#e0e6ed" stroke-width="0.5"/>
+    <text x="16" y="128" font-family="Arial,sans-serif" font-weight="700" font-size="9" fill="#666">SST 13%</text>
+    <text x="224" y="128" text-anchor="end" font-family="monospace" font-weight="800" font-size="11" fill="#11998e">PKR 23,400</text>
+    <line x1="16" y1="136" x2="224" y2="136" stroke="#e0e6ed" stroke-width="0.5"/>
+    <text x="16" y="152" font-family="Arial,sans-serif" font-weight="800" font-size="11" fill="#1a202c">TOTAL</text>
+    <text x="224" y="152" text-anchor="end" font-family="monospace" font-weight="900" font-size="13" fill="#11998e">PKR 2,03,400</text>
+    <!-- QR + status -->
+    <rect x="16" y="166" width="60" height="60" fill="#1a202c"/>
+    <rect x="22" y="172" width="10" height="10" fill="#fff"/>
+    <rect x="60" y="172" width="10" height="10" fill="#fff"/>
+    <rect x="22" y="210" width="10" height="10" fill="#fff"/>
+    <rect x="38" y="180" width="4" height="4" fill="#fff"/>
+    <rect x="46" y="186" width="4" height="4" fill="#fff"/>
+    <rect x="42" y="194" width="4" height="4" fill="#fff"/>
+    <rect x="50" y="200" width="4" height="4" fill="#fff"/>
+    <rect x="60" y="200" width="4" height="4" fill="#fff"/>
+    <rect x="86" y="166" width="138" height="60" rx="8" fill="rgba(39,201,63,0.12)"/>
+    <circle cx="106" cy="190" r="14" fill="#27c93f"/>
+    <path d="M100,190 L104,194 L112,184" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="155" y="195" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="10" fill="#0F7B3F">FILED &amp;</text>
+    <text x="155" y="208" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="10" fill="#0F7B3F">REPORTED</text>
   </g>
-  <text x="300" y="260" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="26" fill="white">SRB Tax Integration</text>
-  <text x="300" y="290" text-anchor="middle" font-family="Arial,sans-serif" font-weight="400" font-size="14" fill="rgba(255,255,255,0.7)">Sindh Revenue Board • E-Invoicing & Compliance</text>
-  <g transform="translate(125,310)">
-    <rect x="0" y="0" width="80" height="28" rx="14" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-    <text x="40" y="18" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="rgba(255,255,255,0.9)">SRB API</text>
-    <rect x="90" y="0" width="80" height="28" rx="14" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-    <text x="130" y="18" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="rgba(255,255,255,0.9)">Odoo 17</text>
-    <rect x="180" y="0" width="80" height="28" rx="14" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-    <text x="220" y="18" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="rgba(255,255,255,0.9)">Python</text>
+  <!-- SRB Sindh badge -->
+  <g transform="translate(380,80)">
+    <rect x="0" y="0" width="160" height="160" rx="12" fill="rgba(255,255,255,0.95)"/>
+    <text x="80" y="32" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="18" fill="#11998e">SRB</text>
+    <text x="80" y="50" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="9" fill="#666">Sindh Revenue Board</text>
+    <line x1="20" y1="62" x2="140" y2="62" stroke="#e0e6ed" stroke-width="1"/>
+    <text x="80" y="82" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="9" fill="#666">AUTOMATED</text>
+    <text x="80" y="98" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="8" fill="#27c93f">✓ Tax Calculation</text>
+    <text x="80" y="112" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="8" fill="#27c93f">✓ e-Invoicing</text>
+    <text x="80" y="126" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="8" fill="#27c93f">✓ Compliance</text>
+    <text x="80" y="140" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="8" fill="#27c93f">✓ Audit Reports</text>
+  </g>
+  <g transform="translate(0,295)">
+    <rect x="0" y="0" width="600" height="105" fill="rgba(255,255,255,0.97)"/>
+    <rect x="0" y="0" width="600" height="2" fill="#11998e"/>
+    <text x="30" y="34" font-family="Arial,sans-serif" font-weight="800" font-size="22" fill="#1a202c">SRB Tax Integration</text>
+    <text x="30" y="56" font-family="Arial,sans-serif" font-size="12" fill="#5b6470">Sindh Revenue Board automated tax compliance &amp; e-invoicing</text>
+    <g transform="translate(30,68)">
+      <rect x="0" y="0" width="118" height="22" rx="11" fill="#1a202c"/>
+      <text x="59" y="15" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="10" fill="#fbbf24">★ CLIENT PROJECT</text>
+    </g>
+    <g transform="translate(156,68)">
+      <rect x="0" y="0" width="116" height="22" rx="11" fill="rgba(17,153,142,0.15)" stroke="#11998e" stroke-width="1"/>
+      <text x="58" y="15" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="10" fill="#11998e">SRB API • ODOO</text>
+    </g>
+    <g transform="translate(495,55)">
+      <rect x="0" y="0" width="80" height="36" rx="6" fill="#11998e"/>
+      <text x="40" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="8" fill="rgba(255,255,255,0.85)">FILING</text>
+      <text x="40" y="30" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="11" fill="#fff">AUTO</text>
+    </g>
   </g>
 </svg>

@@ -1,49 +1,99 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#89f7fe"/>
-      <stop offset="100%" style="stop-color:#66a6ff"/>
+      <stop offset="0%" style="stop-color:#0066cc"/><stop offset="100%" style="stop-color:#003d7a"/>
     </linearGradient>
+    <pattern id="dotsMU" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="11" cy="11" r="1" fill="rgba(255,255,255,0.12)"/></pattern>
+    <filter id="shMU" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8"/><feOffset dy="6"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.3"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
   </defs>
   <rect width="600" height="400" fill="url(#bg)"/>
-  <circle cx="510" cy="90" r="110" fill="rgba(255,255,255,0.06)"/>
-  <circle cx="80" cy="340" r="80" fill="rgba(255,255,255,0.04)"/>
-  <!-- Currency symbols -->
-  <g transform="translate(170,35)">
-    <!-- Dollar -->
-    <circle cx="50" cy="55" r="38" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.8)" stroke-width="2.5"/>
-    <text x="50" y="68" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="32" fill="rgba(255,255,255,0.9)">$</text>
-    <!-- Euro -->
-    <circle cx="140" cy="40" r="32" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.7)" stroke-width="2"/>
-    <text x="140" y="52" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="28" fill="rgba(255,255,255,0.85)">€</text>
-    <!-- Pound -->
-    <circle cx="215" cy="60" r="28" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
-    <text x="215" y="72" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="24" fill="rgba(255,255,255,0.8)">£</text>
-    <!-- PKR -->
-    <circle cx="100" cy="105" r="25" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
-    <text x="100" y="113" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="14" fill="rgba(255,255,255,0.7)">PKR</text>
-    <!-- Exchange arrows -->
-    <path d="M90,55 Q120,20 140,40" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-dasharray="4,3"/>
-    <path d="M170,50 Q195,35 215,60" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-dasharray="4,3"/>
-    <path d="M50,93 Q70,110 100,105" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-dasharray="4,3"/>
-    <!-- Chart bars -->
-    <g transform="translate(0,130)">
-      <rect x="40" y="15" width="18" height="35" rx="3" fill="rgba(255,255,255,0.3)" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
-      <rect x="68" y="5" width="18" height="45" rx="3" fill="rgba(255,255,255,0.35)" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
-      <rect x="96" y="20" width="18" height="30" rx="3" fill="rgba(255,255,255,0.25)" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
-      <rect x="124" y="0" width="18" height="50" rx="3" fill="rgba(255,255,255,0.4)" stroke="rgba(255,255,255,0.6)" stroke-width="1"/>
-      <rect x="152" y="10" width="18" height="40" rx="3" fill="rgba(255,255,255,0.3)" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
-      <rect x="180" y="8" width="18" height="42" rx="3" fill="rgba(255,255,255,0.35)" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
+  <rect width="600" height="400" fill="url(#dotsMU)"/>
+  <!-- Accounting dashboard -->
+  <g transform="translate(70,40)" filter="url(#shMU)">
+    <rect x="0" y="0" width="460" height="230" rx="12" fill="#fff"/>
+    <rect x="0" y="0" width="460" height="36" rx="12" fill="#003d7a"/>
+    <rect x="0" y="26" width="460" height="10" fill="#003d7a"/>
+    <text x="20" y="22" font-family="Arial,sans-serif" font-weight="800" font-size="11" fill="#fff">⊞ MULTI-CURRENCY LEDGER</text>
+    <text x="440" y="22" text-anchor="end" font-family="Arial,sans-serif" font-size="9" fill="rgba(255,255,255,0.75)">FX auto-update ↻</text>
+    <!-- Branch rows -->
+    <g transform="translate(20,52)">
+      <text x="0" y="0" font-family="Arial,sans-serif" font-weight="800" font-size="9" fill="#999">BRANCH</text>
+      <text x="160" y="0" font-family="Arial,sans-serif" font-weight="800" font-size="9" fill="#999">LOCAL CURRENCY</text>
+      <text x="290" y="0" font-family="Arial,sans-serif" font-weight="800" font-size="9" fill="#999">USD EQUIV.</text>
+      <text x="420" y="0" text-anchor="end" font-family="Arial,sans-serif" font-weight="800" font-size="9" fill="#999">RATE</text>
+      <line x1="0" y1="6" x2="420" y2="6" stroke="#e0e6ed" stroke-width="1"/>
+      <!-- Branch 1 -->
+      <g transform="translate(0,16)">
+        <circle cx="6" cy="10" r="6" fill="#0066cc"/>
+        <text x="6" y="13" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="7" fill="#fff">P</text>
+        <text x="20" y="14" font-family="Arial,sans-serif" font-weight="700" font-size="10" fill="#1a202c">Pakistan</text>
+        <text x="160" y="14" font-family="monospace" font-weight="700" font-size="10" fill="#1a202c">PKR 14,28,500</text>
+        <text x="290" y="14" font-family="monospace" font-weight="700" font-size="10" fill="#27c93f">$5,114</text>
+        <text x="420" y="14" text-anchor="end" font-family="monospace" font-size="9" fill="#666">279.34</text>
+      </g>
+      <line x1="0" y1="34" x2="420" y2="34" stroke="#f5f7fa" stroke-width="1"/>
+      <g transform="translate(0,40)">
+        <circle cx="6" cy="10" r="6" fill="#0AA64D"/>
+        <text x="6" y="13" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="7" fill="#fff">U</text>
+        <text x="20" y="14" font-family="Arial,sans-serif" font-weight="700" font-size="10" fill="#1a202c">UAE Dubai</text>
+        <text x="160" y="14" font-family="monospace" font-weight="700" font-size="10" fill="#1a202c">AED 32,400</text>
+        <text x="290" y="14" font-family="monospace" font-weight="700" font-size="10" fill="#27c93f">$8,820</text>
+        <text x="420" y="14" text-anchor="end" font-family="monospace" font-size="9" fill="#666">3.673</text>
+      </g>
+      <line x1="0" y1="58" x2="420" y2="58" stroke="#f5f7fa" stroke-width="1"/>
+      <g transform="translate(0,64)">
+        <circle cx="6" cy="10" r="6" fill="#FF8008"/>
+        <text x="6" y="13" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="7" fill="#fff">U</text>
+        <text x="20" y="14" font-family="Arial,sans-serif" font-weight="700" font-size="10" fill="#1a202c">UK London</text>
+        <text x="160" y="14" font-family="monospace" font-weight="700" font-size="10" fill="#1a202c">GBP 6,950</text>
+        <text x="290" y="14" font-family="monospace" font-weight="700" font-size="10" fill="#27c93f">$8,772</text>
+        <text x="420" y="14" text-anchor="end" font-family="monospace" font-size="9" fill="#666">1.262</text>
+      </g>
+      <line x1="0" y1="82" x2="420" y2="82" stroke="#f5f7fa" stroke-width="1"/>
+      <g transform="translate(0,88)">
+        <circle cx="6" cy="10" r="6" fill="#cba6f7"/>
+        <text x="6" y="13" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="7" fill="#fff">E</text>
+        <text x="20" y="14" font-family="Arial,sans-serif" font-weight="700" font-size="10" fill="#1a202c">Germany</text>
+        <text x="160" y="14" font-family="monospace" font-weight="700" font-size="10" fill="#1a202c">EUR 7,200</text>
+        <text x="290" y="14" font-family="monospace" font-weight="700" font-size="10" fill="#27c93f">$7,851</text>
+        <text x="420" y="14" text-anchor="end" font-family="monospace" font-size="9" fill="#666">1.090</text>
+      </g>
+      <line x1="0" y1="108" x2="420" y2="108" stroke="#003d7a" stroke-width="1.5"/>
+      <g transform="translate(0,114)">
+        <text x="0" y="14" font-family="Arial,sans-serif" font-weight="900" font-size="11" fill="#1a202c">CONSOLIDATED TOTAL</text>
+        <text x="290" y="14" font-family="monospace" font-weight="900" font-size="13" fill="#003d7a">$30,557 USD</text>
+        <text x="420" y="14" text-anchor="end" font-family="Arial,sans-serif" font-weight="700" font-size="9" fill="#27c93f">▲ +12%</text>
+      </g>
+    </g>
+    <!-- Speed comparison -->
+    <g transform="translate(20,196)">
+      <rect x="0" y="0" width="420" height="22" rx="11" fill="rgba(0,102,204,0.08)"/>
+      <text x="12" y="15" font-family="Arial,sans-serif" font-weight="800" font-size="9" fill="#666">MONTH-END CLOSE:</text>
+      <text x="160" y="15" font-family="Arial,sans-serif" font-weight="800" font-size="9" fill="#999" text-decoration="line-through">5 days</text>
+      <text x="200" y="15" font-family="Arial,sans-serif" font-weight="900" font-size="9" fill="#27c93f">→ 1 day  ▼ 80%</text>
     </g>
   </g>
-  <text x="300" y="260" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="26" fill="white">Multi-Currency Accounting</text>
-  <text x="300" y="290" text-anchor="middle" font-family="Arial,sans-serif" font-weight="400" font-size="14" fill="rgba(255,255,255,0.7)">4 Branches • Auto Exchange Rates</text>
-  <g transform="translate(125,310)">
-    <rect x="0" y="0" width="80" height="28" rx="14" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-    <text x="40" y="18" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="rgba(255,255,255,0.9)">Odoo 17</text>
-    <rect x="90" y="0" width="100" height="28" rx="14" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-    <text x="140" y="18" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="rgba(255,255,255,0.9)">PostgreSQL</text>
-    <rect x="200" y="0" width="90" height="28" rx="14" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-    <text x="245" y="18" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="rgba(255,255,255,0.9)">Forex API</text>
+  <g transform="translate(0,295)">
+    <rect x="0" y="0" width="600" height="105" fill="rgba(255,255,255,0.97)"/>
+    <rect x="0" y="0" width="600" height="2" fill="#0066cc"/>
+    <text x="30" y="34" font-family="Arial,sans-serif" font-weight="800" font-size="22" fill="#1a202c">Multi-Currency Accounting</text>
+    <text x="30" y="56" font-family="Arial,sans-serif" font-size="12" fill="#5b6470">Cross-branch accounting with auto FX &amp; reconciliation</text>
+    <g transform="translate(30,68)">
+      <rect x="0" y="0" width="118" height="22" rx="11" fill="#1a202c"/>
+      <text x="59" y="15" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="10" fill="#fbbf24">★ CLIENT PROJECT</text>
+    </g>
+    <g transform="translate(156,68)">
+      <rect x="0" y="0" width="100" height="22" rx="11" fill="rgba(0,102,204,0.15)" stroke="#0066cc" stroke-width="1"/>
+      <text x="50" y="15" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="10" fill="#003d7a">FOREX API</text>
+    </g>
+    <g transform="translate(495,55)">
+      <rect x="0" y="0" width="80" height="36" rx="6" fill="#0066cc"/>
+      <text x="40" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="8" fill="rgba(255,255,255,0.85)">CLOSE</text>
+      <text x="40" y="30" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="11" fill="#fff">5d→1d</text>
+    </g>
   </g>
 </svg>

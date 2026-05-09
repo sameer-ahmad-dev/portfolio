@@ -1356,31 +1356,196 @@ ul { list-style: none; }
 }
 
 .project-card {
+    --card-accent: linear-gradient(135deg, #00d4ff, #7B2FF7);
     border-radius: var(--radius-lg);
     overflow: hidden;
     background: var(--gradient-card);
     border: 1px solid var(--border);
     position: relative;
-    transition: var(--transition);
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.3s ease,
+                box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18);
+    isolation: isolate;
+}
+
+/* Colorful gradient strip at the top of every card — derives from the
+   project's data-gradient via JS so each card carries its own accent colour. */
+.project-card > .project-thumb::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: var(--card-accent);
+    z-index: 5;
+    box-shadow: 0 1px 12px rgba(0, 0, 0, 0.2);
 }
 
 .project-card.hidden {
     display: none;
 }
 
+.project-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, transparent, rgba(0, 212, 255, 0.45), transparent);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 3;
+}
+
 .project-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-10px);
     border-color: var(--border-hover);
-    box-shadow: var(--shadow-glow);
+    box-shadow:
+        0 18px 40px -12px rgba(0, 0, 0, 0.55),
+        0 0 0 1px rgba(0, 212, 255, 0.25),
+        0 0 32px -4px rgba(0, 212, 255, 0.35);
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+/* Featured (Odoo Store) cards */
+.project-card.featured {
+    border-color: rgba(0, 212, 255, 0.25);
+    box-shadow:
+        0 6px 24px rgba(0, 0, 0, 0.22),
+        0 0 0 1px rgba(0, 212, 255, 0.15);
+}
+
+.project-card.featured:hover {
+    box-shadow:
+        0 22px 48px -12px rgba(0, 0, 0, 0.6),
+        0 0 0 1px rgba(0, 212, 255, 0.4),
+        0 0 38px -2px rgba(0, 212, 255, 0.45);
+}
+
+.project-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 4;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: #fff;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.35));
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.project-badge i {
+    font-size: 0.75rem;
+    color: var(--accent-cyan);
+}
+
+.project-badge.badge-client {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.35));
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.project-badge.badge-client i {
+    color: #fbbf24;
+}
+
+/* Direct-to-store pill button (bottom of card-info) — always visible on Odoo Store cards */
+.card-store-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 11px 18px;
+    width: 100%;
+    border-radius: 50px;
+    color: #fff;
+    text-decoration: none;
+    font-family: var(--font-main);
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    background: linear-gradient(135deg, #00d4ff 0%, #7B2FF7 100%);
+    box-shadow:
+        0 6px 20px rgba(0, 212, 255, 0.35),
+        0 0 0 1px rgba(255, 255, 255, 0.12) inset;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+    position: relative;
+    z-index: 4;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.card-store-link::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.25) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-store-link i {
+    font-size: 0.85rem;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.card-store-link span {
+    position: relative;
+    z-index: 1;
+}
+
+.card-store-link:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 12px 28px rgba(0, 212, 255, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.25) inset;
+}
+
+.card-store-link:hover::before {
+    transform: translateX(100%);
+}
+
+.card-store-link:hover i.fa-arrow-right {
+    transform: translateX(4px);
 }
 
 .project-thumb {
-    height: 220px;
+    aspect-ratio: 3 / 2;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    background-color: #0a0e1a;
+    background-size: cover !important;
+    background-position: center !important;
+}
+
+.project-card:hover .project-thumb {
+    transform: scale(1.05);
 }
 
 .project-thumb i {
@@ -1394,7 +1559,8 @@ ul { list-style: none; }
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.4) 100%);
+    background: linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, 0.55) 100%);
+    pointer-events: none;
 }
 
 .project-overlay {
@@ -1402,13 +1568,17 @@ ul { list-style: none; }
     top: 0;
     left: 0;
     width: 100%;
-    height: 220px;
-    background: rgba(10, 14, 26, 0.85);
+    aspect-ratio: 3 / 2;
+    background:
+        radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.18), transparent 60%),
+        rgba(10, 14, 26, 0.82);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
-    transition: var(--transition);
+    transition: opacity 0.4s ease;
     z-index: 2;
 }
 
@@ -1469,6 +1639,167 @@ ul { list-style: none; }
     font-size: 0.9rem;
     color: var(--text-secondary);
     line-height: 1.5;
+}
+
+.project-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.08);
+    font-size: 0.78rem;
+}
+
+.meta-price {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-weight: 700;
+    color: var(--accent-cyan);
+    background: rgba(0, 212, 255, 0.08);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.meta-price i {
+    font-size: 0.7rem;
+}
+
+.meta-impact {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-weight: 600;
+    color: #fbbf24;
+    background: rgba(251, 191, 36, 0.08);
+    border: 1px solid rgba(251, 191, 36, 0.22);
+}
+
+.meta-impact i {
+    font-size: 0.7rem;
+}
+
+.meta-version {
+    font-family: 'Courier New', monospace;
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    opacity: 0.75;
+    letter-spacing: 0.3px;
+}
+
+/* Green theme variant for meta */
+body.green-theme .meta-price {
+    color: #10b981;
+    background: rgba(16, 185, 129, 0.08);
+    border-color: rgba(16, 185, 129, 0.25);
+}
+
+body.green-theme .project-card.featured {
+    border-color: rgba(16, 185, 129, 0.25);
+}
+
+body.green-theme .project-badge i {
+    color: #10b981;
+}
+
+body.green-theme .project-badge.badge-client i {
+    color: #fbbf24;
+}
+
+body.green-theme .meta-impact {
+    color: #f59e0b;
+    background: rgba(245, 158, 11, 0.08);
+    border-color: rgba(245, 158, 11, 0.25);
+}
+
+body.green-theme .card-store-link {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.95), rgba(5, 150, 105, 0.95));
+    box-shadow:
+        0 6px 18px rgba(16, 185, 129, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+}
+
+/* === Modal CTA: View on Odoo Apps Store === */
+.modal-store-cta[hidden] {
+    display: none !important;
+}
+
+.modal-store-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 24px;
+    padding: 14px 22px;
+    border-radius: 14px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    background: linear-gradient(135deg, #00d4ff 0%, #7B2FF7 100%);
+    box-shadow:
+        0 8px 24px rgba(0, 212, 255, 0.35),
+        0 0 0 1px rgba(255, 255, 255, 0.12) inset;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.modal-store-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.25) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-store-cta:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 12px 32px rgba(0, 212, 255, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+}
+
+.modal-store-cta:hover::before {
+    transform: translateX(100%);
+}
+
+.modal-store-cta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.modal-store-cta > i {
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.modal-store-cta:hover > i {
+    transform: translateX(4px);
+}
+
+body.green-theme .modal-store-cta {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    box-shadow:
+        0 8px 24px rgba(16, 185, 129, 0.35),
+        0 0 0 1px rgba(255, 255, 255, 0.12) inset;
+}
+
+body.green-theme .modal-store-cta:hover {
+    box-shadow:
+        0 12px 32px rgba(16, 185, 129, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.2) inset;
 }
 
 /* Project Modal / Lightbox */

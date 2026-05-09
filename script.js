@@ -387,6 +387,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Apply each card's gradient as a CSS variable so the colorful accent strip
+    // can use it without per-card inline styles. Also inject a clearly-visible
+    // "View on Odoo Store" pill into store cards.
+    projectCards.forEach(card => {
+        const btn = card.querySelector('.project-view-btn');
+        if (!btn) return;
+        const gradient = btn.getAttribute('data-gradient');
+        const storeUrl = btn.getAttribute('data-store-url');
+        if (gradient) card.style.setProperty('--card-accent', gradient);
+        if (storeUrl) {
+            card.classList.add('has-store-link');
+            const info = card.querySelector('.project-info');
+            if (info) {
+                const storeLink = document.createElement('a');
+                storeLink.className = 'card-store-link';
+                storeLink.href = storeUrl;
+                storeLink.target = '_blank';
+                storeLink.rel = 'noopener noreferrer';
+                storeLink.setAttribute('aria-label', 'View on Odoo Apps Store');
+                storeLink.innerHTML = '<i class="fas fa-store"></i><span>View on Odoo Apps Store</span><i class="fas fa-arrow-right"></i>';
+                info.appendChild(storeLink);
+            }
+        }
+    });
+
     // Lightbox modal
     document.querySelectorAll('.project-view-btn').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -395,6 +420,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const tech = btn.getAttribute('data-tech');
             const gradient = btn.getAttribute('data-gradient');
             const icon = btn.getAttribute('data-icon');
+            const storeUrl = btn.getAttribute('data-store-url');
 
             document.getElementById('modalThumb').style.background = gradient;
             document.getElementById('modalIcon').className = icon;
@@ -415,6 +441,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 tag.textContent = t.trim();
                 techContainer.appendChild(tag);
             });
+
+            // Show / hide the Odoo Apps Store CTA based on the project type
+            const storeCta = document.getElementById('modalStoreCta');
+            if (storeUrl) {
+                storeCta.href = storeUrl;
+                storeCta.hidden = false;
+            } else {
+                storeCta.removeAttribute('href');
+                storeCta.hidden = true;
+            }
 
             projectModal.classList.add('active');
             document.body.style.overflow = 'hidden';
