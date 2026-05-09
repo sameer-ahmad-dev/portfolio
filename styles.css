@@ -990,39 +990,28 @@ ul { list-style: none; }
    ======================================== */
 .timeline {
     position: relative;
-    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
     margin: 0 auto;
-    padding-left: 40px;
+    padding-left: 0;
 }
 
 .timeline::before {
-    content: '';
-    position: absolute;
-    left: 15px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-purple), transparent);
+    display: none;
 }
 
 .timeline-item {
     position: relative;
-    margin-bottom: 40px;
+    margin-bottom: 0;
+}
+
+.timeline-item:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
 }
 
 .timeline-marker {
-    position: absolute;
-    left: -40px;
-    top: 28px;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: var(--bg-primary);
-    border: 2px solid var(--accent-cyan);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
+    display: none;
 }
 
 .timeline-marker-inner {
@@ -1033,16 +1022,38 @@ ul { list-style: none; }
 }
 
 .timeline-content {
-    padding: 28px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 32px 28px 28px;
     background: var(--gradient-card);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     transition: var(--transition);
+    overflow: hidden;
+}
+
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+    opacity: 0.85;
 }
 
 .timeline-content:hover {
     border-color: var(--border-hover);
     box-shadow: var(--shadow-glow);
+    transform: translateY(-4px);
+}
+
+.timeline-tags {
+    margin-top: auto;
+    padding-top: 8px;
 }
 
 .timeline-badge {
@@ -1134,6 +1145,7 @@ ul { list-style: none; }
 
 /* Education Card */
 .education-card {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 24px;
@@ -1141,9 +1153,20 @@ ul { list-style: none; }
     background: var(--gradient-card);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    max-width: 1000px;
     margin: 0 auto;
     transition: var(--transition);
+    overflow: hidden;
+}
+
+.education-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+    opacity: 0.85;
 }
 
 .education-card:hover {
@@ -1183,7 +1206,6 @@ ul { list-style: none; }
     flex-wrap: wrap;
     justify-content: center;
     gap: 12px;
-    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -2651,22 +2673,8 @@ body.green-theme .modal-store-cta:hover {
     }
 
     .timeline {
-        padding-left: 30px;
-    }
-
-    .timeline::before {
-        left: 10px;
-    }
-
-    .timeline-marker {
-        left: -30px;
-        width: 24px;
-        height: 24px;
-    }
-
-    .timeline-marker-inner {
-        width: 8px;
-        height: 8px;
+        grid-template-columns: 1fr;
+        gap: 24px;
     }
 
     .footer-content {
