@@ -1171,4 +1171,135 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ========================================
+    // MOTION LAYER — progress bar, title reveals,
+    // magnetic buttons, ripples, tilt, hero parallax
+    // ========================================
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    // Scroll progress bar
+    const progressBar = document.createElement('div');
+    progressBar.className = 'scroll-progress';
+    document.body.appendChild(progressBar);
+    const updateProgress = () => {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        progressBar.style.transform = `scaleX(${max > 0 ? window.scrollY / max : 0})`;
+    };
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    // Split section titles into words that slide up in sequence
+    document.querySelectorAll('.section-title').forEach(title => {
+        const parts = [];
+        title.childNodes.forEach(node => {
+            if (node.nodeType === Node.TEXT_NODE) {
+                node.textContent.split(/(\s+)/).forEach(chunk => {
+                    if (chunk.trim()) parts.push(document.createTextNode(chunk));
+                });
+            } else {
+                parts.push(node);
+            }
+        });
+        title.textContent = '';
+        parts.forEach((part, i) => {
+            const word = document.createElement('span');
+            word.className = 'reveal-word';
+            const inner = document.createElement('span');
+            inner.className = 'reveal-word-inner';
+            inner.style.transitionDelay = `${i * 90}ms`;
+            inner.appendChild(part);
+            word.appendChild(inner);
+            title.appendChild(word);
+            if (i < parts.length - 1) title.appendChild(document.createTextNode(' '));
+        });
+    });
+
+    const titleObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-revealed');
+                titleObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.4 });
+    document.querySelectorAll('.section-title, .section-header').forEach(el => titleObserver.observe(el));
+
+    // Stagger project cards as the grid comes into view
+    document.querySelectorAll('.projects-grid .project-card').forEach((card, i) => {
+        card.style.setProperty('--i', i % 12);
+    });
+
+    // Ripple on button click
+    document.querySelectorAll('.btn, .nav-cta, .gh-profile-cta, .filter-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            if (prefersReducedMotion) return;
+            const rect = btn.getBoundingClientRect();
+            const ripple = document.createElement('span');
+            const size = Math.max(rect.width, rect.height) * 2;
+            ripple.className = 'btn-ripple';
+            ripple.style.width = ripple.style.height = `${size}px`;
+            ripple.style.left = `${e.clientX - rect.left - size / 2}px`;
+            ripple.style.top = `${e.clientY - rect.top - size / 2}px`;
+            btn.appendChild(ripple);
+            ripple.addEventListener('animationend', () => ripple.remove());
+        });
+    });
+
+    if (!prefersReducedMotion && canHover) {
+        // Magnetic buttons — uses the `translate` property so existing hover transforms still apply
+        document.querySelectorAll('.btn, .nav-cta, .gh-profile-cta, .testimonial-btn, .social-link, .social-circle').forEach(el => {
+            el.classList.add('is-magnetic');
+            el.addEventListener('pointermove', (e) => {
+                const r = el.getBoundingClientRect();
+                const dx = e.clientX - (r.left + r.width / 2);
+                const dy = e.clientY - (r.top + r.height / 2);
+                el.style.translate = `${dx * 0.25}px ${dy * 0.3}px`;
+            });
+            el.addEventListener('pointerleave', () => { el.style.translate = '0 0'; });
+        });
+
+        // 3D tilt with a moving light glare
+        document.querySelectorAll('.skill-category, .testimonial-card, .gh-stat-card').forEach(card => {
+            card.classList.add('tilt-card');
+            const glare = document.createElement('span');
+            glare.className = 'tilt-glare';
+            card.appendChild(glare);
+            card.addEventListener('pointermove', (e) => {
+                const r = card.getBoundingClientRect();
+                const px = (e.clientX - r.left) / r.width;
+                const py = (e.clientY - r.top) / r.height;
+                card.style.setProperty('--rx', `${(0.5 - py) * 8}deg`);
+                card.style.setProperty('--ry', `${(px - 0.5) * 10}deg`);
+                card.style.setProperty('--gx', `${px * 100}%`);
+                card.style.setProperty('--gy', `${py * 100}%`);
+            });
+            card.addEventListener('pointerleave', () => {
+                card.style.setProperty('--rx', '0deg');
+                card.style.setProperty('--ry', '0deg');
+            });
+        });
+
+        // Hero image & floating badges follow the mouse at different depths
+        const hero = document.getElementById('hero');
+        const heroWrap = document.querySelector('.hero-image-wrapper');
+        const badges = document.querySelectorAll('.floating-badge');
+        if (hero && heroWrap) {
+            hero.addEventListener('pointermove', (e) => {
+                const r = hero.getBoundingClientRect();
+                const nx = (e.clientX - r.left) / r.width - 0.5;
+                const ny = (e.clientY - r.top) / r.height - 0.5;
+                heroWrap.style.translate = `${nx * 18}px ${ny * 18}px`;
+                badges.forEach((b, i) => {
+                    const depth = 30 + i * 12;
+                    b.style.translate = `${nx * -depth}px ${ny * -depth}px`;
+                });
+            });
+            hero.addEventListener('pointerleave', () => {
+                heroWrap.style.translate = '0 0';
+                badges.forEach(b => { b.style.translate = '0 0'; });
+            });
+        }
+    }
+
 });

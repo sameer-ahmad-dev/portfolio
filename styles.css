@@ -3928,3 +3928,180 @@ body.green-theme .logo-highlight {
     .trusted-marquee-track { animation: none; flex-wrap: wrap; justify-content: center; width: auto; }
     .trusted-marquee-track span[aria-hidden="true"] { display: none; }
 }
+
+/* ========================================
+   MOTION LAYER
+   ======================================== */
+
+/* Scroll progress bar */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    z-index: 10001;
+    box-shadow: 0 0 12px color-mix(in srgb, var(--accent-cyan) 60%, transparent);
+    pointer-events: none;
+}
+
+/* Flowing gradient on highlighted words */
+.gradient-text,
+body.green-theme .gradient-text {
+    background-size: 200% auto;
+    animation: gradientFlow 6s ease-in-out infinite alternate;
+}
+
+@keyframes gradientFlow {
+    from { background-position: 0% 50%; }
+    to   { background-position: 100% 50%; }
+}
+
+/* Softer, blur-in scroll reveals */
+[data-aos].aos-animate { animation: aosBlurIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) backwards; }
+.hero-badge[data-aos].aos-animate { animation: aosBlurIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) backwards, pulse-badge 2s ease-in-out 0.9s infinite; }
+
+@keyframes aosBlurIn {
+    from { filter: blur(6px); }
+    to   { filter: blur(0); }
+}
+
+/* Section titles — words slide up from a mask */
+.reveal-word {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+    padding-bottom: 0.08em;
+}
+
+.reveal-word-inner {
+    display: inline-block;
+    transform: translateY(105%);
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.section-title.is-revealed .reveal-word-inner { transform: translateY(0); }
+
+/* Accent line draws under each section title */
+.section-header .section-title::after {
+    content: '';
+    display: block;
+    width: 64px;
+    height: 3px;
+    margin: 14px auto 0;
+    border-radius: 3px;
+    background: var(--gradient-accent);
+    transform: scaleX(0);
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.35s;
+}
+
+.section-header .section-title.is-revealed::after { transform: scaleX(1); }
+
+/* Section tag — periodic light sweep */
+.section-tag {
+    position: relative;
+    overflow: hidden;
+}
+
+.section-tag::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+    transform: skewX(-20deg);
+    animation: tagSweep 4.5s ease-in-out infinite;
+}
+
+@keyframes tagSweep {
+    0%, 60% { left: -60%; }
+    100%    { left: 130%; }
+}
+
+/* Magnetic elements ease back smoothly */
+.is-magnetic {
+    transition: translate 0.35s cubic-bezier(0.22, 1, 0.36, 1), var(--transition);
+}
+
+.btn.is-magnetic,
+.nav-cta.is-magnetic { transition: translate 0.35s cubic-bezier(0.22, 1, 0.36, 1), transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease; }
+
+/* Click ripple */
+.nav-cta, .gh-profile-cta, .filter-btn { position: relative; overflow: hidden; }
+
+.btn-ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.35);
+    transform: scale(0);
+    animation: rippleOut 0.65s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes rippleOut {
+    to { transform: scale(1); opacity: 0; }
+}
+
+/* 3D tilt + glare */
+.tilt-card {
+    position: relative;
+    transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+    will-change: transform;
+}
+
+.gh-stat-card.tilt-card:hover {
+    transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-6px);
+}
+
+.tilt-glare {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 255, 255, 0.08), transparent 55%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.tilt-card:hover .tilt-glare { opacity: 1; }
+
+.skill-category.tilt-card { overflow: hidden; }
+
+/* Hero parallax easing */
+.hero-image-wrapper,
+.floating-badge { transition: translate 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+
+/* Project cards pop in one by one */
+.projects-grid.aos-animate .project-card {
+    animation: cardPopIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--i, 0) * 70ms) backwards;
+}
+
+@keyframes cardPopIn {
+    from { opacity: 0; transform: translateY(40px) scale(0.96); }
+    to   { opacity: 1; transform: none; }
+}
+
+/* Hero photo — slow breathing glow */
+.hero-photo { animation: photoGlow 5s ease-in-out infinite; }
+
+@keyframes photoGlow {
+    0%, 100% { box-shadow: var(--shadow-lg), 0 0 0 0 color-mix(in srgb, var(--accent-cyan) 0%, transparent); }
+    50%      { box-shadow: var(--shadow-lg), 0 0 60px 4px color-mix(in srgb, var(--accent-cyan) 25%, transparent); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .gradient-text,
+    .section-tag::after,
+    .hero-photo,
+    .projects-grid.aos-animate .project-card { animation: none !important; }
+    [data-aos].aos-animate { animation: none; }
+    .reveal-word-inner { transform: none; transition: none; }
+    .section-header .section-title::after { transform: scaleX(1); transition: none; }
+}
