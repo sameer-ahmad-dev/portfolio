@@ -447,11 +447,20 @@
                     <div class="gh-panel-title">
                         <div class="gh-panel-title-icon"><i class="fas fa-chart-area"></i></div>
                         <div class="gh-panel-title-text">
-                            <h3>Contribution Heatmap</h3>
+                            <h3>Contribution Heatmap <span class="gh-live-pill"><span class="gh-live-dot"></span> Live</span></h3>
                             <p>Daily commit activity for <a href="https://github.com/sameer-ahmad-dev" target="_blank" rel="noopener" class="gh-username">@sameer-ahmad-dev</a></p>
                         </div>
                     </div>
-                    <div class="gh-year-tabs" id="ghYearTabs"></div>
+                    <div class="gh-year-tabs" id="ghYearTabs" role="tablist" aria-label="Select year">
+                        <span class="gh-year-indicator" aria-hidden="true"></span>
+                    </div>
+                </div>
+
+                <div class="gh-heatmap-summary">
+                    <span class="gh-summary-total"><strong id="ghHeatTotal">—</strong> contributions in <span id="ghHeatYear">—</span></span>
+                    <span class="gh-summary-sep"></span>
+                    <span class="gh-summary-meta"><i class="fas fa-calendar-day"></i> <strong id="ghActiveDays">—</strong> active days</span>
+                    <span class="gh-summary-meta"><i class="fas fa-percent"></i> <strong id="ghConsistency">—</strong> consistency</span>
                 </div>
 
                 <div class="gh-heatmap-wrap">
@@ -1423,7 +1432,7 @@
                             </div>
                             <div>
                                 <h4>Call Me</h4>
-                                <a href="tel:+92176709372">+92 176 709 372</a>
+                                <a href="tel:+923176709372">+92 317 6709372</a>
                             </div>
                         </div>
                         <div class="contact-info-item">

@@ -675,18 +675,65 @@ document.addEventListener('DOMContentLoaded', () => {
         const startYear = 2022;
         const years = [];
         for (let y = currentYear; y >= startYear; y--) years.push(y);
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // Smoothly count a number up from its current value
+        const animateCount = (el, to, { decimals = 0, suffix = '', duration = 1100 } = {}) => {
+            if (!el) return;
+            const from = parseFloat(el.dataset.value) || 0;
+            el.dataset.value = to;
+            const fmt = v => Number(v).toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals }) + suffix;
+            if (reduceMotion) { el.textContent = fmt(to); return; }
+            const start = performance.now();
+            const tick = (now) => {
+                const t = Math.min(1, (now - start) / duration);
+                const eased = 1 - Math.pow(1 - t, 4);
+                el.textContent = fmt(from + (to - from) * eased);
+                if (t < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+        };
+
+        // Sliding pill behind the active year tab
+        const yearIndicator = ghYearTabs.querySelector('.gh-year-indicator');
+        const moveIndicator = () => {
+            const active = ghYearTabs.querySelector('.gh-year-tab.active');
+            if (!active || !yearIndicator) return;
+            yearIndicator.style.width = active.offsetWidth + 'px';
+            yearIndicator.style.height = active.offsetHeight + 'px';
+            yearIndicator.style.transform = `translate(${active.offsetLeft}px, ${active.offsetTop}px)`;
+            yearIndicator.classList.add('ready');
+        };
+        window.addEventListener('resize', moveIndicator);
 
         years.forEach((y, idx) => {
             const btn = document.createElement('button');
             btn.className = 'gh-year-tab' + (idx === 0 ? ' active' : '');
             btn.textContent = y;
             btn.dataset.year = y;
+            btn.setAttribute('role', 'tab');
+            btn.setAttribute('aria-selected', idx === 0 ? 'true' : 'false');
             btn.addEventListener('click', () => {
-                document.querySelectorAll('.gh-year-tab').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.gh-year-tab').forEach(b => {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-selected', 'false');
+                });
                 btn.classList.add('active');
+                btn.setAttribute('aria-selected', 'true');
+                moveIndicator();
                 loadContributions(y);
             });
             ghYearTabs.appendChild(btn);
+        });
+        requestAnimationFrame(moveIndicator);
+
+        // Cursor-following spotlight on stat & insight cards
+        document.querySelectorAll('.gh-stat-card, .gh-insight-card, .gh-panel').forEach(card => {
+            card.addEventListener('pointermove', (e) => {
+                const r = card.getBoundingClientRect();
+                card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+                card.style.setProperty('--my', `${e.clientY - r.top}px`);
+            });
         });
 
         // ===== Tooltip =====
@@ -699,6 +746,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             ghTooltip.innerHTML = html;
             ghTooltip.style.display = 'block';
+            ghTooltip.classList.remove('show');
+            void ghTooltip.offsetWidth;
+            ghTooltip.classList.add('show');
             const rect = target.getBoundingClientRect();
             const tipRect = ghTooltip.getBoundingClientRect();
             let left = rect.left + rect.width / 2 - tipRect.width / 2;
@@ -740,6 +790,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 cell.dataset.date = c.date;
                 cell.style.gridColumn = (weekIdx + 1);
                 cell.style.gridRow = (dayOfWeek + 1);
+                cell.style.setProperty('--d', `${weekIdx * 12 + dayOfWeek * 18}ms`);
                 cell.addEventListener('mouseenter', () => {
                     const dateObj = new Date(c.date);
                     const dateStr = dateObj.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
@@ -756,6 +807,11 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             ghCalendarBody.appendChild(heatmap);
+            requestAnimationFrame(() => heatmap.classList.add('is-revealed'));
+
+            // On the current year, bring the most recent weeks into view on narrow screens
+            const scroller = ghCalendarBody.closest('.gh-heatmap-scroll');
+            if (scroller) scroller.scrollLeft = year === currentYear ? scroller.scrollWidth : 0;
 
             // Render month labels — show each month label at its first week column
             if (monthLabelEl) {
@@ -778,9 +834,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const totalEl = document.getElementById('ghTotalContrib');
             const yearLabelEl = document.getElementById('ghContribYear');
             const monthlyYearEl = document.getElementById('ghMonthlyYear');
-            if (totalEl) totalEl.textContent = total.toLocaleString();
+            animateCount(totalEl, total);
+            animateCount(document.getElementById('ghHeatTotal'), total);
             if (yearLabelEl) yearLabelEl.textContent = `in ${year}`;
             if (monthlyYearEl) monthlyYearEl.textContent = year;
+            const heatYearEl = document.getElementById('ghHeatYear');
+            if (heatYearEl) heatYearEl.textContent = year;
+
+            const today = new Date();
+            const elapsed = contributions.filter(c => new Date(c.date) <= today);
+            const activeDays = elapsed.filter(c => c.count > 0).length;
+            animateCount(document.getElementById('ghActiveDays'), activeDays);
+            animateCount(document.getElementById('ghConsistency'),
+                elapsed.length ? Math.round((activeDays / elapsed.length) * 100) : 0, { suffix: '%' });
 
             renderSparkline(contributions);
             renderMonthlyChart(contributions, year);
@@ -816,8 +882,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         <stop offset="100%" stop-color="var(--accent-cyan)" stop-opacity="0"/>
                     </linearGradient>
                 </defs>
-                <path d="${areaPath}" fill="url(#sparkGrad)"/>
-                <path d="${linePath}" fill="none" stroke="var(--accent-cyan)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path class="gh-spark-area" d="${areaPath}" fill="url(#sparkGrad)"/>
+                <path class="gh-spark-line" pathLength="1" d="${linePath}" fill="none" stroke="var(--accent-cyan)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             `;
         };
 
@@ -855,7 +921,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const y = padT + chartH - h;
                 bars += `
                     <g>
-                        <rect class="gh-bar" x="${x}" y="${y}" width="${barW}" height="${h}" rx="3" ry="3"
+                        <rect class="gh-bar-track" x="${x}" y="${padT}" width="${barW}" height="${chartH}" rx="4" ry="4"/>
+                        <rect class="gh-bar" x="${x}" y="${y}" width="${barW}" height="${h}" rx="4" ry="4"
+                              style="animation-delay:${i * 55}ms"
                               fill="url(#barGrad)" data-month="${MONTHS[i]}" data-count="${v}"/>
                         <text class="gh-bar-value" x="${x + barW / 2}" y="${y - 5}" text-anchor="middle">${v}</text>
                         <text class="gh-bar-label" x="${x + barW / 2}" y="${padT + chartH + 18}" text-anchor="middle">${MONTHS[i]}</text>
@@ -954,7 +1022,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (Math.abs(a1 - a0) < 0.001) {
                 return `<circle cx="${x0}" cy="${y0}" r="3" fill="${stroke}" opacity="0.3" ${dataAttrs}/>`;
             }
-            return `<path class="${cls}" d="M ${x0} ${y0} A ${r} ${r} 0 ${large} 1 ${x1} ${y1}" fill="none" stroke="${stroke}" stroke-width="7" stroke-linecap="round" ${dataAttrs}/>`;
+            const draw = isTrack ? '' : `pathLength="1" style="animation-delay:${WEEKDAYS.indexOf(day) * 70}ms"`;
+            return `<path class="${cls}" ${draw} d="M ${x0} ${y0} A ${r} ${r} 0 ${large} 1 ${x1} ${y1}" fill="none" stroke="${stroke}" stroke-width="7" stroke-linecap="round" ${dataAttrs}/>`;
         };
 
         // ===== Insights (streaks, best day, average) =====
@@ -1003,8 +1072,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const elBest = document.getElementById('ghBestDay');
             const elAvg = document.getElementById('ghDailyAvg');
 
-            if (elStreak) elStreak.textContent = `${currentStreak} day${currentStreak === 1 ? '' : 's'}`;
-            if (elLong) elLong.textContent = `${longestStreak} day${longestStreak === 1 ? '' : 's'}`;
+            animateCount(elStreak, currentStreak, { suffix: currentStreak === 1 ? ' day' : ' days' });
+            animateCount(elLong, longestStreak, { suffix: longestStreak === 1 ? ' day' : ' days' });
             if (elBest) {
                 if (best.date) {
                     const d = new Date(best.date);
@@ -1013,7 +1082,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     elBest.textContent = '—';
                 }
             }
-            if (elAvg) elAvg.textContent = `${avg}/day`;
+            animateCount(elAvg, parseFloat(avg), { decimals: 1, suffix: '/day' });
         };
 
         // ===== Fetch contributions =====
@@ -1052,15 +1121,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 const followingMeta = document.getElementById('ghFollowingMeta');
                 const joined = document.getElementById('ghJoined');
 
-                if (repos) repos.textContent = user.public_repos ?? '—';
-                if (followers) followers.textContent = user.followers ?? '—';
+                if (user.public_repos != null) animateCount(repos, user.public_repos);
+                if (user.followers != null) animateCount(followers, user.followers);
                 if (followingMeta && user.following != null) followingMeta.textContent = `Following ${user.following}`;
                 if (reposMeta && user.public_gists != null) reposMeta.textContent = `${user.public_gists} public gists`;
 
                 if (yearsEl && user.created_at) {
                     const created = new Date(user.created_at);
                     const diff = (Date.now() - created.getTime()) / (1000 * 60 * 60 * 24 * 365);
-                    yearsEl.textContent = Math.max(1, Math.floor(diff)) + '+';
+                    animateCount(yearsEl, Math.max(1, Math.floor(diff)), { suffix: '+' });
                     if (joined) {
                         joined.textContent = `Member since ${created.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}`;
                     }
