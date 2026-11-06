@@ -18,9 +18,11 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#hero" class="nav-logo">
-                <span class="logo-icon">S</span>
-                <span class="logo-text">ameer<span class="logo-highlight">.</span></span>
+            <a href="#hero" class="nav-logo" aria-label="Sameer Ahmad">
+                <span class="logo-mark">SA</span>
+                <span class="logo-text">
+                    <span class="logo-letter" style="--i:0">S</span><span class="logo-letter" style="--i:1">a</span><span class="logo-letter" style="--i:2">m</span><span class="logo-letter" style="--i:3">e</span><span class="logo-letter" style="--i:4">e</span><span class="logo-letter" style="--i:5">r</span><span class="logo-spacer">&nbsp;</span><span class="logo-letter gradient-text" style="--i:6">A</span><span class="logo-letter gradient-text" style="--i:7">h</span><span class="logo-letter gradient-text" style="--i:8">m</span><span class="logo-letter gradient-text" style="--i:9">a</span><span class="logo-letter gradient-text" style="--i:10">d</span>
+                </span>
             </a>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#hero" class="nav-link active">Home</a></li>
@@ -49,9 +51,15 @@
     <section class="hero" id="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <div class="hero-badge" data-aos="fade-down">
-                    <span class="badge-dot"></span>
-                    Available for Freelance Projects
+                <div class="hero-badges-wrapper" data-aos="fade-down">
+                    <div class="hero-badge">
+                        <span class="badge-dot"></span>
+                        Available for Global Remote & Enterprise Roles
+                    </div>
+                    <div class="hero-partner-badge">
+                        <i class="fas fa-award"></i>
+                        <span>Odoo Silver Partner Experience</span>
+                    </div>
                 </div>
                 <h1 class="hero-title" data-aos="fade-up">
                     Hi, I'm <span class="gradient-text">Sameer Ahmad</span>
@@ -62,9 +70,7 @@
                     <span class="typewriter-cursor">|</span>
                 </div>
                 <p class="hero-description" data-aos="fade-up">
-                    Odoo Developer & AI Engineer crafting intelligent business solutions.
-                    I transform complex challenges into streamlined, automated systems that
-                    drive growth and efficiency.
+                    Senior <strong>Odoo ERP Technical Developer & AI Engineer</strong> with 3+ years of experience delivering <strong>10+ full-scale ERP implementations</strong>, enterprise migrations (v10–v19), government tax compliance APIs (PRA, FBR, SRB, Flooss), and scalable cloud DevOps.
                 </p>
                 <div class="hero-actions" data-aos="fade-up">
                     <a href="#contact" class="btn btn-primary">
@@ -72,7 +78,7 @@
                         <i class="fas fa-arrow-right"></i>
                     </a>
                     <a href="Sameer Ahamd.pdf" download class="btn btn-outline">
-                        <i class="fas fa-download"></i>
+                        <i class="fas fa-file-arrow-down"></i>
                         <span>Download CV</span>
                     </a>
                 </div>
@@ -81,20 +87,22 @@
                         <span class="stat-number" data-count="3">0</span><span class="stat-plus">+</span>
                         <span class="stat-label">Years Experience</span>
                     </div>
-                    <div class="stat-divider"></div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-count="50">0</span><span class="stat-plus">+</span>
-                        <span class="stat-label">Projects Delivered</span>
+                    <div class="stat-item highlight-stat">
+                        <span class="stat-number" data-count="10">0</span><span class="stat-plus">+</span>
+                        <span class="stat-label">ERP Implementations</span>
                     </div>
-                    <div class="stat-divider"></div>
                     <div class="stat-item">
-                        <span class="stat-number" data-count="30">0</span><span class="stat-plus">+</span>
-                        <span class="stat-label">Happy Clients</span>
+                        <span class="stat-number" data-count="15">0</span><span class="stat-plus">+</span>
+                        <span class="stat-label">Custom Modules & Apps</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="6">0</span><span class="stat-plus">+</span>
+                        <span class="stat-label">Global Client Regions</span>
                     </div>
                 </div>
                 <div class="hero-reach" data-aos="fade-up">
                     <i class="fas fa-earth-americas"></i>
-                    <span>Delivering Odoo solutions for clients in</span>
+                    <span>Delivering enterprise ERP solutions across</span>
                     <span class="hero-reach-flags" aria-label="USA, Canada, East Africa, Saudi Arabia, Sri Lanka, Pakistan">🇺🇸 🇨🇦 🌍 🇸🇦 🇱🇰 🇵🇰</span>
                 </div>
             </div>
@@ -106,16 +114,16 @@
                     <div class="hero-image-dots"></div>
                 </div>
                 <!-- Floating Tech Badges -->
-                <div class="floating-badge badge-1">
+                <div class="floating-badge badge-1" title="Python 3 / Odoo ORM">
                     <i class="fab fa-python"></i>
                 </div>
-                <div class="floating-badge badge-2">
+                <div class="floating-badge badge-2" title="AI & NLP Automation">
                     <i class="fas fa-brain"></i>
                 </div>
-                <div class="floating-badge badge-3">
+                <div class="floating-badge badge-3" title="PostgreSQL Database">
                     <i class="fas fa-database"></i>
                 </div>
-                <div class="floating-badge badge-4">
+                <div class="floating-badge badge-4" title="JavaScript & Odoo OWL">
                     <i class="fab fa-js-square"></i>
                 </div>
             </div>
@@ -130,27 +138,61 @@
         </div>
     </section>
 
+    <!-- Executive Highlights Strip -->
+    <div class="executive-strip" data-aos="fade-up">
+        <div class="container">
+            <div class="executive-grid">
+                <div class="exec-card">
+                    <div class="exec-icon"><i class="fas fa-server"></i></div>
+                    <div class="exec-info">
+                        <strong>10+ ERP Implementations</strong>
+                        <span>Core Accounting, Sales, Inventory & POS</span>
+                    </div>
+                </div>
+                <div class="exec-card">
+                    <div class="exec-icon"><i class="fas fa-code-compare"></i></div>
+                    <div class="exec-info">
+                        <strong>v10 → v19 Migrations</strong>
+                        <span>Seamless upgrades with zero data loss</span>
+                    </div>
+                </div>
+                <div class="exec-card">
+                    <div class="exec-icon"><i class="fas fa-shield-halved"></i></div>
+                    <div class="exec-info">
+                        <strong>Govt Tax Compliance</strong>
+                        <span>PRA, FBR, SRB & Flooss API automations</span>
+                    </div>
+                </div>
+                <div class="exec-card">
+                    <div class="exec-icon"><i class="fas fa-cloud"></i></div>
+                    <div class="exec-info">
+                        <strong>DevOps & Self-Hosting</strong>
+                        <span>DigitalOcean, Hostinger, Nginx & Odoo.sh</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- About Section -->
     <section class="about section" id="about">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <span class="section-tag"><i class="fas fa-user"></i> Get To Know Me</span>
+                <span class="section-tag"><i class="fas fa-user-tie"></i> Executive Profile</span>
                 <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+                <p class="section-subtitle">Odoo ERP Technical Developer & AI Engineer delivering business-critical software worldwide</p>
             </div>
             <div class="about-grid">
                 <div class="about-content" data-aos="fade-right">
-                    <h3 class="about-subtitle">Turning Ideas Into Powerful Digital Solutions</h3>
+                    <h3 class="about-subtitle">Architecting High-Performance ERP Systems & Intelligent AI Pipelines</h3>
                     <p class="about-text">
-                        I'm a passionate <strong>Odoo Developer & AI Engineer</strong> with extensive experience
-                        in customizing, configuring, and developing Odoo modules to enhance business processes.
-                        I specialize in building custom Odoo apps, integrating third-party applications, and
-                        managing seamless migrations.
+                        I'm an <strong>Odoo ERP Technical Developer & AI Engineer</strong> with <strong>3+ years of production experience</strong> delivering end-to-end ERP implementations &mdash; from requirement analysis and business process mapping through custom module development (Python, Odoo ORM, QWeb, XML, JavaScript), third-party API integration, and production deployment.
                     </p>
                     <p class="about-text">
-                        Additionally, I'm proficient in <strong>AI development</strong>, leveraging machine learning
-                        and natural language processing techniques to design innovative solutions for complex
-                        business challenges. My goal is to help businesses automate, optimize, and scale with
-                        cutting-edge technology.
+                        With a proven track record of <strong>10+ full-scale ERP implementations</strong>, I specialize in core module customization (Accounting, Sales, Purchase, Inventory, POS), government tax and fintech compliance APIs (<strong>PRA, FBR, SRB, Flooss</strong>), and executing seamless version migrations from <strong>v10 through v19</strong> with zero data loss.
+                    </p>
+                    <p class="about-text">
+                        On the infrastructure and AI front, I manage self-hosted Odoo environments on <strong>DigitalOcean, Hostinger VPS, CloudPepper, and Odoo.sh</strong> with robust Nginx, SSL, and CI/CD pipelines, while developing predictive machine learning models and <strong>OpenAI API automations</strong>.
                     </p>
                     <div class="about-info-grid">
                         <div class="about-info-item">
@@ -161,35 +203,38 @@
                             </div>
                         </div>
                         <div class="about-info-item">
+                            <i class="fas fa-server"></i>
+                            <div>
+                                <span class="info-label">Track Record</span>
+                                <span class="info-value">10+ ERP Implementations</span>
+                            </div>
+                        </div>
+                        <div class="about-info-item">
                             <i class="fas fa-map-marker-alt"></i>
                             <div>
                                 <span class="info-label">Location</span>
-                                <span class="info-value">Lahore, Pakistan</span>
+                                <span class="info-value">Lahore, PK (Open Worldwide)</span>
                             </div>
                         </div>
                         <div class="about-info-item">
                             <i class="fas fa-envelope"></i>
                             <div>
-                                <span class="info-label">Email</span>
+                                <span class="info-label">Direct Email</span>
                                 <span class="info-value">sameerahmad.92824@gmail.com</span>
-                            </div>
-                        </div>
-                        <div class="about-info-item">
-                            <i class="fas fa-globe"></i>
-                            <div>
-                                <span class="info-label">Website</span>
-                                <span class="info-value">Developerspro</span>
                             </div>
                         </div>
                     </div>
                     <div class="about-socials">
-                        <a href="https://www.linkedin.com/in/sameer-ahmad-python-developer" target="_blank" class="social-link" aria-label="LinkedIn">
+                        <a href="https://www.linkedin.com/in/sameer-ahmad-python-developer" target="_blank" class="social-link" aria-label="LinkedIn" title="LinkedIn Profile">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="https://github.com/sameer-hsxtech" target="_blank" class="social-link" aria-label="GitHub">
+                        <a href="https://github.com/sameer-hsxtech" target="_blank" class="social-link" aria-label="GitHub" title="GitHub Profile">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="https://x.com/ahm4970" target="_blank" class="social-link" aria-label="X / Twitter">
+                        <a href="https://wa.me/message/H4UKWVXBAG67L1" target="_blank" class="social-link" aria-label="WhatsApp" title="Direct WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://x.com/ahm4970" target="_blank" class="social-link" aria-label="X / Twitter" title="X Profile">
                             <i class="fab fa-x-twitter"></i>
                         </a>
                     </div>
@@ -197,31 +242,31 @@
                 <div class="about-cards" data-aos="fade-left">
                     <div class="about-card">
                         <div class="about-card-icon">
-                            <i class="fas fa-cogs"></i>
+                            <i class="fas fa-cubes"></i>
                         </div>
-                        <h4>Odoo ERP Solutions</h4>
-                        <p>Custom module development, configuration, and enterprise migrations (v10 to v19).</p>
+                        <h4>10+ ERP Implementations</h4>
+                        <p>End-to-end deployment of core Odoo apps (Accounting, Inventory, Sales, Purchase & POS).</p>
                     </div>
                     <div class="about-card">
                         <div class="about-card-icon">
-                            <i class="fas fa-robot"></i>
+                            <i class="fas fa-code-branch"></i>
                         </div>
-                        <h4>AI & ML Development</h4>
-                        <p>Machine learning models, NLP solutions, and OpenAI API integrations.</p>
+                        <h4>Enterprise Migrations</h4>
+                        <p>Upgrades across Odoo v10 &rarr; v18/v19 with custom module adaptation and data integrity.</p>
                     </div>
                     <div class="about-card">
                         <div class="about-card-icon">
-                            <i class="fas fa-plug"></i>
+                            <i class="fas fa-plug-circle-check"></i>
                         </div>
-                        <h4>API Integrations</h4>
-                        <p>Third-party integrations with platforms like Pipedrive, PRA, FBR, SRB & more.</p>
+                        <h4>Government & Fintech APIs</h4>
+                        <p>Certified tax compliance automation for PRA, FBR, SRB and Flooss financial integrations.</p>
                     </div>
                     <div class="about-card">
                         <div class="about-card-icon">
-                            <i class="fas fa-exchange-alt"></i>
+                            <i class="fas fa-brain"></i>
                         </div>
-                        <h4>System Migrations</h4>
-                        <p>Smooth legacy system migrations with minimal downtime and full data integrity.</p>
+                        <h4>AI & Intelligent Automations</h4>
+                        <p>Machine learning workflows, NLP pipelines, and OpenAI API integrations for smart business.</p>
                     </div>
                 </div>
             </div>
@@ -251,17 +296,17 @@
                     </ul>
                 </div>
                 <div class="service-card featured" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-badge">Most Popular</div>
+                    <div class="service-badge">10+ Delivered &bull; Core Specialty</div>
                     <div class="service-number">02</div>
                     <div class="service-icon">
                         <i class="fas fa-arrow-up-right-dots"></i>
                     </div>
                     <h3>Odoo ERP Implementation</h3>
-                    <p>End-to-end Odoo implementation including configuration of Accounting, Sales, Purchase, Inventory, POS, and complete business process optimization.</p>
+                    <p>Proven delivery across 10+ full-scale implementations: complete setup of Accounting, Sales, Purchase, Inventory, POS, and streamlined business process automation.</p>
                     <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Full ERP Setup & Config</li>
-                        <li><i class="fas fa-check"></i> Data Migration</li>
-                        <li><i class="fas fa-check"></i> User Training & Support</li>
+                        <li><i class="fas fa-check"></i> 10+ Enterprise Go-Lives</li>
+                        <li><i class="fas fa-check"></i> Full Module Setup & Workflows</li>
+                        <li><i class="fas fa-check"></i> Zero-Loss Data Migration & Training</li>
                     </ul>
                 </div>
                 <div class="service-card" data-aos="fade-up" data-aos-delay="300">
@@ -363,8 +408,9 @@
     <section class="experience section" id="experience">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <span class="section-tag"><i class="fas fa-briefcase"></i> My Journey</span>
+                <span class="section-tag"><i class="fas fa-briefcase"></i> Verified Career</span>
                 <h2 class="section-title">Work <span class="gradient-text">Experience</span></h2>
+                <p class="section-subtitle">3+ years of delivering enterprise ERP systems and AI-powered automation</p>
             </div>
             <div class="timeline">
                 <div class="timeline-item" data-aos="fade-up">
@@ -372,21 +418,23 @@
                         <div class="timeline-marker-inner"></div>
                     </div>
                     <div class="timeline-content">
-                        <div class="timeline-badge current">Current Role</div>
+                        <div class="timeline-badge current">Current Role &bull; Silver Partner</div>
                         <h3 class="timeline-title">Odoo Technical Developer</h3>
                         <h4 class="timeline-company">
                             <i class="fas fa-building"></i> HSX Tech &mdash; Odoo Silver Partner
                         </h4>
-                        <span class="timeline-date"><i class="fas fa-calendar-alt"></i> March 2025 &mdash; Present</span>
+                        <span class="timeline-date"><i class="fas fa-calendar-alt"></i> March 2025 &mdash; Present &bull; Lahore, Pakistan</span>
                         <ul class="timeline-details">
-                            <li>Spearheaded end-to-end customization and configuration of core Odoo modules including Accounting, Sales, Purchase, Inventory, and POS</li>
-                            <li>Led complex API integrations with third-party platforms such as PRA, FBR, SRB and Flooss</li>
-                            <li>Developed and deployed custom Odoo apps using Python, XML, and JavaScript</li>
-                            <li>Managed data migration from legacy systems with minimal downtime</li>
-                            <li>Successfully executed Odoo Enterprise migrations: v10 → v18, v17 → v18, v17 → v19</li>
+                            <li>Spearheaded end-to-end customization and configuration of core Odoo modules (Accounting, Sales, Purchase, Inventory, POS) using Python and the Odoo ORM, improving process efficiency and client satisfaction across multiple enterprise implementations.</li>
+                            <li>Led complex third-party API integrations with government and fintech platforms (<strong>PRA, FBR, SRB, Flooss</strong>), automating tax and compliance data exchange and eliminating manual reporting effort for finance teams.</li>
+                            <li>Developed and deployed custom Odoo applications using Python, Odoo ORM, QWeb views/reports, XML, and JavaScript, tailored to specific business needs while ensuring long-term maintainability.</li>
+                            <li>Managed end-to-end data migration projects from legacy systems to Odoo, preserving data integrity and minimizing downtime during transitions.</li>
+                            <li>Delivered POS customizations for diverse retail environments, enhancing UI/UX and extending default functionality to match operational requirements.</li>
+                            <li>Executed multiple Odoo Enterprise version migrations (<strong>v10&rarr;v18, v12&rarr;v19, v17&rarr;v19, v18&rarr;v19</strong>), ensuring smooth upgrades, backward compatibility, and stable production performance.</li>
+                            <li>Deployed and self-hosted Odoo production environments on DigitalOcean, Hostinger VPS, and CloudPepper &mdash; configuring Nginx reverse proxy, SSL/TLS, automated backups, and DNS &mdash; plus Odoo.sh and Git-based CI/CD pipelines.</li>
                         </ul>
                         <div class="timeline-tags">
-                            <span>Python</span><span>Odoo</span><span>JavaScript</span><span>API</span><span>PostgreSQL</span>
+                            <span>Odoo v10–v19</span><span>Python</span><span>Odoo ORM</span><span>QWeb Reports</span><span>PRA / FBR / SRB</span><span>Flooss API</span><span>POS Customization</span><span>DevOps & Nginx</span><span>Odoo.sh CI/CD</span>
                         </div>
                     </div>
                 </div>
@@ -401,14 +449,14 @@
                         </h4>
                         <span class="timeline-date"><i class="fas fa-calendar-alt"></i> Jan 2024 &mdash; March 2025</span>
                         <ul class="timeline-details">
-                            <li>Customized and configured Odoo modules to meet diverse business requirements</li>
-                            <li>Developed custom Odoo apps ensuring high-quality, tailored solutions</li>
-                            <li>Managed legacy system migrations smoothly with minimal downtime</li>
-                            <li>Integrated Odoo with third-party applications like Pipedrive, Legend Life and Redicale services</li>
-                            <li>Conducted comprehensive training sessions for end-users, improving adoption rates</li>
+                            <li>Customized and configured core Odoo modules to meet diverse enterprise business requirements, improving operational efficiency and user satisfaction.</li>
+                            <li>Built custom Odoo applications using Python, XML, and JavaScript, delivering high-quality, business-aligned solutions.</li>
+                            <li>Migrated legacy systems to Odoo with minimal downtime, preserving data accuracy and ensuring a smooth transition for end users.</li>
+                            <li>Integrated Odoo with third-party platforms including <strong>Pipedrive CRM</strong>, <strong>Legend Life</strong>, and medical service providers, extending system capabilities and automating business processes.</li>
+                            <li>Conducted comprehensive end-user and administrator training sessions, improving adoption rates and platform proficiency across client organizations.</li>
                         </ul>
                         <div class="timeline-tags">
-                            <span>Python</span><span>Odoo</span><span>XML</span><span>Pipedrive</span><span>Migration</span>
+                            <span>Odoo Custom Apps</span><span>Python</span><span>XML & QWeb</span><span>Pipedrive API</span><span>Legend Life</span><span>Legacy Migration</span><span>Client Training</span>
                         </div>
                     </div>
                 </div>
@@ -417,18 +465,18 @@
                         <div class="timeline-marker-inner"></div>
                     </div>
                     <div class="timeline-content">
-                        <h3 class="timeline-title">AI Developer</h3>
+                        <h3 class="timeline-title">AI Developer &mdash; OpenAI API Integration</h3>
                         <h4 class="timeline-company">
-                            <i class="fas fa-building"></i> Webvies Technologies &mdash; OpenAI API Integration
+                            <i class="fas fa-brain"></i> Webvies Technologies
                         </h4>
                         <span class="timeline-date"><i class="fas fa-calendar-alt"></i> Aug 2023 &mdash; Nov 2023</span>
                         <ul class="timeline-details">
-                            <li>Designed and implemented machine learning models to solve complex business problems</li>
-                            <li>Conducted data preprocessing, feature engineering, and ML algorithm optimization</li>
-                            <li>Leveraged NLP techniques to enhance data processing and analysis</li>
+                            <li>Designed and implemented machine learning models to address business challenges, improving efficiency and profitability through data preprocessing, feature engineering, and algorithm optimization.</li>
+                            <li>Applied Natural Language Processing (NLP) techniques and integrated the <strong>OpenAI API</strong> to enhance data processing, automated summarization, and cognitive business workflows.</li>
+                            <li>Architected resilient API connectors in Python to bridge enterprise data pipelines with generative AI endpoints.</li>
                         </ul>
                         <div class="timeline-tags">
-                            <span>Python</span><span>OpenAI</span><span>NLP</span><span>TensorFlow</span><span>ML</span>
+                            <span>Python</span><span>OpenAI API</span><span>NLP Workflows</span><span>Machine Learning</span><span>Data Preprocessing</span><span>API Integration</span>
                         </div>
                     </div>
                 </div>
@@ -609,28 +657,54 @@
         </div>
     </section>
 
-    <!-- Education & Certifications Section -->
+    <!-- Education & Languages Section -->
     <section class="experience section" id="education">
         <div class="container">
-            <!-- Education -->
             <div class="section-header" data-aos="fade-up">
-                <span class="section-tag"><i class="fas fa-graduation-cap"></i> Education</span>
-                <h2 class="section-title">My <span class="gradient-text">Education</span></h2>
+                <span class="section-tag"><i class="fas fa-graduation-cap"></i> Academic & Qualifications</span>
+                <h2 class="section-title">Education & <span class="gradient-text">Languages</span></h2>
+                <p class="section-subtitle">Formal foundation in Computer Science with multi-language proficiency</p>
             </div>
-            <div class="education-card" data-aos="fade-up">
-                <div class="education-icon">
-                    <i class="fas fa-university"></i>
+            <div class="education-grid">
+                <div class="education-card" data-aos="fade-up">
+                    <div class="education-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="education-content">
+                        <h3>Bachelor of Science, Computer Science (BSCS)</h3>
+                        <h4><i class="fas fa-location-dot"></i> University of Southern Punjab, Multan</h4>
+                        <span class="timeline-date"><i class="fas fa-calendar-alt"></i> Aug 2019 &mdash; Oct 2023 &bull; Multan, Pakistan</span>
+                        <p class="education-desc">
+                            Core computer science education focused on software engineering principles, algorithms, data structures, relational database systems (RDBMS), object-oriented design, distributed architectures, and artificial intelligence fundamentals.
+                        </p>
+                    </div>
                 </div>
-                <div class="education-content">
-                    <h3>Bachelors of Computer Science (BSCS)</h3>
-                    <h4>Institute of Southern Punjab, Multan</h4>
-                    <span class="timeline-date"><i class="fas fa-calendar-alt"></i> Aug 2019 &mdash; Oct 2023</span>
+                <div class="languages-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3><i class="fas fa-language"></i> Language Proficiency</h3>
+                    <div class="language-item">
+                        <div class="language-info">
+                            <strong>English</strong>
+                            <span>Fluent &mdash; Professional & Technical Communication</span>
+                        </div>
+                        <div class="language-dots" aria-label="5 out of 5 stars">
+                            <span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span>
+                        </div>
+                    </div>
+                    <div class="language-item">
+                        <div class="language-info">
+                            <strong>Urdu</strong>
+                            <span>Native Proficiency</span>
+                        </div>
+                        <div class="language-dots" aria-label="5 out of 5 stars">
+                            <span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- Certifications -->
             <div class="section-header" data-aos="fade-up" style="margin-top: 4rem;">
-                <span class="section-tag"><i class="fas fa-certificate"></i> Certifications</span>
+                <span class="section-tag"><i class="fas fa-certificate"></i> Professional Certifications</span>
             </div>
             <div class="certifications-grid" data-aos="fade-up">
                 <div class="cert-card">
@@ -643,7 +717,7 @@
                 </div>
                 <div class="cert-card">
                     <i class="fas fa-award"></i>
-                    <span>Mastering Odoo Development 12</span>
+                    <span>Mastering Odoo Development</span>
                 </div>
                 <div class="cert-card">
                     <i class="fas fa-award"></i>
@@ -661,19 +735,29 @@
     <section class="skills section" id="skills">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <span class="section-tag"><i class="fas fa-code"></i> My Expertise</span>
-                <h2 class="section-title">Technical <span class="gradient-text">Skills</span></h2>
+                <span class="section-tag"><i class="fas fa-code"></i> Technical Arsenal</span>
+                <h2 class="section-title">Core <span class="gradient-text">Skills</span></h2>
+                <p class="section-subtitle">Verified proficiencies in enterprise Odoo development, cloud DevOps, and AI automation</p>
             </div>
             <div class="skills-categories">
-                <!-- Programming Languages -->
+                <!-- Odoo & ERP -->
                 <div class="skill-category" data-aos="fade-up">
                     <h3 class="skill-category-title">
-                        <i class="fas fa-laptop-code"></i> Programming Languages
+                        <i class="fas fa-cubes"></i> Odoo & ERP Ecosystem
                     </h3>
                     <div class="skill-bars">
                         <div class="skill-bar-item">
                             <div class="skill-bar-header">
-                                <span><i class="fab fa-python"></i> Python</span>
+                                <span><i class="fas fa-gears"></i> Odoo v10–v19 Development & ORM</span>
+                                <span>96%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="96"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span><i class="fas fa-diagram-project"></i> 10+ ERP End-to-End Implementations</span>
                                 <span>95%</span>
                             </div>
                             <div class="skill-bar-track">
@@ -682,165 +766,7 @@
                         </div>
                         <div class="skill-bar-item">
                             <div class="skill-bar-header">
-                                <span><i class="fab fa-js-square"></i> JavaScript</span>
-                                <span>85%</span>
-                            </div>
-                            <div class="skill-bar-track">
-                                <div class="skill-bar-fill" data-width="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar-item">
-                            <div class="skill-bar-header">
-                                <span><i class="fab fa-html5"></i> HTML & CSS</span>
-                                <span>90%</span>
-                            </div>
-                            <div class="skill-bar-track">
-                                <div class="skill-bar-fill" data-width="90"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar-item">
-                            <div class="skill-bar-header">
-                                <span><i class="fas fa-code"></i> XML</span>
-                                <span>90%</span>
-                            </div>
-                            <div class="skill-bar-track">
-                                <div class="skill-bar-fill" data-width="90"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Odoo & ERP -->
-                <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="skill-category-title">
-                        <i class="fas fa-cogs"></i> Odoo & ERP
-                    </h3>
-                    <div class="skill-bars">
-                        <div class="skill-bar-item">
-                            <div class="skill-bar-header">
-                                <span><i class="fas fa-cubes"></i> Odoo Development</span>
-                                <span>95%</span>
-                            </div>
-                            <div class="skill-bar-track">
-                                <div class="skill-bar-fill" data-width="95"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar-item">
-                            <div class="skill-bar-header">
-                                <span><i class="fas fa-exchange-alt"></i> Odoo Migration</span>
-                                <span>90%</span>
-                            </div>
-                            <div class="skill-bar-track">
-                                <div class="skill-bar-fill" data-width="90"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar-item">
-                            <div class="skill-bar-header">
-                                <span><i class="fas fa-plug"></i> API Integration</span>
-                                <span>88%</span>
-                            </div>
-                            <div class="skill-bar-track">
-                                <div class="skill-bar-fill" data-width="88"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar-item">
-                            <div class="skill-bar-header">
-                                <span><i class="fas fa-cash-register"></i> POS Customization</span>
-                                <span>85%</span>
-                            </div>
-                            <div class="skill-bar-track">
-                                <div class="skill-bar-fill" data-width="85"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- AI & ML -->
-                <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
-                    <h3 class="skill-category-title">
-                        <i class="fas fa-brain"></i> AI & Machine Learning
-                    </h3>
-                    <div class="skill-bars">
-                        <div class="skill-bar-item">
-                            <div class="skill-bar-header">
-                                <span><i class="fas fa-project-diagram"></i> TensorFlow / PyTorch</span>
-                                <span>80%</span>
-                            </div>
-                            <div class="skill-bar-track">
-                                <div class="skill-bar-fill" data-width="80"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar-item">
-                            <div class="skill-bar-header">
-                                <span><i class="fas fa-language"></i> NLP (NLTK, SpaCy)</span>
-                                <span>82%</span>
-                            </div>
-                            <div class="skill-bar-track">
-                                <div class="skill-bar-fill" data-width="82"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar-item">
-                            <div class="skill-bar-header">
-                                <span><i class="fas fa-chart-line"></i> Scikit-Learn</span>
-                                <span>85%</span>
-                            </div>
-                            <div class="skill-bar-track">
-                                <div class="skill-bar-fill" data-width="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar-item">
-                            <div class="skill-bar-header">
-                                <span><i class="fas fa-table"></i> Pandas / NumPy</span>
-                                <span>90%</span>
-                            </div>
-                            <div class="skill-bar-track">
-                                <div class="skill-bar-fill" data-width="90"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Database & Tools -->
-                <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
-                    <h3 class="skill-category-title">
-                        <i class="fas fa-database"></i> Database & Tools
-                    </h3>
-                    <div class="skill-bars">
-                        <div class="skill-bar-item">
-                            <div class="skill-bar-header">
-                                <span><i class="fas fa-database"></i> PostgreSQL</span>
-                                <span>90%</span>
-                            </div>
-                            <div class="skill-bar-track">
-                                <div class="skill-bar-fill" data-width="90"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar-item">
-                            <div class="skill-bar-header">
-                                <span><i class="fas fa-database"></i> MySQL / SQLite</span>
-                                <span>85%</span>
-                            </div>
-                            <div class="skill-bar-track">
-                                <div class="skill-bar-fill" data-width="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar-item">
-                            <div class="skill-bar-header">
-                                <span><i class="fab fa-git-alt"></i> Git & GitHub</span>
-                                <span>88%</span>
-                            </div>
-                            <div class="skill-bar-track">
-                                <div class="skill-bar-fill" data-width="88"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- DevOps & Self-Hosting -->
-                <div class="skill-category" data-aos="fade-up" data-aos-delay="400">
-                    <h3 class="skill-category-title">
-                        <i class="fas fa-server"></i> Odoo Self-Hosting & DevOps
-                    </h3>
-                    <div class="skill-bars">
-                        <div class="skill-bar-item">
-                            <div class="skill-bar-header">
-                                <span><i class="fas fa-rocket"></i> Self-Hosted Odoo Deployment</span>
+                                <span><i class="fas fa-file-invoice"></i> QWeb Views, Actions & Custom Reports</span>
                                 <span>92%</span>
                             </div>
                             <div class="skill-bar-track">
@@ -849,7 +775,7 @@
                         </div>
                         <div class="skill-bar-item">
                             <div class="skill-bar-header">
-                                <span><i class="fab fa-linux"></i> Linux Server Admin (Ubuntu)</span>
+                                <span><i class="fas fa-cash-register"></i> POS Customization & Offline Sync</span>
                                 <span>88%</span>
                             </div>
                             <div class="skill-bar-track">
@@ -858,42 +784,88 @@
                         </div>
                         <div class="skill-bar-item">
                             <div class="skill-bar-header">
-                                <span><i class="fab fa-docker"></i> Docker & Docker Compose</span>
-                                <span>85%</span>
+                                <span><i class="fas fa-code-branch"></i> Version Migration (v10&rarr;v18, v12&rarr;v19)</span>
+                                <span>92%</span>
                             </div>
                             <div class="skill-bar-track">
-                                <div class="skill-bar-fill" data-width="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar-item">
-                            <div class="skill-bar-header">
-                                <span><i class="fas fa-shield-halved"></i> Nginx, SSL & Security Hardening</span>
-                                <span>87%</span>
-                            </div>
-                            <div class="skill-bar-track">
-                                <div class="skill-bar-fill" data-width="87"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar-item">
-                            <div class="skill-bar-header">
-                                <span><i class="fas fa-cloud-arrow-up"></i> Backups, Monitoring & Scaling</span>
-                                <span>85%</span>
-                            </div>
-                            <div class="skill-bar-track">
-                                <div class="skill-bar-fill" data-width="85"></div>
+                                <div class="skill-bar-fill" data-width="92"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Web, eCommerce & SEO -->
-                <div class="skill-category" data-aos="fade-up" data-aos-delay="500">
+
+                <!-- Programming Languages -->
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
                     <h3 class="skill-category-title">
-                        <i class="fas fa-globe"></i> Web, eCommerce & SEO
+                        <i class="fas fa-laptop-code"></i> Programming Languages
                     </h3>
                     <div class="skill-bars">
                         <div class="skill-bar-item">
                             <div class="skill-bar-header">
-                                <span><i class="fas fa-laptop"></i> Odoo Website Builder</span>
+                                <span><i class="fab fa-python"></i> Python (Odoo ORM, OOP & Scripting)</span>
+                                <span>96%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="96"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span><i class="fab fa-js-square"></i> JavaScript & Odoo OWL Framework</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span><i class="fas fa-code"></i> XML Architecture & Views</span>
+                                <span>94%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="94"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span><i class="fab fa-html5"></i> HTML5 & CSS3 / SCSS</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="90"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- API & Integration -->
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="skill-category-title">
+                        <i class="fas fa-network-wired"></i> APIs & Enterprise Integrations
+                    </h3>
+                    <div class="skill-bars">
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span><i class="fas fa-plug"></i> REST API & XML-RPC Services</span>
+                                <span>94%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="94"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span><i class="fas fa-shield-halved"></i> Govt Tax APIs (PRA, FBR, SRB)</span>
+                                <span>92%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="92"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span><i class="fas fa-money-bill-transfer"></i> Fintech & Payment APIs (Flooss)</span>
                                 <span>90%</span>
                             </div>
                             <div class="skill-bar-track">
@@ -902,33 +874,153 @@
                         </div>
                         <div class="skill-bar-item">
                             <div class="skill-bar-header">
-                                <span><i class="fas fa-cart-shopping"></i> Odoo eCommerce</span>
+                                <span><i class="fas fa-handshake"></i> CRM Integrations (Pipedrive, Legend Life)</span>
                                 <span>88%</span>
                             </div>
                             <div class="skill-bar-track">
                                 <div class="skill-bar-fill" data-width="88"></div>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Databases -->
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="skill-category-title">
+                        <i class="fas fa-database"></i> Databases & Data Architecture
+                    </h3>
+                    <div class="skill-bars">
                         <div class="skill-bar-item">
                             <div class="skill-bar-header">
-                                <span><i class="fas fa-magnifying-glass-chart"></i> Technical & On-Page SEO</span>
-                                <span>82%</span>
+                                <span><i class="fas fa-database"></i> PostgreSQL (Odoo Architecture & Queries)</span>
+                                <span>92%</span>
                             </div>
                             <div class="skill-bar-track">
-                                <div class="skill-bar-fill" data-width="82"></div>
+                                <div class="skill-bar-fill" data-width="92"></div>
                             </div>
                         </div>
                         <div class="skill-bar-item">
                             <div class="skill-bar-header">
-                                <span><i class="fas fa-gauge-high"></i> Core Web Vitals & Performance</span>
-                                <span>80%</span>
+                                <span><i class="fas fa-table-cells"></i> MySQL & SQLite</span>
+                                <span>86%</span>
                             </div>
                             <div class="skill-bar-track">
-                                <div class="skill-bar-fill" data-width="80"></div>
+                                <div class="skill-bar-fill" data-width="86"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span><i class="fas fa-arrow-right-arrow-left"></i> ETL Data Migration & Cleansing</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span><i class="fas fa-chart-pie"></i> Schema Optimization & Query Tuning</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="88"></div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- DevOps & Cloud Deployment -->
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="400">
+                    <h3 class="skill-category-title">
+                        <i class="fas fa-server"></i> Cloud DevOps & Self-Hosting
+                    </h3>
+                    <div class="skill-bars">
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span><i class="fas fa-cloud"></i> DigitalOcean, Hostinger & CloudPepper</span>
+                                <span>94%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="94"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span><i class="fas fa-code-merge"></i> Odoo.sh & Git-based CI/CD Pipelines</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span><i class="fas fa-lock"></i> Nginx Reverse Proxy, SSL/TLS & Hardening</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span><i class="fab fa-linux"></i> Linux Server Administration (Ubuntu) & Backups</span>
+                                <span>92%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="92"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI & Machine Learning -->
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="500">
+                    <h3 class="skill-category-title">
+                        <i class="fas fa-brain"></i> AI & Intelligent Automation
+                    </h3>
+                    <div class="skill-bars">
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span><i class="fas fa-robot"></i> OpenAI API Integration & Prompt Engineering</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span><i class="fas fa-language"></i> Natural Language Processing (NLP Workflows)</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span><i class="fas fa-project-diagram"></i> ML Models (Scikit-Learn, Optimization)</span>
+                                <span>84%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="84"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header">
+                                <span><i class="fas fa-table"></i> Data Processing (Pandas & NumPy)</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar-track">
+                                <div class="skill-bar-fill" data-width="90"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
             </div>
         </div>
     </section>
@@ -1773,9 +1865,11 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <a href="#hero" class="nav-logo">
-                        <span class="logo-icon">S</span>
-                        <span class="logo-text">ameer<span class="logo-highlight">.</span></span>
+                    <a href="#hero" class="nav-logo" aria-label="Sameer Ahmad">
+                        <span class="logo-mark">SA</span>
+                        <span class="logo-text">
+                            <span class="logo-letter" style="--i:0">S</span><span class="logo-letter" style="--i:1">a</span><span class="logo-letter" style="--i:2">m</span><span class="logo-letter" style="--i:3">e</span><span class="logo-letter" style="--i:4">e</span><span class="logo-letter" style="--i:5">r</span><span class="logo-spacer">&nbsp;</span><span class="logo-letter gradient-text" style="--i:6">A</span><span class="logo-letter gradient-text" style="--i:7">h</span><span class="logo-letter gradient-text" style="--i:8">m</span><span class="logo-letter gradient-text" style="--i:9">a</span><span class="logo-letter gradient-text" style="--i:10">d</span>
+                        </span>
                     </a>
                     <p>Building intelligent business solutions with Odoo & AI.</p>
                 </div>

@@ -109,12 +109,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // ========================================
     const typewriterEl = document.getElementById('typewriter');
     const phrases = [
-        'Odoo ERP Solutions',
-        'Custom Business Apps',
-        'AI-Powered Systems',
-        'API Integrations',
-        'System Migrations',
-        'Machine Learning Models'
+        'Enterprise Odoo ERP Systems',
+        '10+ Production Implementations',
+        'Custom Modules & Store Apps',
+        'Govt Tax APIs (PRA, FBR, SRB)',
+        'Seamless Migrations (v10–v19)',
+        'AI & Machine Learning Automations'
     ];
     let phraseIdx = 0;
     let charIdx = 0;
@@ -264,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
     skillBars.forEach(bar => skillObserver.observe(bar));
 
     // ========================================
-    // COUNTER ANIMATION
+    // COUNTER ANIMATION (Supports decimals like 2.5+)
     // ========================================
     const counters = document.querySelectorAll('.stat-number');
 
@@ -272,25 +272,27 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
                 entry.target.classList.add('counted');
-                const target = parseInt(entry.target.getAttribute('data-count'));
+                const raw = entry.target.getAttribute('data-count') || '0';
+                const isDecimal = raw.includes('.');
+                const target = parseFloat(raw);
                 let count = 0;
-                const duration = 2000;
+                const duration = 1800;
                 const increment = target / (duration / 16);
 
                 function updateCount() {
                     count += increment;
                     if (count < target) {
-                        entry.target.textContent = Math.ceil(count);
+                        entry.target.textContent = isDecimal ? count.toFixed(1) : Math.ceil(count);
                         requestAnimationFrame(updateCount);
                     } else {
-                        entry.target.textContent = target;
+                        entry.target.textContent = isDecimal ? target.toFixed(1) : target;
                     }
                 }
 
                 updateCount();
             }
         });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.3 });
 
     counters.forEach(counter => counterObserver.observe(counter));
 
