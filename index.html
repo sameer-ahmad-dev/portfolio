@@ -1892,12 +1892,113 @@
         </div>
     </footer>
 
-    <!-- WhatsApp Floating Draggable Button -->
+    <!-- WhatsApp Floating Draggable Button with Cute Animated Pet Companion -->
     <div class="whatsapp-float" id="whatsappFloat">
+        <!-- Cute Animated Motion Pet Companion -->
+        <div class="whatsapp-pet" aria-hidden="true">
+            <svg class="pet-svg" viewBox="0 0 80 72" width="62" height="56" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="catBodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#ffffff"/>
+                        <stop offset="100%" stop-color="#e2e8f0"/>
+                    </linearGradient>
+                    <linearGradient id="catHeadGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#ffffff"/>
+                        <stop offset="100%" stop-color="#f8fafc"/>
+                    </linearGradient>
+                    <radialGradient id="catEyeGrad" cx="35%" cy="35%" r="65%">
+                        <stop offset="0%" stop-color="#25D366"/>
+                        <stop offset="60%" stop-color="#0f766e"/>
+                        <stop offset="100%" stop-color="#042f2e"/>
+                    </radialGradient>
+                    <filter id="catPetGlow" x="-20%" y="-20%" width="140%" height="140%">
+                        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(37,211,102,0.35)"/>
+                    </filter>
+                </defs>
+
+                <!-- Tail (smooth wag) -->
+                <path class="pet-tail" d="M 22 52 C 12 50 6 36 12 28 C 16 22 21 26 19 32 C 17 38 21 44 26 48" 
+                      fill="none" stroke="url(#catBodyGrad)" stroke-width="5" stroke-linecap="round"/>
+                
+                <!-- Body / Back -->
+                <ellipse cx="40" cy="52" rx="22" ry="14" fill="url(#catBodyGrad)" stroke="#cbd5e1" stroke-width="1.2"/>
+
+                <!-- Left Ear -->
+                <g class="pet-ear-left">
+                    <path d="M 24 30 L 16 10 L 33 19 Z" fill="url(#catHeadGrad)" stroke="#cbd5e1" stroke-width="1.2" stroke-linejoin="round"/>
+                    <path d="M 23 26 L 19 14 L 30 20 Z" fill="#fda4af"/>
+                </g>
+
+                <!-- Right Ear -->
+                <g class="pet-ear-right">
+                    <path d="M 56 30 L 64 10 L 47 19 Z" fill="url(#catHeadGrad)" stroke="#cbd5e1" stroke-width="1.2" stroke-linejoin="round"/>
+                    <path d="M 57 26 L 61 14 L 50 20 Z" fill="#fda4af"/>
+                </g>
+
+                <!-- Head -->
+                <ellipse cx="40" cy="33" rx="22" ry="18" fill="url(#catHeadGrad)" stroke="#cbd5e1" stroke-width="1.2" filter="url(#catPetGlow)"/>
+
+                <!-- Forehead Cute Calico Star/Mark -->
+                <path d="M 37 17 C 39 19 41 19 43 17 C 42 22 38 22 37 17 Z" fill="#fbbf24" opacity="0.85"/>
+
+                <!-- Eyes (Blinking & Expression Swap on Hover) -->
+                <g class="pet-eyes">
+                    <!-- Left Eye (Open) -->
+                    <g class="eye-open">
+                        <ellipse cx="31" cy="32" rx="4.5" ry="5.2" fill="#0f172a"/>
+                        <circle cx="31" cy="32" r="3.8" fill="url(#catEyeGrad)"/>
+                        <circle cx="32" cy="32" r="2.2" fill="#0f172a"/>
+                        <circle cx="29.8" cy="29.8" r="1.6" fill="#ffffff"/>
+                        <circle cx="32.8" cy="33.8" r="0.8" fill="#ffffff"/>
+                    </g>
+                    <!-- Right Eye (Open) -->
+                    <g class="eye-open">
+                        <ellipse cx="49" cy="32" rx="4.5" ry="5.2" fill="#0f172a"/>
+                        <circle cx="49" cy="32" r="3.8" fill="url(#catEyeGrad)"/>
+                        <circle cx="48" cy="32" r="2.2" fill="#0f172a"/>
+                        <circle cx="47.8" cy="29.8" r="1.6" fill="#ffffff"/>
+                        <circle cx="50.8" cy="33.8" r="0.8" fill="#ffffff"/>
+                    </g>
+                    <!-- Happy Crescent Eyes (shown on hover) -->
+                    <g class="eye-happy">
+                        <path d="M 26 33 Q 31 27 36 33" fill="none" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round"/>
+                        <path d="M 44 33 Q 49 27 54 33" fill="none" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round"/>
+                    </g>
+                </g>
+
+                <!-- Cheeks Blush -->
+                <ellipse class="pet-blush" cx="23" cy="38" rx="3.5" ry="2.5" fill="#f43f5e" opacity="0.45"/>
+                <ellipse class="pet-blush" cx="57" cy="38" rx="3.5" ry="2.5" fill="#f43f5e" opacity="0.45"/>
+
+                <!-- Tiny Cute Pink Nose -->
+                <path d="M 38.8 36.8 Q 40 36.2 41.2 36.8 Q 40 38.6 38.8 36.8 Z" fill="#f43f5e"/>
+
+                <!-- Cute Cat Mouth :3 -->
+                <path d="M 36.5 39 Q 39.5 42 40 39.2 Q 40.5 42 43.5 39" fill="none" stroke="#334155" stroke-width="1.3" stroke-linecap="round"/>
+
+                <!-- Whiskers -->
+                <path d="M 20 35 L 12 34 M 20 38.5 L 11 39.5" stroke="#94a3b8" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M 60 35 L 68 34 M 60 38.5 L 69 39.5" stroke="#94a3b8" stroke-width="1.2" stroke-linecap="round"/>
+
+                <!-- Paws peeking over the top rim of WhatsApp button -->
+                <g class="pet-paws">
+                    <ellipse cx="27" cy="50" rx="5.5" ry="4.5" fill="url(#catHeadGrad)" stroke="#cbd5e1" stroke-width="1.2"/>
+                    <circle cx="25.5" cy="51" r="1" fill="#fda4af"/>
+                    <circle cx="28.5" cy="51" r="1" fill="#fda4af"/>
+
+                    <ellipse cx="53" cy="50" rx="5.5" ry="4.5" fill="url(#catHeadGrad)" stroke="#cbd5e1" stroke-width="1.2"/>
+                    <circle cx="51.5" cy="51" r="1" fill="#fda4af"/>
+                    <circle cx="54.5" cy="51" r="1" fill="#fda4af"/>
+                </g>
+            </svg>
+        </div>
         <a href="https://wa.me/message/H4UKWVXBAG67L1" target="_blank" class="whatsapp-link" aria-label="Chat on WhatsApp">
             <i class="fab fa-whatsapp"></i>
         </a>
-        <span class="whatsapp-tooltip">Chat with me</span>
+        <span class="whatsapp-tooltip">
+            <span>Say hi to Sameer!</span>
+            <span class="tooltip-paw">🐾</span>
+        </span>
     </div>
 
     <!-- Back to Top Button -->

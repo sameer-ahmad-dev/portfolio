@@ -2674,7 +2674,7 @@ body.green-theme .modal-store-cta:hover {
 }
 
 /* ========================================
-   WHATSAPP FLOATING BUTTON
+   WHATSAPP FLOATING BUTTON WITH CUTE PET
    ======================================== */
 .whatsapp-float {
     position: fixed;
@@ -2685,14 +2685,15 @@ body.green-theme .modal-store-cta:hover {
     border-radius: 50%;
     background: #25D366;
     z-index: 9999;
-    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-    animation: whatsapp-pulse 2s ease-in-out infinite;
+    box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45);
+    animation: whatsapp-pulse 2.2s ease-in-out infinite;
     cursor: grab;
     touch-action: none;
     user-select: none;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .whatsapp-float:active {
@@ -2702,8 +2703,8 @@ body.green-theme .modal-store-cta:hover {
 
 .whatsapp-float.dragging {
     animation: none;
-    box-shadow: 0 8px 35px rgba(37, 211, 102, 0.6);
-    transform: scale(1.1);
+    box-shadow: 0 8px 35px rgba(37, 211, 102, 0.65);
+    transform: scale(1.08);
 }
 
 .whatsapp-link {
@@ -2714,23 +2715,135 @@ body.green-theme .modal-store-cta:hover {
     align-items: center;
     justify-content: center;
     color: #fff;
-    font-size: 1.8rem;
-    transition: var(--transition);
+    font-size: 1.85rem;
+    transition: transform 0.25s ease;
 }
 
-.whatsapp-link:hover {
-    color: #fff;
-    transform: scale(1.1);
+.whatsapp-float:hover .whatsapp-link {
+    transform: scale(1.05);
+}
+
+/* ========================================
+   CUTE ANIMATED MOTION PET COMPANION
+   ======================================== */
+.whatsapp-pet {
+    position: absolute;
+    top: -44px;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 5;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.whatsapp-float:hover .whatsapp-pet {
+    transform: translateX(-50%) translateY(-8px) scale(1.12);
+}
+
+.whatsapp-float.dragging .whatsapp-pet {
+    transform: translateX(-50%) translateY(0) scale(1);
+}
+
+.pet-svg {
+    display: block;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.45));
+    animation: petFloat 3s ease-in-out infinite;
+    transform-origin: bottom center;
+}
+
+@keyframes petFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+/* Tail Wagging */
+.pet-tail {
+    transform-origin: 22px 50px;
+    animation: petTailWag 2.4s ease-in-out infinite;
+}
+
+.whatsapp-float:hover .pet-tail {
+    animation: petTailWagFast 0.5s ease-in-out infinite;
+}
+
+@keyframes petTailWag {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(-22deg); }
+}
+
+@keyframes petTailWagFast {
+    0%, 100% { transform: rotate(14deg); }
+    50% { transform: rotate(-24deg); }
+}
+
+/* Ear Twitching */
+.pet-ear-left {
+    transform-origin: 24px 30px;
+    animation: petEarTwitchLeft 4.5s ease-in-out infinite;
+}
+
+.pet-ear-right {
+    transform-origin: 56px 30px;
+    animation: petEarTwitchRight 4.5s ease-in-out infinite 0.25s;
+}
+
+@keyframes petEarTwitchLeft {
+    0%, 82%, 100% { transform: rotate(0deg); }
+    85% { transform: rotate(-14deg); }
+    88% { transform: rotate(6deg); }
+    92% { transform: rotate(-8deg); }
+}
+
+@keyframes petEarTwitchRight {
+    0%, 82%, 100% { transform: rotate(0deg); }
+    85% { transform: rotate(14deg); }
+    88% { transform: rotate(-6deg); }
+    92% { transform: rotate(8deg); }
+}
+
+/* Eyes Blinking & Happy Expression on Hover */
+.pet-eyes {
+    animation: petBlink 4.2s infinite;
+    transform-origin: 40px 32px;
+}
+
+@keyframes petBlink {
+    0%, 93%, 97%, 100% { transform: scaleY(1); }
+    95% { transform: scaleY(0.08); }
+}
+
+.eye-happy {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.whatsapp-float:hover .eye-open {
+    opacity: 0;
+}
+
+.whatsapp-float:hover .eye-happy {
+    opacity: 1;
+}
+
+/* Cheeks Blush */
+.pet-blush {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center;
+}
+
+.whatsapp-float:hover .pet-blush {
+    transform: scale(1.3);
+    opacity: 0.9;
 }
 
 @keyframes whatsapp-pulse {
-    0%, 100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
-    50% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4), 0 0 0 14px rgba(37, 211, 102, 0.12); }
+    0%, 100% { box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45); }
+    50% { box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45), 0 0 0 14px rgba(37, 211, 102, 0.12); }
 }
 
 .whatsapp-tooltip {
     position: absolute;
-    right: 74px;
+    right: 76px;
     top: 50%;
     transform: translateY(-50%) translateX(10px);
     background: var(--bg-card);
@@ -2745,6 +2858,23 @@ body.green-theme .modal-store-cta:hover {
     transition: var(--transition);
     border: 1px solid var(--border);
     pointer-events: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+.tooltip-paw {
+    font-size: 1rem;
+    display: inline-block;
+    animation: pawWiggle 1.8s ease-in-out infinite;
+    transform-origin: center;
+}
+
+@keyframes pawWiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-12deg); }
+    75% { transform: rotate(12deg); }
 }
 
 .whatsapp-tooltip::after {
@@ -3226,6 +3356,22 @@ body.green-theme .modal-store-cta:hover {
 
     .skill-category {
         padding: 20px 16px;
+    }
+
+    .whatsapp-float {
+        bottom: 84px;
+        right: 18px;
+        width: 56px;
+        height: 56px;
+    }
+
+    .whatsapp-pet {
+        top: -40px;
+    }
+
+    .pet-svg {
+        width: 56px;
+        height: 50px;
     }
 }
 
@@ -4280,7 +4426,7 @@ body.green-theme .back-to-top {
     box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
 }
 
-body.green-theme .whatsapp-float .whatsapp-link {
+body.green-theme .whatsapp-float {
     background: #10b981;
 }
 
@@ -4605,6 +4751,13 @@ body.green-theme .gradient-text {
     .section-tag::after,
     .hero-photo,
     .nav-logo:hover .logo-letter,
+    .pet-svg,
+    .pet-tail,
+    .pet-ear-left,
+    .pet-ear-right,
+    .pet-eyes,
+    .tooltip-paw,
+    .whatsapp-float,
     .projects-grid.aos-animate .project-card { animation: none !important; }
     [data-aos].aos-animate { animation: none; }
     .reveal-word-inner { transform: none; transition: none; }
